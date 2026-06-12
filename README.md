@@ -65,7 +65,9 @@ VITE_GHOST_TAG=journal             # optional tag filter
 ```
 
 Posts then render as journal cards linking to the full entries, with the local entries as an
-automatic fallback if Ghost is ever unreachable. Cost options, cheapest first:
+automatic fallback if Ghost is ever unreachable. The deployed site reads the same three values
+from GitHub **repo Settings → Secrets and variables → Actions → Variables** (the workflow passes
+them into the build). Cost options, cheapest first:
 
 | Option | Cost | Notes |
 | --- | --- | --- |
