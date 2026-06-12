@@ -17,6 +17,7 @@ import { Skills } from "./Skills";
 import { Spellcraft } from "./Spellcraft";
 import { useEditableBio } from "../lib/editableBio";
 import { CHARACTER_KEY, useCharacter } from "../lib/pathcompanion";
+import { detectAlias, normalizeAlias } from "../lib/alias";
 import type { RollEntry } from "../types";
 
 export function CharacterView({
@@ -31,13 +32,6 @@ export function CharacterView({
   const [aliases, setAliases] = useState<Record<string, string>>({});
   const [hasLoadedKey, setHasLoadedKey] = useState(false);
   const [host, setHost] = useState<string>("");
-
-  const normalizeAlias = (value?: string): string | undefined => {
-    const alias = value?.trim().toLowerCase();
-    if (!alias) return undefined;
-    const normalized = alias.replace(/[^a-z0-9_-]+/g, "");
-    return normalized || undefined;
-  };
 
   const loadAliases = () => {
     try {
@@ -125,15 +119,9 @@ export function CharacterView({
   const { character, source } = useCharacter(characterKey);
   const [rolls, setRolls] = useState<RollEntry[]>([]);
 
-  const hostParts = host.toLowerCase().split(".");
-  const hostAlias =
-    hostParts.length === 3 && hostParts[1] === "onee" && hostParts[2] === "cloud" && hostParts[0] !== "www"
-      ? hostParts[0]
-      : undefined;
-  const pathAlias = host === "onee.cloud" || host === "www.onee.cloud"
-    ? window.location.pathname.replace(/^\/|\/$/g, "")
-    : "";
-  const alias = hostAlias || normalizeAlias(pathAlias) || "";
+  // Recomputed from the live URL each render (host is read on mount, which
+  // re-renders), and shares detectAlias() with App so both agree on routing.
+  const alias = detectAlias() ?? "";
   const isRootLandingPage = alias === "";
   const hasAliasPath = Boolean(alias);
   const showLanding = !characterKey && (isRootLandingPage || (hasAliasPath && !aliases[alias]));
@@ -172,7 +160,7 @@ export function CharacterView({
         <div className="relative mx-auto max-w-6xl px-6 lg:px-10 py-16">
           <Landing
             characterKey={characterKey}
-            alias={pathAlias || undefined}
+            alias={alias || undefined}
             onCharacterKeySave={(key: string, alias?: string) => {
               setCharacterKey(key);
               const normalizedAlias = normalizeAlias(alias);
