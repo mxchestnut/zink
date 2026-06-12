@@ -2,8 +2,23 @@ node_modules/
 dist/
 .env
 .env.local
+.env.*.local
 *.log
 .DS_Store
 
 # Ignore local GCP service account key files
 oneecloud-*.json
+
+# IDE settings
+.vscode/settings.json
+.idea/
+
+# OS files
+.AppleDouble
+.LSOverride
+Thumbs.db
+
+# Build and runtime artifacts
+.turbo/
+coverage/
+*.tsbuildinfo

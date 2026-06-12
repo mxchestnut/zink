@@ -1,107 +1,107 @@
 import { useState } from "react";
-import { LuFeather } from "react-icons/lu";
-import { Backstory } from "./components/Backstory";
-import { BlackBlade } from "./components/BlackBlade";
-import { Combat } from "./components/Combat";
-import { Equipment } from "./components/Equipment";
-import { Familiar } from "./components/Familiar";
-import { Footer } from "./components/Footer";
-import { GeometricOwl } from "./components/GeometricOwl";
-import { Hero } from "./components/Hero";
-import { FeatsTraits, SignatureAbilities } from "./components/HexesFeats";
-import { Journal } from "./components/Journal";
-import { Section } from "./components/Section";
-import { Sidebar } from "./components/Sidebar";
-import { Skills } from "./components/Skills";
-import { Spellcraft } from "./components/Spellcraft";
-import { profile } from "./data/backstory";
-import { useCharacter } from "./lib/pathcompanion";
-import type { RollEntry } from "./types";
+import { useAuth } from "./lib/auth";
+import { supabase } from "./lib/supabase";
+import { CharacterView } from "./components/CharacterView";
+import { Login } from "./components/Login";
+import { Signup } from "./components/Signup";
+import { CharacterDashboard } from "./components/CharacterDashboard";
+import { LuLoader } from "react-icons/lu";
+
+type AuthPage = "login" | "signup";
 
 export default function App() {
-  const { character, source } = useCharacter();
-  const [rolls, setRolls] = useState<RollEntry[]>([]);
+  const { user, loading: authLoading, signOut } = useAuth();
+  const [authPage, setAuthPage] = useState<AuthPage>("login");
+  const [selectedCharacter, setSelectedCharacter] = useState<{
+    key: string;
+    alias?: string;
+  } | null>(null);
 
-  const addRoll = (label: string, die: string, modifier: number, note?: string) => {
-    const roll = Math.floor(Math.random() * 20) + 1;
-    const total = roll + modifier;
-    const entry: RollEntry = {
-      id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
-      label,
-      die,
-      modifier,
-      roll,
-      total,
-      note,
-      natural: roll,
-      time: new Date().toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-      }),
-    };
+  const handleMigrateLocalStorage = async (key: string, alias?: string) => {
+    if (!user) return;
 
-    setRolls((current) => [entry, ...current].slice(0, 20));
+    try {
+      await supabase.from("characters").insert([
+        {
+          character_key: key,
+          alias: alias || null,
+        },
+      ]);
+    } catch (err) {
+      console.error("Failed to migrate character:", err);
+    }
   };
 
-  const clearRollHistory = () => setRolls([]);
+  const handleCharacterSelect = (key: string, alias?: string) => {
+    setSelectedCharacter({ key, alias });
+  };
 
+  const handleLogout = async () => {
+    await signOut();
+    setSelectedCharacter(null);
+  };
+
+  if (authLoading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="flex flex-col items-center gap-4">
+          <LuLoader className="animate-spin size-8 text-amber-300" />
+          <p className="text-zinc-400">Loading...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Not logged in - show auth pages
+  if (!user) {
+    return (
+      <div className="relative min-h-screen overflow-clip">
+        <div
+          className="pointer-events-none absolute inset-x-0 top-0 h-[28rem] bg-[radial-gradient(60%_55%_at_50%_0%,rgba(251,191,36,0.06),transparent)]"
+          aria-hidden="true"
+        />
+        <div className="relative mx-auto max-w-6xl px-6 lg:px-10 py-16">
+          {authPage === "login" ? (
+            <Login onSwitchToSignup={() => setAuthPage("signup")} />
+          ) : (
+            <Signup onSwitchToLogin={() => setAuthPage("login")} />
+          )}
+        </div>
+      </div>
+    );
+  }
+
+  // Logged in but viewing a character
+  if (selectedCharacter) {
+    return (
+      <CharacterView
+        characterKey={selectedCharacter.key}
+        onCharacterChange={(key, alias) => {
+          if (key) {
+            handleMigrateLocalStorage(key, alias);
+            setSelectedCharacter({ key, alias });
+          } else {
+            setSelectedCharacter(null);
+          }
+        }}
+      />
+    );
+  }
+
+  // Logged in and on dashboard
   return (
     <div className="relative min-h-screen overflow-clip">
-      {/* faint candlelight at the top of the page */}
       <div
         className="pointer-events-none absolute inset-x-0 top-0 h-[28rem] bg-[radial-gradient(60%_55%_at_50%_0%,rgba(251,191,36,0.06),transparent)]"
         aria-hidden="true"
       />
-      {/* the owl, watermarked into the margin */}
-      <GeometricOwl
-        className="pointer-events-none fixed top-28 -right-24 hidden w-[30rem] rotate-6 text-zinc-800/60 xl:block"
-        accentClassName="text-zinc-700"
-        still
-      />
-
-      <div className="relative mx-auto max-w-6xl px-6 lg:px-10">
-        <Hero character={character} />
-
-        <div className="grid grid-cols-1 gap-12 pb-4 lg:grid-cols-[19rem_minmax(0,1fr)] lg:gap-16">
-          <Sidebar
-            character={character}
-            rolls={rolls}
-            onRoll={addRoll}
-            onClearRollHistory={clearRollHistory}
-          />
-
-          <main>
-            <Section icon={LuFeather} title="Profile">
-              <p className="max-w-prose leading-relaxed text-zinc-400">{profile}</p>
-              <div className="mt-5 flex flex-wrap gap-2">
-                {character.identity.titles.map((title) => (
-                  <span
-                    key={title}
-                    className="flex items-center gap-2 rounded-full border border-zinc-700 px-3 py-1 text-xs tracking-wide text-zinc-300"
-                  >
-                    <span className="size-1 rounded-full bg-amber-300/80" />
-                    {title}
-                  </span>
-                ))}
-              </div>
-            </Section>
-
-            <Combat character={character} onRoll={addRoll} />
-            <SignatureAbilities character={character} />
-            <Spellcraft character={character} />
-            <Skills character={character} onRoll={addRoll} />
-            <FeatsTraits character={character} />
-            <Equipment character={character} />
-            <BlackBlade character={character} />
-            <Familiar character={character} />
-            <Backstory />
-            <Journal />
-          </main>
-        </div>
-
-        <Footer source={source} />
+      <div className="relative mx-auto max-w-6xl px-6 lg:px-10 py-16">
+        <CharacterDashboard
+          onCharacterSelect={handleCharacterSelect}
+          onLogout={handleLogout}
+        />
       </div>
     </div>
   );
 }
+

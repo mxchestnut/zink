@@ -1,5 +1,9 @@
 import { LuRefreshCw } from "react-icons/lu";
-import { CHARACTER_KEY, decodeCharacterKey } from "../lib/pathcompanion";
+import {
+  CHARACTER_KEY,
+  decodeCharacterKey,
+  normalizeCharacterKey,
+} from "../lib/pathcompanion";
 import type { CharacterSource } from "../types";
 
 const SOURCE_LABEL: Record<CharacterSource, string> = {
@@ -8,8 +12,15 @@ const SOURCE_LABEL: Record<CharacterSource, string> = {
   live: "live from PathCompanion",
 };
 
-export function Footer({ source }: { source: CharacterSource }) {
-  const { account, character } = decodeCharacterKey(CHARACTER_KEY);
+export function Footer({
+  source,
+  characterKey,
+}: {
+  source: CharacterSource;
+  characterKey?: string;
+}) {
+  const keyToShow = normalizeCharacterKey(characterKey) ?? CHARACTER_KEY;
+  const { account, character } = decodeCharacterKey(keyToShow);
 
   return (
     <footer className="mt-20 border-t border-zinc-800 py-8 text-xs text-zinc-600">

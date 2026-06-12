@@ -35,6 +35,22 @@ export function decodeCharacterKey(key: string = CHARACTER_KEY): DecodedKey {
   return JSON.parse(atob(key)) as DecodedKey;
 }
 
+export function normalizeCharacterKey(value?: string): string | undefined {
+  if (!value) return undefined;
+  const trimmed = value.trim();
+  return trimmed.length > 0 ? trimmed : undefined;
+}
+
+export function isCharacterKey(value?: string): boolean {
+  if (!value) return false;
+  try {
+    const decoded = decodeCharacterKey(value.trim());
+    return typeof decoded.account === "string" && typeof decoded.character === "string";
+  } catch {
+    return false;
+  }
+}
+
 const snapshot = snapshotJson as unknown as Character;
 
 // ---------------------------------------------------------------------------
@@ -157,36 +173,45 @@ function importedRaw(): unknown {
 }
 
 /** e.g. "https://pathcompanion.com/api/character?key={key}" */
-const LIVE_API: string | undefined = import.meta.env.VITE_PC_API;
+const LIVE_API: string =
+  import.meta.env.VITE_PC_API || "https://pathcompanion.com/api/character?key={key}";
 
-function liveUrl(template: string): string {
-  const { account, character } = decodeCharacterKey();
+function liveUrl(template: string, key: string): string {
+  const { account, character } = decodeCharacterKey(key);
   return template
-    .replaceAll("{key}", encodeURIComponent(CHARACTER_KEY))
+    .replaceAll("{key}", encodeURIComponent(key))
     .replaceAll("{account}", account)
     .replaceAll("{character}", character);
 }
 
-export function useCharacter(): { character: Character; source: CharacterSource } {
-  const [state, setState] = useState<{ character: Character; source: CharacterSource }>(() => {
-    try {
-      const raw = importedRaw();
-      if (raw) {
-        const { character, found } = harvest(raw);
-        if (found > 0) return { character, source: "imported" };
-      }
-    } catch {
-      // A malformed sync file must never take the page down.
+function initialCharacterState(): { character: Character; source: CharacterSource } {
+  try {
+    const raw = importedRaw();
+    if (raw) {
+      const { character, found } = harvest(raw);
+      if (found > 0) return { character, source: "imported" };
     }
-    return { character: snapshot, source: "snapshot" };
-  });
+  } catch {
+    // A malformed sync file must never take the page down.
+  }
+  return { character: snapshot, source: "snapshot" };
+}
+
+export function useCharacter(characterKey?: string): { character: Character; source: CharacterSource } {
+  const [state, setState] = useState<{ character: Character; source: CharacterSource }>(initialCharacterState);
 
   useEffect(() => {
+    const normalizedKey = normalizeCharacterKey(characterKey);
+    if (!normalizedKey) {
+      setState(initialCharacterState());
+      return;
+    }
+
     if (!LIVE_API) return;
     const controller = new AbortController();
     (async () => {
       try {
-        const res = await fetch(liveUrl(LIVE_API), {
+        const res = await fetch(liveUrl(LIVE_API, normalizedKey), {
           signal: controller.signal,
           headers: { accept: "application/json" },
         });
@@ -198,7 +223,7 @@ export function useCharacter(): { character: Character; source: CharacterSource 
       }
     })();
     return () => controller.abort();
-  }, []);
+  }, [characterKey]);
 
   return state;
 }

@@ -13,6 +13,9 @@
   "dependencies": {
     "@fontsource-variable/fraunces": "^5.2.5",
     "@fontsource-variable/inter": "^5.2.5",
+    "@supabase/supabase-js": "^2.108.1",
+    "@tiptap/react": "^2.0.0-beta.127",
+    "@tiptap/starter-kit": "^2.0.0-beta.91",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-icons": "^5.5.0"
