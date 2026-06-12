@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Fraunces Variable", "Iowan Old Style", Georgia, serif;
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-zinc-950 font-sans text-zinc-300 antialiased;
+    font-feature-settings: "tnum" 1; /* tabular numerals: stat columns line up */
+  }
+
+  ::selection {
+    @apply bg-amber-300/20 text-amber-100;
+  }
+}
+
+/* Slow ember-glow on the owl's eyes; stilled for reduced-motion users. */
+@keyframes owl-gaze {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.owl-gaze {
+  animation: owl-gaze 7s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .owl-gaze {
+    animation: none;
+    opacity: 0.85;
+  }
+}

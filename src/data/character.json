@@ -1,0 +1,114 @@
+{
+  "identity": {
+    "name": "Zink",
+    "pronouns": "she/they",
+    "gender": "Nonbinary (fem)",
+    "race": "Changeling",
+    "classes": [{ "name": "Witch", "level": 7, "detail": "Moon Patron" }],
+    "alignment": "Chaotic Good",
+    "deity": "Desna",
+    "homeland": "Ustalav, the Palatinates",
+    "size": "Medium",
+    "age": "26",
+    "xp": 35000,
+    "xpNext": 51000,
+    "tagline": "Moon-sworn witch of the Palatinates — curses mended, hexes lent, secrets kept."
+  },
+  "vitals": {
+    "hpMax": 41,
+    "init": 6,
+    "speed": "30 ft.",
+    "bab": 3,
+    "cmb": 2,
+    "cmd": 14,
+    "ac": { "total": 12, "touch": 12, "flatFooted": 10, "note": "16 with mage armor" }
+  },
+  "abilities": {
+    "str": { "score": 8, "mod": -1 },
+    "dex": { "score": 14, "mod": 2 },
+    "con": { "score": 10, "mod": 0 },
+    "int": { "score": 18, "mod": 4 },
+    "wis": { "score": 14, "mod": 2 },
+    "cha": { "score": 14, "mod": 2 }
+  },
+  "saves": { "fort": 3, "ref": 5, "will": 8 },
+  "senses": ["Low-light vision", "Darkvision 60 ft.", "+3 sight-based Perception in shadows (Vesper)"],
+  "languages": ["Common", "Aklo", "Celestial", "Draconic", "Sylvan"],
+  "attacks": [
+    { "name": "Cold iron dagger", "bonus": "+2", "damage": "1d4−1", "notes": "19–20/×2, P or S" },
+    { "name": "Mwk light crossbow", "bonus": "+6", "damage": "1d8", "notes": "19–20/×2, 80 ft." }
+  ],
+  "skills": [
+    { "name": "Spellcraft", "total": 14, "ranks": 7, "ability": "int", "classSkill": true },
+    { "name": "Knowledge (arcana)", "total": 14, "ranks": 7, "ability": "int", "classSkill": true },
+    { "name": "Knowledge (planes)", "total": 12, "ranks": 5, "ability": "int", "classSkill": true },
+    { "name": "Knowledge (nature)", "total": 10, "ranks": 3, "ability": "int", "classSkill": true },
+    { "name": "Heal", "total": 9, "ranks": 4, "ability": "wis", "classSkill": true },
+    { "name": "Use Magic Device", "total": 9, "ranks": 7, "ability": "cha" },
+    { "name": "Intimidate", "total": 8, "ranks": 3, "ability": "cha", "classSkill": true },
+    { "name": "Fly", "total": 8, "ranks": 3, "ability": "dex", "classSkill": true },
+    { "name": "Profession (herbalist)", "total": 8, "ranks": 3, "ability": "wis", "classSkill": true },
+    { "name": "Perception", "total": 7, "ranks": 5, "ability": "wis", "note": "+3 in shadows" },
+    { "name": "Stealth", "total": 6, "ranks": 4, "ability": "dex" },
+    { "name": "Sense Motive", "total": 4, "ranks": 2, "ability": "wis" }
+  ],
+  "hexes": [
+    { "name": "Slumber", "note": "DC 17 Will or sleep, 7 rounds. No HD cap. The polite way to end a fight." },
+    { "name": "Evil Eye", "note": "−2 to AC, attacks, saves, or checks for 7 rounds (DC 17 halves)." },
+    { "name": "Flight", "note": "Feather fall at will; levitate 1/day; fly 7 min/day." },
+    { "name": "Healing", "note": "Cure moderate wounds, once per creature per day." },
+    { "name": "Cackle", "note": "A move action laugh extends her curses. Unsettling on purpose." }
+  ],
+  "feats": [
+    { "name": "Improved Initiative", "note": "+4 initiative" },
+    { "name": "Toughness", "note": "+7 hit points" },
+    { "name": "Extra Hex", "note": "Cackle" },
+    { "name": "Spell Focus (enchantment)", "note": "+1 DC" }
+  ],
+  "traits": [
+    { "name": "Chance Savior", "note": "+2 initiative" },
+    { "name": "Sleepless Detective", "note": "+1 Perception; investigative training in Ustalav" }
+  ],
+  "spellcasting": {
+    "tradition": "Witch spells (INT) · prepared from Vesper",
+    "note": "Save DC 14 + spell level (+1 enchantment) · CL 7th · concentration +11",
+    "levels": [
+      { "level": 0, "perDay": "at will", "spells": ["Detect Magic", "Guidance", "Light", "Stabilize"] },
+      { "level": 1, "perDay": "5/day", "spells": ["Mage Armor", "Cure Light Wounds", "Ill Omen", "Ray of Enfeeblement", "Obscuring Mist"] },
+      { "level": 2, "perDay": "4/day", "spells": ["Glitterdust", "Hold Person", "Web", "See Invisibility"] },
+      { "level": 3, "perDay": "3/day", "spells": ["Dispel Magic", "Stinking Cloud", "Bestow Curse"] },
+      { "level": 4, "perDay": "2/day", "spells": ["Black Tentacles", "Confusion"] }
+    ]
+  },
+  "equipment": [
+    { "name": "Headband of vast intelligence +2", "note": "head" },
+    { "name": "Cloak of resistance +1", "note": "shoulders" },
+    { "name": "Wand of mage armor", "note": "38 charges" },
+    { "name": "Potion of cure moderate wounds", "note": "×2" },
+    { "name": "Cold iron dagger", "note": "belt" },
+    { "name": "Masterwork light crossbow", "note": "20 bolts" },
+    { "name": "Spell component pouch", "note": "" },
+    { "name": "Herbalist's kit", "note": "+2 circumstance, Profession" },
+    { "name": "Silver mirror, candles, chalk", "note": "ritual sundries" }
+  ],
+  "coin": "213 gp · 9 sp",
+  "familiar": {
+    "name": "Vesper",
+    "species": "Owl",
+    "bond": "Keeper of Zink's spells and the other half of her shadow. Arrived uninvited on the night she chose her name, and has yet to leave.",
+    "stats": [
+      { "label": "AC", "value": "17" },
+      { "label": "HP", "value": "20" },
+      { "label": "Fly", "value": "40 ft. (average)" },
+      { "label": "Int", "value": "9" }
+    ],
+    "perks": [
+      "Alertness when within reach",
+      "Improved evasion",
+      "Empathic link, 1 mile",
+      "Delivers touch spells",
+      "Speaks with Zink — and with birds",
+      "Grants +3 sight-based Perception in shadows"
+    ]
+  }
+}
