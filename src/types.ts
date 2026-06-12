@@ -113,3 +113,15 @@ export interface JournalEntry {
 }
 
 export type JournalSource = "ghost" | "local";
+
+export interface RollEntry {
+  id: string;
+  label: string;
+  die: string;
+  modifier: number;
+  roll: number;
+  total: number;
+  note?: string;
+  time: string;
+  natural: number;
+}

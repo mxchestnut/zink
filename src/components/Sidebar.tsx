@@ -1,3 +1,4 @@
+import { FaDiceD20 } from "react-icons/fa";
 import {
   LuBrain,
   LuEye,
@@ -8,15 +9,27 @@ import {
   LuShieldCheck,
   LuZap,
 } from "react-icons/lu";
-import type { Character } from "../types";
+import type { Character, RollEntry } from "../types";
 import { signed } from "../lib/format";
 import { GeometricOwl } from "./GeometricOwl";
 import { Label } from "./Section";
+import { RollHistory } from "./RollHistory";
 
 const ABILITY_ORDER = ["str", "dex", "con", "int", "wis", "cha"] as const;
 
-export function Sidebar({ character }: { character: Character }) {
+export function Sidebar({
+  character,
+  rolls,
+  onRoll,
+  onClearRollHistory,
+}: {
+  character: Character;
+  rolls: RollEntry[];
+  onRoll: (label: string, die: string, modifier: number, note?: string) => void;
+  onClearRollHistory: () => void;
+}) {
   const { abilities, vitals, saves } = character;
+  const lastRoll = rolls[0];
 
   return (
     <aside className="space-y-9 lg:sticky lg:top-10 lg:self-start">
@@ -54,7 +67,16 @@ export function Sidebar({ character }: { character: Character }) {
             <dt className="flex items-center gap-2.5 text-zinc-400">
               <LuZap className="size-3.5 text-zinc-500" aria-hidden="true" /> Initiative
             </dt>
-            <dd className="font-medium text-zinc-100">{signed(vitals.init)}</dd>
+            <dd>
+            <button
+              type="button"
+              onClick={() => onRoll("Initiative", "d20", vitals.init, "Initiative roll")}
+              className="font-medium text-zinc-100 rounded-md border border-zinc-700/80 bg-zinc-900/70 px-2 py-1 text-sm transition hover:border-amber-300/60 hover:bg-zinc-800"
+              aria-label={`Roll d20 ${signed(vitals.init)} for initiative`}
+            >
+              {signed(vitals.init)}
+            </button>
+          </dd>
           </div>
           <div className="flex items-center justify-between">
             <dt className="flex items-center gap-2.5 text-zinc-400">
@@ -106,10 +128,62 @@ export function Sidebar({ character }: { character: Character }) {
               <dt className="flex items-center gap-2.5 text-zinc-400">
                 <Icon className="size-3.5 text-zinc-500" aria-hidden="true" /> {name}
               </dt>
-              <dd className="font-medium text-zinc-100">{signed(value)}</dd>
+              <dd>
+                <button
+                  type="button"
+                  onClick={() => onRoll(name, "d20", value, `${name} save`)}
+                  className="font-medium text-zinc-100 rounded-md border border-zinc-700/80 bg-zinc-900/70 px-2 py-1 text-sm transition hover:border-amber-300/60 hover:bg-zinc-800"
+                  aria-label={`Roll d20 ${signed(value)} for ${name} save`}
+                >
+                  {signed(value)}
+                </button>
+              </dd>
             </div>
           ))}
         </dl>
+      </div>
+
+      <div>
+        <Label>Dice Roller</Label>
+        <div className="rounded-2xl border border-zinc-800 bg-zinc-900/60 p-4 text-sm text-zinc-300">
+          <div className="flex items-center gap-2 text-zinc-100">
+            <FaDiceD20 className="size-5 text-amber-300" aria-hidden="true" />
+            <span className="font-semibold">Quick rolls</span>
+          </div>
+          <p className="mt-2 text-xs leading-relaxed text-zinc-500">
+            Click any attack, save, or skill button to roll. Use these quick rolls to test the dice.
+          </p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            <button
+              type="button"
+              onClick={() => onRoll("Quick d20", "d20", 0, "Quick roll")}
+              className="rounded-md border border-zinc-700/80 bg-zinc-900/70 px-3 py-2 text-xs font-semibold text-zinc-100 transition hover:border-amber-300/60 hover:bg-zinc-800"
+            >
+              d20
+            </button>
+            <button
+              type="button"
+              onClick={() => onRoll("Quick d20+5", "d20", 5, "Quick roll")}
+              className="rounded-md border border-zinc-700/80 bg-zinc-900/70 px-3 py-2 text-xs font-semibold text-zinc-100 transition hover:border-amber-300/60 hover:bg-zinc-800"
+            >
+              d20+5
+            </button>
+          </div>
+          {lastRoll ? (
+            <div className="mt-3 rounded-xl bg-zinc-950/80 p-3 text-xs text-zinc-400">
+              <p className="text-zinc-100">Last roll</p>
+              <p className="mt-1">
+                {lastRoll.label}: {lastRoll.die} {signed(lastRoll.modifier)} =
+                <span className="font-semibold text-amber-300"> {lastRoll.total}</span>
+              </p>
+              <p className="mt-1 text-zinc-500">
+                natural {lastRoll.natural}
+              </p>
+            </div>
+          ) : (
+            <p className="mt-3 text-xs text-zinc-500">No rolls yet — press a button above.</p>
+          )}
+        </div>
       </div>
 
       {/* Senses */}
@@ -140,6 +214,8 @@ export function Sidebar({ character }: { character: Character }) {
           ))}
         </ul>
       </div>
+
+      <RollHistory rolls={rolls} onClear={onClearRollHistory} />
 
       {/* the owl keeps watch from the bottom of the rail */}
       <div className="hidden pt-2 lg:block">

@@ -14,8 +14,8 @@ import type { JournalEntry, JournalSource } from "../types";
  * src/data/journal.ts render instead, so the journal never goes blank.
  */
 
-const GHOST_URL: string | undefined = import.meta.env.VITE_GHOST_URL;
-const GHOST_KEY: string | undefined = import.meta.env.VITE_GHOST_KEY;
+const GHOST_URL: string = import.meta.env.VITE_GHOST_URL || "https://zink.ghost.io";
+const GHOST_KEY: string = import.meta.env.VITE_GHOST_KEY || "9b6d23e26b14b83849c8b23027";
 const GHOST_TAG: string | undefined = import.meta.env.VITE_GHOST_TAG;
 
 interface GhostPost {

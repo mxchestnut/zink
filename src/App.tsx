@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { LuFeather } from "react-icons/lu";
 import { Backstory } from "./components/Backstory";
 import { BlackBlade } from "./components/BlackBlade";
@@ -15,9 +16,35 @@ import { Skills } from "./components/Skills";
 import { Spellcraft } from "./components/Spellcraft";
 import { profile } from "./data/backstory";
 import { useCharacter } from "./lib/pathcompanion";
+import type { RollEntry } from "./types";
 
 export default function App() {
   const { character, source } = useCharacter();
+  const [rolls, setRolls] = useState<RollEntry[]>([]);
+
+  const addRoll = (label: string, die: string, modifier: number, note?: string) => {
+    const roll = Math.floor(Math.random() * 20) + 1;
+    const total = roll + modifier;
+    const entry: RollEntry = {
+      id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+      label,
+      die,
+      modifier,
+      roll,
+      total,
+      note,
+      natural: roll,
+      time: new Date().toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+      }),
+    };
+
+    setRolls((current) => [entry, ...current].slice(0, 20));
+  };
+
+  const clearRollHistory = () => setRolls([]);
 
   return (
     <div className="relative min-h-screen overflow-clip">
@@ -37,7 +64,12 @@ export default function App() {
         <Hero character={character} />
 
         <div className="grid grid-cols-1 gap-12 pb-4 lg:grid-cols-[19rem_minmax(0,1fr)] lg:gap-16">
-          <Sidebar character={character} />
+          <Sidebar
+            character={character}
+            rolls={rolls}
+            onRoll={addRoll}
+            onClearRollHistory={clearRollHistory}
+          />
 
           <main>
             <Section icon={LuFeather} title="Profile">
@@ -55,10 +87,10 @@ export default function App() {
               </div>
             </Section>
 
-            <Combat character={character} />
+            <Combat character={character} onRoll={addRoll} />
             <SignatureAbilities character={character} />
             <Spellcraft character={character} />
-            <Skills character={character} />
+            <Skills character={character} onRoll={addRoll} />
             <FeatsTraits character={character} />
             <Equipment character={character} />
             <BlackBlade character={character} />
