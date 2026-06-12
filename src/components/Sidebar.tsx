@@ -23,6 +23,7 @@ export function Sidebar({
   rolls,
   onRoll,
   onClearRollHistory,
+  canEdit = false,
   characterKey,
   activeAlias,
   onCharacterKeySave,
@@ -32,6 +33,7 @@ export function Sidebar({
   rolls: RollEntry[];
   onRoll: (label: string, die: string, modifier: number, note?: string) => void;
   onClearRollHistory: () => void;
+  canEdit?: boolean;
   characterKey?: string;
   activeAlias?: string;
   onCharacterKeySave: (key: string, alias?: string) => void;
@@ -42,12 +44,14 @@ export function Sidebar({
 
   return (
     <aside className="space-y-9 lg:sticky lg:top-10 lg:self-start">
-      <CharacterKeyForm
-        keyValue={characterKey}
-        aliasValue={activeAlias}
-        onSave={onCharacterKeySave}
-        onClear={onCharacterKeyClear}
-      />
+      {canEdit && (
+        <CharacterKeyForm
+          keyValue={characterKey}
+          aliasValue={activeAlias}
+          onSave={onCharacterKeySave}
+          onClear={onCharacterKeyClear}
+        />
+      )}
       {/* Vitals */}
       <div>
         <Label>Vitals</Label>

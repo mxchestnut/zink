@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../lib/auth";
 import { supabase } from "../lib/supabase";
-import { CHARACTER_KEY } from "../lib/pathcompanion";
+import { CHARACTER_KEY, ZINK_OWNER_EMAIL } from "../lib/pathcompanion";
 import { LuPlus, LuTrash2, LuLoader } from "react-icons/lu";
 
 interface SavedCharacter {
@@ -169,7 +169,7 @@ export function CharacterDashboard({
   };
 
   const canClaimZink =
-    user?.email?.toLowerCase() === "mxchestnut@gmail.com" &&
+    user?.email?.toLowerCase() === ZINK_OWNER_EMAIL &&
     !characters.some((char) => char.alias?.toLowerCase() === "zink");
 
   return (

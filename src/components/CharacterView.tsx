@@ -22,9 +22,11 @@ import type { RollEntry } from "../types";
 
 export function CharacterView({
   characterKey: initialKey,
+  canEdit = false,
   onCharacterChange,
 }: {
   characterKey?: string;
+  canEdit?: boolean;
   onCharacterChange?: (key?: string, alias?: string) => void;
 }) {
   const [characterKey, setCharacterKey] = useState<string | undefined>(initialKey);
@@ -212,6 +214,7 @@ export function CharacterView({
             rolls={rolls}
             onRoll={addRoll}
             onClearRollHistory={clearRollHistory}
+            canEdit={canEdit}
             characterKey={characterKey}
             activeAlias={activeAlias}
             onCharacterKeySave={(key: string, alias?: string) => {
@@ -264,7 +267,7 @@ export function CharacterView({
             <Equipment character={character} />
             <BlackBlade character={character} />
             <Familiar character={character} />
-            <Backstory bio={bio} onBioChange={setBio} onReset={resetBio} />
+            <Backstory bio={bio} onBioChange={setBio} onReset={resetBio} canEdit={canEdit} />
             <Journal />
           </main>
         </div>

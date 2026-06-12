@@ -6,6 +6,7 @@ import { Login } from "./components/Login";
 import { Signup } from "./components/Signup";
 import { CharacterDashboard } from "./components/CharacterDashboard";
 import { detectAlias } from "./lib/alias";
+import { ZINK_OWNER_EMAIL } from "./lib/pathcompanion";
 import { LuLoader } from "react-icons/lu";
 
 type AuthPage = "login" | "signup";
@@ -21,6 +22,17 @@ export default function App() {
   // onee.cloud/<alias> (and <alias>.onee.cloud) is a public portfolio: anyone
   // can view it without signing in. Auth only guards the root dashboard.
   const urlAlias = detectAlias();
+
+  // A character is only editable by its owner. Zink belongs to a fixed account;
+  // any other alias is the logged-in viewer's own copy. Everyone else is
+  // read-only, so the sheet stays public-facing.
+  const canEditAlias = (alias?: string): boolean => {
+    if (!user) return false;
+    if ((alias ?? "").toLowerCase() === "zink") {
+      return user.email?.toLowerCase() === ZINK_OWNER_EMAIL;
+    }
+    return true;
+  };
 
   const handleMigrateLocalStorage = async (key: string, alias?: string) => {
     if (!user) return;
@@ -64,6 +76,7 @@ export default function App() {
   if (urlAlias) {
     return (
       <CharacterView
+        canEdit={canEditAlias(urlAlias)}
         onCharacterChange={(key, alias) => {
           if (key) handleMigrateLocalStorage(key, alias);
         }}
@@ -76,6 +89,7 @@ export default function App() {
     return (
       <CharacterView
         characterKey={selectedCharacter.key}
+        canEdit={canEditAlias(selectedCharacter.alias)}
         onCharacterChange={(key, alias) => {
           if (key) {
             handleMigrateLocalStorage(key, alias);
