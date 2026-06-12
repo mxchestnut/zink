@@ -1,21 +1,55 @@
 /**
- * Zink's backstory. Replace these paragraphs with your own — each string
- * renders as one paragraph, and `pullQuote` is set large between them.
+ * Zink's dossier, adapted from her wiki bio. Each section renders with an
+ * optional small-caps heading; `closingQuote` sets the final word.
  */
 
 /** Short summary at the top of the page — the resume "objective" line. */
 export const profile =
-  "Seventh-circle witch, freelance breaker of curses, and reliable source of unsolicited owl commentary. Specializes in ending fights with a lullaby instead of a fireball, lifting hexes other practitioners are too proud to touch, and remembering exactly what was promised, by whom, and under which moon. Available for caravan work, hauntings, and weddings — assuming the wedding needs a witch, which they often do.";
+  "Zink is an android devotee of Yaezhing, known across several regions as an investigator of violent deaths, a hunter of fugitives, and a practitioner of the necromantic arts. “Necromancer” is the word that follows her into rooms; those familiar with her work consider it misleading. Her concern is not the creation of undead. It is justice on behalf of the dead.";
 
-export const pullQuote =
-  "She was given a name once. She gave it back, and took one that rang like struck metal.";
+export const closingQuote = "No story ends until it is understood.";
 
-export const backstory: string[] = [
-  "Zink was left on the doorstep of a Pharasmin hospice in the Ustalavic fog, the way changeling children so often are — a debt one mother abandoned and another never intended to collect. The sisters called her something pious and forgettable. The other foundlings called her worse. The crows on the bell tower, she noticed early, called her nothing at all; they simply moved over on the rail to make room. That seemed, to her, the only honest greeting she ever got.",
+export interface BioSection {
+  heading?: string;
+  body: string[];
+}
 
-  "The call came at sixteen, the way it comes to all of her kind: dreams of a green-lit bog, a voice like a kettle left too long on the fire, an invitation written in the marrow. Her hag mother wanted a daughter home. Zink — who had only just worked out that 'daughter' was a coat that had never fit right in the first place — declined. She walked the other way out of the Palatinates with a stolen almanac, a head full of half-heard lullabies that turned out to be spells, and a new name: Zink, for the metal that guards iron from rust. Cheap, common, unglamorous — and the only reason anything in Ustalav lasts the winter.",
-
-  "The moon answered the call her mother's bog never got back. Vesper arrived the same night — a grey owl with lamplighter's eyes who has never once explained herself — and the bargain was sealed without a word of it spoken aloud. Since then Zink has worked the road towns as a hedge-witch and an unlicensed solver of problems: curses lifted for farmwives, nightmares argued out of children's bedrooms, and the occasional gentleman persuaded, firmly, to sleep through his own ambush.",
-
-  "She keeps three rules. Never lie to the owl. Never take payment from anyone who can't afford the loss. And never, under any moon, answer the voice from the bog — though it still writes, some nights, in the condensation on her window. She keeps a journal because the sisters taught her that records outlast people, and she intends to be the first changeling whose story is written in her own hand.",
+export const dossier: BioSection[] = [
+  {
+    body: [
+      "Her philosophy rests on a controversial conviction: the dead retain ownership of their story. Death does not erase obligation, guilt, innocence, or truth. Those who die unjustly deserve resolution. Those who die before completing their purpose may deserve another chance. And those who commit atrocities should not escape accountability merely because they have passed beyond mortal judgment.",
+    ],
+  },
+  {
+    heading: "Appearance",
+    body: [
+      "Zink is a heavily built android woman with dark hair, bronze-toned synthetic skin, and luminous circuitry running the length of her left arm — markings that brighten during spellcasting and in moments of emotional strain, which she would deny having. She travels in dark garments beneath a hooded cloak patterned with stars, her face behind a stylized owl mask.",
+    ],
+  },
+  {
+    heading: "Personality & Beliefs",
+    body: [
+      "Methodical, patient, and unusually difficult to intimidate, she approaches every conflict as an investigation first and a judgment second. Her greatest fear is not death, nor failure. It is being wrong.",
+      "She maintains that every death creates a witness, and that the dead possess knowledge that should not be discarded simply because they can no longer speak. To her, a corpse is not a resource. It is evidence.",
+    ],
+  },
+  {
+    heading: "From Copper to Zink",
+    body: [
+      "Very little is known of her origins. Before Zink, she traveled under the name Copper — curious, introspective, fascinated by the stories of others. The change followed a violent incident: an unsolved murder, or a preventable death, depending on who tells it. Whatever happened, it altered her course entirely.",
+      "Scholars of small mysteries note that the names read as deliberate. Copper conducts — observation, connection, understanding. Zinc protects — the sacrificial metal, consumed so the iron beneath it never rusts. Two metals, two mandates, and somewhere between them, a person.",
+    ],
+  },
+  {
+    heading: "Rise as the Warden of the Dead",
+    body: [
+      "Over time her work drew her into investigations of murder, corruption, disappearance, and supernatural crime. Her reputation was made by a series of cases in which people believed untouchable were exposed, condemned, or killed. Eventually she became something difficult to classify: a representative of the dead.",
+    ],
+  },
+  {
+    heading: "Legacy",
+    body: [
+      "Opinions remain sharply divided. To her supporters, she is a necessary force operating where ordinary justice has failed. To her enemies, she is a dangerous fanatic who has assumed authority over matters reserved for gods. To the dead — if the legends are to be believed — she may be the last person still willing to listen.",
+    ],
+  },
 ];

@@ -1,11 +1,13 @@
 # Zink — Character Portfolio
 
-A sleek, resume-style portfolio for **Zink** (she/they), nonbinary fem changeling witch of
-Ustalav — built for Pathfinder 1e and her sheet on [PathCompanion](https://pathcompanion.com/).
+A sleek, resume-style portfolio for **Zink** (she/they), nonbinary fem android — Warpriest of
+Yaezhing 5 / Assassin 5, occult investigator, Warden of the Dead. Built for Pathfinder 1e from
+her sheet on [PathCompanion](https://pathcompanion.com/), with her wiki bio as the dossier.
 
 Dark zinc + candlelight-amber theme, Fraunces/Inter type, [react-icons](https://react-icons.github.io/react-icons/)
-throughout (zero emojis), and a constellation-style geometric owl — Vesper — keeping watch from
-the sidebar and the page margin.
+throughout (zero emojis), and a constellation-style geometric **barn owl** — her unnamed
+familiar — keeping watch from the sidebar and the page margin. Her sentient dagger gets a
+teal-accented spotlight card of its own.
 
 ## Quick start
 
@@ -22,7 +24,7 @@ in increasing order of freshness — the footer badge shows which one is active:
 
 | Source | What it is |
 | --- | --- |
-| **snapshot** | `src/data/character.json` — hand-maintained sheet, always works |
+| **snapshot** | `src/data/character.json` — transcribed from the PathCompanion PDF export, always works |
 | **imported** | `src/data/pathcompanion-raw.json` — saved by `npm run sync`, merged at build |
 | **live** | browser re-fetches the sheet on every visit (`VITE_PC_API` in `.env`) |
 

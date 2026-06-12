@@ -1,5 +1,4 @@
-import { GiTwoCoins } from "react-icons/gi";
-import { LuBackpack } from "react-icons/lu";
+import { LuBackpack, LuFeather } from "react-icons/lu";
 import type { Character } from "../types";
 import { Section } from "./Section";
 
@@ -18,8 +17,8 @@ export function Equipment({ character }: { character: Character }) {
         ))}
       </ul>
       <p className="mt-4 flex items-center gap-2 text-sm text-zinc-400">
-        <GiTwoCoins className="size-4 text-amber-300/80" aria-hidden="true" />
-        {character.coin}
+        <LuFeather className="size-4 text-amber-300/80" aria-hidden="true" />
+        {character.load}
       </p>
     </Section>
   );

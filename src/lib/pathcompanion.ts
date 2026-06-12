@@ -115,8 +115,7 @@ export function harvest(raw: unknown): { character: Character; found: number } {
   take(dig(raw, ["race"], str), (v) => (c.identity.race = v));
   take(dig(raw, ["alignment"], str), (v) => (c.identity.alignment = v));
   take(dig(raw, ["deity"], str), (v) => (c.identity.deity = v));
-  take(dig(raw, ["homeland", "home"], str), (v) => (c.identity.homeland = v));
-  take(dig(raw, ["xp", "experience", "exp"], asNumber), (v) => (c.identity.xp = v));
+  take(dig(raw, ["occupation"], str), (v) => (c.identity.occupation = v));
 
   for (const key of Object.keys(ABILITY_NAMES) as AbilityKey[]) {
     take(dig(raw, ABILITY_NAMES[key], asNumber), (score) => {
@@ -141,15 +140,6 @@ export function harvest(raw: unknown): { character: Character; found: number } {
   take(dig(raw, ["fort", "fortitude"], asNumber), (v) => (c.saves.fort = v));
   take(dig(raw, ["ref", "reflex"], asNumber), (v) => (c.saves.ref = v));
   take(dig(raw, ["will"], asNumber), (v) => (c.saves.will = v));
-
-  take(
-    dig(raw, ["languages"], (v) =>
-      Array.isArray(v) && v.every((x) => typeof x === "string") && v.length
-        ? (v as string[])
-        : undefined,
-    ),
-    (v) => (c.languages = v),
-  );
 
   return { character: c, found };
 }

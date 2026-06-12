@@ -4,8 +4,8 @@ import {
   LuFootprints,
   LuHeart,
   LuHeartPulse,
-  LuLanguages,
   LuShield,
+  LuShieldCheck,
   LuZap,
 } from "react-icons/lu";
 import type { Character } from "../types";
@@ -125,29 +125,27 @@ export function Sidebar({ character }: { character: Character }) {
         </ul>
       </div>
 
-      {/* Languages */}
+      {/* Android chassis + assassin instincts */}
       <div>
-        <Label>Languages</Label>
-        <div className="flex items-start gap-2.5">
-          <LuLanguages className="mt-1 size-3.5 shrink-0 text-zinc-600" aria-hidden="true" />
-          <div className="flex flex-wrap gap-1.5">
-            {character.languages.map((lang) => (
-              <span
-                key={lang}
-                className="rounded-full border border-zinc-800 px-2.5 py-0.5 text-xs text-zinc-400"
-              >
-                {lang}
-              </span>
-            ))}
-          </div>
-        </div>
+        <Label>Resilience</Label>
+        <ul className="space-y-1.5 text-sm text-zinc-400">
+          {character.resilience.map((line) => (
+            <li key={line} className="flex gap-2.5">
+              <LuShieldCheck
+                className="mt-0.5 size-3.5 shrink-0 text-zinc-600"
+                aria-hidden="true"
+              />
+              {line}
+            </li>
+          ))}
+        </ul>
       </div>
 
-      {/* Vesper keeps watch from the bottom of the rail */}
+      {/* the owl keeps watch from the bottom of the rail */}
       <div className="hidden pt-2 lg:block">
         <GeometricOwl className="mx-auto w-44 text-zinc-700" />
         <p className="mt-3 text-center text-[10px] tracking-[0.3em] text-zinc-600 uppercase">
-          Vesper is watching
+          The owl was here first
         </p>
       </div>
     </aside>

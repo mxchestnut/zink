@@ -1,114 +1,160 @@
 {
   "identity": {
     "name": "Zink",
+    "formerName": "Copper",
     "pronouns": "she/they",
     "gender": "Nonbinary (fem)",
-    "race": "Changeling",
-    "classes": [{ "name": "Witch", "level": 7, "detail": "Moon Patron" }],
-    "alignment": "Chaotic Good",
-    "deity": "Desna",
-    "homeland": "Ustalav, the Palatinates",
+    "race": "Android",
+    "classes": [
+      { "name": "Warpriest", "level": 5, "detail": "of Yaezhing" },
+      { "name": "Assassin", "level": 5 }
+    ],
+    "favoredClass": "Brawler",
+    "alignment": "Neutral Evil",
+    "deity": "Yaezhing",
+    "occupation": "Occult investigator",
+    "titles": ["Advocate of the Dead", "Warden of the Unfinished", "The Last Witness"],
     "size": "Medium",
-    "age": "26",
-    "xp": 35000,
-    "xpNext": 51000,
-    "tagline": "Moon-sworn witch of the Palatinates — curses mended, hexes lent, secrets kept."
+    "tagline": "The dead retain ownership of their story."
   },
   "vitals": {
-    "hpMax": 41,
-    "init": 6,
-    "speed": "30 ft.",
-    "bab": 3,
-    "cmb": 2,
-    "cmd": 14,
-    "ac": { "total": 12, "touch": 12, "flatFooted": 10, "note": "16 with mage armor" }
+    "hpMax": 73,
+    "init": 4,
+    "speed": "30 ft. · run 120",
+    "bab": 6,
+    "cmb": 7,
+    "cmd": 21,
+    "ac": { "total": 20, "touch": 14, "flatFooted": 16, "note": "mithral chain shirt · amulet of natural armor" }
   },
   "abilities": {
-    "str": { "score": 8, "mod": -1 },
-    "dex": { "score": 14, "mod": 2 },
-    "con": { "score": 10, "mod": 0 },
+    "str": { "score": 12, "mod": 1 },
+    "dex": { "score": 19, "mod": 4 },
+    "con": { "score": 14, "mod": 2 },
     "int": { "score": 18, "mod": 4 },
-    "wis": { "score": 14, "mod": 2 },
-    "cha": { "score": 14, "mod": 2 }
+    "wis": { "score": 18, "mod": 4 },
+    "cha": { "score": 10, "mod": 0 }
   },
-  "saves": { "fort": 3, "ref": 5, "will": 8 },
-  "senses": ["Low-light vision", "Darkvision 60 ft.", "+3 sight-based Perception in shadows (Vesper)"],
-  "languages": ["Common", "Aklo", "Celestial", "Draconic", "Sylvan"],
+  "saves": { "fort": 13, "ref": 13, "will": 16 },
+  "senses": ["Darkvision 60 ft.", "Low-light vision", "Perception +23"],
+  "resilience": [
+    "Immune to disease, sleep, fear, and all emotion effects",
+    "+4 vs. mind-affecting, paralysis, poison, and stun",
+    "+2 vs. death effects (Fey Foundling)",
+    "Never caught flat-footed (improved uncanny dodge)",
+    "Magical healing restores +2 per die"
+  ],
   "attacks": [
-    { "name": "Cold iron dagger", "bonus": "+2", "damage": "1d4−1", "notes": "19–20/×2, P or S" },
-    { "name": "Mwk light crossbow", "bonus": "+6", "damage": "1d8", "notes": "19–20/×2, 80 ft." }
+    { "name": "Black Blade (melee)", "bonus": "+13/+8", "damage": "1d8+7", "notes": "19–20/×2 · P or S · sentient" },
+    { "name": "Black Blade (thrown)", "bonus": "+13/+8", "damage": "1d8+7", "notes": "10 ft. increment · returns" },
+    { "name": "+2 agile returning dagger", "bonus": "+13/+8", "damage": "1d8+7", "notes": "the quiet twin" }
   ],
+  "attacksNote": "Point-Blank Shot adds +1 attack and damage within 30 ft. Startoss Style stacks thrown-weapon bonuses; Startoss Shower ricochets one throw across multiple targets.",
   "skills": [
-    { "name": "Spellcraft", "total": 14, "ranks": 7, "ability": "int", "classSkill": true },
-    { "name": "Knowledge (arcana)", "total": 14, "ranks": 7, "ability": "int", "classSkill": true },
-    { "name": "Knowledge (planes)", "total": 12, "ranks": 5, "ability": "int", "classSkill": true },
-    { "name": "Knowledge (nature)", "total": 10, "ranks": 3, "ability": "int", "classSkill": true },
-    { "name": "Heal", "total": 9, "ranks": 4, "ability": "wis", "classSkill": true },
-    { "name": "Use Magic Device", "total": 9, "ranks": 7, "ability": "cha" },
-    { "name": "Intimidate", "total": 8, "ranks": 3, "ability": "cha", "classSkill": true },
-    { "name": "Fly", "total": 8, "ranks": 3, "ability": "dex", "classSkill": true },
-    { "name": "Profession (herbalist)", "total": 8, "ranks": 3, "ability": "wis", "classSkill": true },
-    { "name": "Perception", "total": 7, "ranks": 5, "ability": "wis", "note": "+3 in shadows" },
-    { "name": "Stealth", "total": 6, "ranks": 4, "ability": "dex" },
-    { "name": "Sense Motive", "total": 4, "ranks": 2, "ability": "wis" }
+    { "name": "Perception", "total": 23, "ranks": 10, "ability": "wis", "classSkill": true },
+    { "name": "Disable Device", "total": 17, "ranks": 10, "ability": "dex", "classSkill": true },
+    { "name": "Sleight of Hand", "total": 17, "ranks": 10, "ability": "dex", "classSkill": true, "note": "+5 to conceal weapons" },
+    { "name": "Intimidate", "total": 13, "ranks": 10, "ability": "cha", "classSkill": true },
+    { "name": "Stealth", "total": 12, "ranks": 5, "ability": "dex", "classSkill": true },
+    { "name": "Knowledge (arcana)", "total": 10, "ranks": 3, "ability": "int", "classSkill": true },
+    { "name": "Knowledge (religion)", "total": 10, "ranks": 3, "ability": "int", "classSkill": true },
+    { "name": "Survival", "total": 9, "ranks": 2, "ability": "wis", "classSkill": true },
+    { "name": "Acrobatics", "total": 8, "ranks": 1, "ability": "dex", "classSkill": true },
+    { "name": "Disguise", "total": 8, "ranks": 5, "ability": "cha", "classSkill": true },
+    { "name": "Bluff", "total": 4, "ranks": 1, "ability": "cha", "classSkill": true },
+    { "name": "Sense Motive", "total": 2, "ranks": 0, "ability": "wis", "classSkill": true, "note": "emotionless" }
   ],
-  "hexes": [
-    { "name": "Slumber", "note": "DC 17 Will or sleep, 7 rounds. No HD cap. The polite way to end a fight." },
-    { "name": "Evil Eye", "note": "−2 to AC, attacks, saves, or checks for 7 rounds (DC 17 halves)." },
-    { "name": "Flight", "note": "Feather fall at will; levitate 1/day; fly 7 min/day." },
-    { "name": "Healing", "note": "Cure moderate wounds, once per creature per day." },
-    { "name": "Cackle", "note": "A move action laugh extends her curses. Unsettling on purpose." }
+  "specials": [
+    { "name": "Death Attack & True Death", "note": "Three rounds of study, one sneak attack: the target dies or is paralyzed (DC 19 Fort). Raising her victims requires a DC 20 caster level check — her verdicts are designed to be final." },
+    { "name": "Sneak Attack +3d6", "note": "Precision damage within 30 ft. against the flat-footed, the flanked, and the unwary." },
+    { "name": "Nanite Surge", "note": "+13 to any one d20 roll, declared before rolling. Her circuitry flares with torchlight for a round — the tell of a machine refusing to miss." },
+    { "name": "Fervor", "note": "2d6 mending as a swift action on herself, or spent to cast a prepared warpriest spell, self-only, no somatics. 5/day." },
+    { "name": "Channel Negative Energy", "note": "2d6 negative energy in a 30-ft. burst (DC 16 Will half). Costs two uses of fervor." },
+    { "name": "Blessings: Trickery & Evil", "note": "Double conjures an illusory twin for 5 rounds; Unholy Strike charges a weapon with +1d6 against good creatures." },
+    { "name": "Spell Combat & Spellstrike", "note": "Casts and cuts in the same breath — touch spells ride the Black Blade and use its 19–20 threat range." },
+    { "name": "Poison Use & Hidden Weapons", "note": "Never risks her own venom, and carries +5 to conceal every blade on her person (+2 more for the dagger)." }
   ],
   "feats": [
-    { "name": "Improved Initiative", "note": "+4 initiative" },
-    { "name": "Toughness", "note": "+7 hit points" },
-    { "name": "Extra Hex", "note": "Cackle" },
-    { "name": "Spell Focus (enchantment)", "note": "+1 DC" }
+    { "name": "Fey Foundling", "note": "healing +2/die; cold iron bites +1 deeper" },
+    { "name": "Weapon Finesse" },
+    { "name": "Weapon Focus (dagger)" },
+    { "name": "Point-Blank Shot" },
+    { "name": "Precise Shot" },
+    { "name": "Alertness" },
+    { "name": "Startoss Style (dagger)" },
+    { "name": "Startoss Comet" },
+    { "name": "Startoss Shower" }
   ],
   "traits": [
-    { "name": "Chance Savior", "note": "+2 initiative" },
-    { "name": "Sleepless Detective", "note": "+1 Perception; investigative training in Ustalav" }
+    { "name": "Resilient" },
+    { "name": "River Rat" }
   ],
-  "spellcasting": {
-    "tradition": "Witch spells (INT) · prepared from Vesper",
-    "note": "Save DC 14 + spell level (+1 enchantment) · CL 7th · concentration +11",
-    "levels": [
-      { "level": 0, "perDay": "at will", "spells": ["Detect Magic", "Guidance", "Light", "Stabilize"] },
-      { "level": 1, "perDay": "5/day", "spells": ["Mage Armor", "Cure Light Wounds", "Ill Omen", "Ray of Enfeeblement", "Obscuring Mist"] },
-      { "level": 2, "perDay": "4/day", "spells": ["Glitterdust", "Hold Person", "Web", "See Invisibility"] },
-      { "level": 3, "perDay": "3/day", "spells": ["Dispel Magic", "Stinking Cloud", "Bestow Curse"] },
-      { "level": 4, "perDay": "2/day", "spells": ["Black Tentacles", "Confusion"] }
+  "spellcasting": [
+    {
+      "tradition": "Warpriest of Yaezhing",
+      "note": "CL 5th · concentration +14 · Wisdom-keyed · touch +10",
+      "levels": [
+        { "level": 0, "perDay": "at will", "spells": ["Bleed", "Create Water", "Detect Magic", "Detect Poison", "Light"] },
+        { "level": 1, "perDay": "DC 15", "spells": ["Command", "Cure Light Wounds", "Endure Elements", "Inflict Light Wounds", "Murderous Command", "Scarify", "Summon Monster I"] },
+        { "level": 2, "perDay": "DC 16", "spells": ["Bear's Endurance", "Bone Fists", "Detect Magic (Greater)", "Inflict Moderate Wounds", "Restoration (Lesser)", "Summon Monster II"] },
+        { "level": 3, "perDay": "DC 17", "spells": ["Animate Dead", "Cure Serious Wounds", "Dispel Magic", "Inflict Serious Wounds", "Summon Monster III"] },
+        { "level": 4, "perDay": "DC 18", "spells": ["Inflict Critical Wounds", "Restoration"] }
+      ]
+    },
+    {
+      "tradition": "Black Blade · magus list",
+      "note": "CL 5th · concentration +14 · delivered by spellstrike",
+      "levels": [
+        { "level": 0, "perDay": "at will", "spells": ["Arcane Mark", "Daze", "Mage Hand", "Read Magic"] },
+        { "level": 1, "perDay": "DC 15", "spells": ["Chill Touch", "Mount", "Ray of Enfeeblement", "Shield", "Snowball"] },
+        { "level": 2, "perDay": "DC 16", "spells": ["Brow Gasher", "Darkness", "Defending Bone", "Glitterdust"] },
+        { "level": 3, "perDay": "DC 17", "spells": ["Arcane Sight", "Discharge", "Vampiric Touch"] }
+      ]
+    }
+  ],
+  "equipment": [
+    { "name": "+2 agile returning Black Blade", "note": "main hand · has opinions" },
+    { "name": "+2 agile returning dagger", "note": "off hand · mercifully silent" },
+    { "name": "Masterwork mithral chain shirt", "note": "12 lbs of moonlight" },
+    { "name": "Cloak of resistance +4", "note": "shoulders" },
+    { "name": "Amulet of natural armor +2", "note": "neck" },
+    { "name": "Headband of mental superiority +2", "note": "head" },
+    { "name": "Belt of physical perfection +2", "note": "belt" }
+  ],
+  "load": "15 lbs of gear — light load, by every definition",
+  "signatureWeapon": {
+    "name": "The Black Blade",
+    "subtitle": "Sentient executioner's dagger",
+    "lore": "Believed by some to be the relic of an ancient executioner. The blade is said to communicate with its owner — and, occasionally, with others.",
+    "stats": [
+      { "label": "Ego", "value": "5" },
+      { "label": "Int", "value": "12" },
+      { "label": "Wis / Cha", "value": "8" },
+      { "label": "Speaks", "value": "Common +1" }
+    ],
+    "abilities": [
+      "Black Blade Strike — +2 damage for a minute, on request",
+      "Energy Attunement — strikes as cold, electricity, or fire; sonic or force when it really means it",
+      "Keeps its own arcane pool, and its own counsel",
+      "Knowledge (arcana) +2 — it has seen this before"
     ]
   },
-  "equipment": [
-    { "name": "Headband of vast intelligence +2", "note": "head" },
-    { "name": "Cloak of resistance +1", "note": "shoulders" },
-    { "name": "Wand of mage armor", "note": "38 charges" },
-    { "name": "Potion of cure moderate wounds", "note": "×2" },
-    { "name": "Cold iron dagger", "note": "belt" },
-    { "name": "Masterwork light crossbow", "note": "20 bolts" },
-    { "name": "Spell component pouch", "note": "" },
-    { "name": "Herbalist's kit", "note": "+2 circumstance, Profession" },
-    { "name": "Silver mirror, candles, chalk", "note": "ritual sundries" }
-  ],
-  "coin": "213 gp · 9 sp",
   "familiar": {
-    "name": "Vesper",
-    "species": "Owl",
-    "bond": "Keeper of Zink's spells and the other half of her shadow. Arrived uninvited on the night she chose her name, and has yet to leave.",
+    "name": "The Owl",
+    "species": "Barn owl",
+    "bond": "An owl of unusual intelligence, reported at murders, executions, and battlefields before Zink herself arrives. No one has recorded its name. It has never once testified.",
     "stats": [
-      { "label": "AC", "value": "17" },
-      { "label": "HP", "value": "20" },
-      { "label": "Fly", "value": "40 ft. (average)" },
-      { "label": "Int", "value": "9" }
+      { "label": "Name", "value": "Unrecorded" },
+      { "label": "Allegiance", "value": "Presumed" },
+      { "label": "Position", "value": "Overhead" },
+      { "label": "Testimony", "value": "Withheld" }
     ],
     "perks": [
-      "Alertness when within reach",
-      "Improved evasion",
-      "Empathic link, 1 mile",
-      "Delivers touch spells",
-      "Speaks with Zink — and with birds",
-      "Grants +3 sight-based Perception in shadows"
+      "Appears at death sites before she does",
+      "Of unusual, unexplained intelligence",
+      "Known to some as The Last Witness",
+      "Known to others as Gravewatcher",
+      "Known to the courts as The Silent Juror",
+      "Has never missed a verdict"
     ]
   }
 }

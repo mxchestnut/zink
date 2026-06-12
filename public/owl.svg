@@ -1,13 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <circle cx="32" cy="32" r="32" fill="#09090b"/>
   <g fill="none" stroke="#d4d4d8" stroke-width="1.6" stroke-linejoin="round">
-    <path d="M15 13 L23 19 L32 16.5 L41 19 L49 13 L51.5 26 L49 38 L42 49 L32 53 L22 49 L15 38 L12.5 26 Z"/>
-    <path d="M32 36 L27.5 39.5 L32 47 L36.5 39.5 Z"/>
+    <path d="M15 30 L17 16 L26 8 L32 7 L38 8 L47 16 L49 30 L46 44 L32 56 L18 44 Z"/>
+    <path d="M32 22 L22 17 L15 30 L19 44 L32 56 L45 44 L49 30 L42 17 Z"/>
+    <path d="M32 22 L32 40"/>
+    <path d="M32 40 L29 45 L32 52 L35 45 Z"/>
   </g>
   <g fill="none" stroke="#fbbf24" stroke-width="1.6">
-    <circle cx="23.5" cy="30" r="6.2"/>
-    <circle cx="40.5" cy="30" r="6.2"/>
+    <circle cx="25" cy="33" r="4.5"/>
+    <circle cx="39" cy="33" r="4.5"/>
   </g>
-  <circle cx="23.5" cy="30" r="2" fill="#fbbf24"/>
-  <circle cx="40.5" cy="30" r="2" fill="#fbbf24"/>
+  <circle cx="25" cy="33" r="1.6" fill="#fbbf24"/>
+  <circle cx="39" cy="33" r="1.6" fill="#fbbf24"/>
 </svg>

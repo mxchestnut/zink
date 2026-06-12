@@ -1,19 +1,20 @@
-import { GiCauldron } from "react-icons/gi";
-import { LuAward } from "react-icons/lu";
+import { LuAward, LuSkull } from "react-icons/lu";
 import type { Character } from "../types";
 import { Section } from "./Section";
 
-export function Hexes({ character }: { character: Character }) {
+export function SignatureAbilities({ character }: { character: Character }) {
   return (
-    <Section icon={GiCauldron} title="Hexes" meta={`${character.hexes.length} known`}>
+    <Section icon={LuSkull} title="Signature Abilities">
       <div className="grid gap-3 sm:grid-cols-2">
-        {character.hexes.map((hex) => (
+        {character.specials.map((ability) => (
           <div
-            key={hex.name}
+            key={ability.name}
             className="rounded-lg border border-zinc-800/80 bg-zinc-900/40 p-4 transition-colors hover:border-amber-300/30"
           >
-            <h3 className="font-display text-lg text-zinc-100">{hex.name}</h3>
-            {hex.note && <p className="mt-1 text-sm leading-relaxed text-zinc-400">{hex.note}</p>}
+            <h3 className="font-display text-lg text-zinc-100">{ability.name}</h3>
+            {ability.note && (
+              <p className="mt-1 text-sm leading-relaxed text-zinc-400">{ability.note}</p>
+            )}
           </div>
         ))}
       </div>

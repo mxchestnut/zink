@@ -1,11 +1,12 @@
-import { LuCompass, LuMapPin, LuMoon, LuSparkles } from "react-icons/lu";
+import { LuCompass, LuFingerprint, LuScale, LuSearch } from "react-icons/lu";
 import type { Character } from "../types";
-import { comma } from "../lib/format";
 
 export function Hero({ character }: { character: Character }) {
   const { identity } = character;
-  const cls = identity.classes[0];
-  const xpPct = Math.min(100, Math.round((identity.xp / identity.xpNext) * 100));
+  const totalLevel = identity.classes.reduce((sum, c) => sum + c.level, 0);
+  const classLine = identity.classes
+    .map((c) => `${c.name}${c.detail ? ` ${c.detail}` : ""} ${c.level}`)
+    .join(" / ");
 
   return (
     <header className="pt-14 pb-10 lg:pt-20">
@@ -25,8 +26,7 @@ export function Hero({ character }: { character: Character }) {
           </div>
 
           <p className="mt-4 text-lg text-zinc-300">
-            {identity.race} {cls.name}
-            {cls.detail ? ` · ${cls.detail}` : ""}
+            {identity.race} {classLine}
             <span className="text-zinc-600"> — </span>
             <span className="text-zinc-400">{identity.gender}</span>
           </p>
@@ -39,17 +39,19 @@ export function Hero({ character }: { character: Character }) {
               {identity.alignment}
             </li>
             <li className="flex items-center gap-2">
-              <LuSparkles className="size-3.5 text-zinc-500" aria-hidden="true" />
+              <LuScale className="size-3.5 text-zinc-500" aria-hidden="true" />
               {identity.deity}
             </li>
             <li className="flex items-center gap-2">
-              <LuMapPin className="size-3.5 text-zinc-500" aria-hidden="true" />
-              {identity.homeland}
+              <LuSearch className="size-3.5 text-zinc-500" aria-hidden="true" />
+              {identity.occupation}
             </li>
-            <li className="flex items-center gap-2">
-              <LuMoon className="size-3.5 text-zinc-500" aria-hidden="true" />
-              {identity.size} · {identity.age} years
-            </li>
+            {identity.formerName && (
+              <li className="flex items-center gap-2">
+                <LuFingerprint className="size-3.5 text-zinc-500" aria-hidden="true" />
+                formerly designated {identity.formerName}
+              </li>
+            )}
           </ul>
         </div>
 
@@ -59,17 +61,23 @@ export function Hero({ character }: { character: Character }) {
               Level
             </span>
             <span className="font-display text-6xl leading-none font-medium text-amber-300">
-              {cls.level}
+              {totalLevel}
             </span>
           </div>
-          <div className="mt-3 h-1 overflow-hidden rounded-full bg-zinc-800">
-            <div
-              className="h-full rounded-full bg-gradient-to-r from-amber-400/70 to-amber-300"
-              style={{ width: `${xpPct}%` }}
-            />
+          <div className="mt-3 flex h-1 gap-1 overflow-hidden rounded-full">
+            {identity.classes.map((cls) => (
+              <div
+                key={cls.name}
+                className="h-full rounded-full first:bg-gradient-to-r first:from-amber-400/70 first:to-amber-300 [&:not(:first-child)]:bg-zinc-600"
+                style={{ width: `${(cls.level / totalLevel) * 100}%` }}
+              />
+            ))}
           </div>
           <p className="mt-2 text-right text-xs text-zinc-500">
-            {comma(identity.xp)} / {comma(identity.xpNext)} XP
+            {identity.classes.map((c) => `${c.name} ${c.level}`).join(" · ")}
+            {identity.favoredClass && (
+              <span className="text-zinc-600"> · favored: {identity.favoredClass}</span>
+            )}
           </p>
         </div>
       </div>

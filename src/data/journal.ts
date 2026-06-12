@@ -2,26 +2,26 @@ import type { JournalEntry } from "../types";
 
 /**
  * Local journal entries — shown whenever a Ghost blog isn't configured
- * (see src/lib/ghost.ts and .env.example). Dates follow the Golarion
- * calendar because Zink refuses to use anything so gauche as a real one.
+ * (see src/lib/ghost.ts and .env.example). Case-file format, Golarion
+ * dates; replace freely or let Ghost take over.
  */
 export const localJournal: JournalEntry[] = [
   {
-    title: "On the Ethics of Slumber",
+    title: "The Magistrate Paid Twice",
     date: "Moonday, 3rd of Neth",
     excerpt:
-      "The caravan master asked why I didn't simply burn the bandits like a respectable spellcaster. I told him the truth: anyone can make a corpse, but it takes craft to make a bedtime. He laughed. The bandits, gift-wrapped in their own bedrolls for the constable, did not.",
+      "His ledger names four debts; his tomb names none. The dead man kept better books than his executor, and the discrepancy has now been resolved in the client's favor. The widow asked who hired me. I told her the truth — the deceased did, the moment someone decided his story was finished.",
   },
   {
-    title: "Vesper Has Opinions About the New Hat",
+    title: "Concerning the Owl",
     date: "Oathday, 22nd of Lamashan",
     excerpt:
-      "The headband sharpens my mind wonderfully, but Vesper sulked on the wagon rail for an hour because it 'ruins the silhouette.' I now travel with an owl who critiques my wardrobe in Sylvan. The moon gives with one hand and takes with the other.",
+      "It reached the granary before I did. Sixth time this season. I have stopped asking how it knows and begun asking why it waits — a juror does not arrive early unless it intends the verdict witnessed. We understand each other, I think. Neither of us has ever needed the other to speak.",
   },
   {
-    title: "Letters I Did Not Answer",
+    title: "Notes on Being Wrong",
     date: "Starday, 9th of Arodus",
     excerpt:
-      "Mother wrote again — frost on the inside of the glass this time, spelled in the old tongue. Vesper pecked the window until I shut the curtain. I lifted a stranger's curse before breakfast just to spite her. Some inheritances are best spent out of the family.",
+      "Re-interviewed the living witness. Her account has improved with age; the corpse's has not changed by a syllable. Living testimony revises itself toward comfort. Evidence does not. I keep this journal for one reason: if I am ever wrong, I want the proof written in my own hand.",
   },
 ];

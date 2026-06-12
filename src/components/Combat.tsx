@@ -45,6 +45,9 @@ export function Combat({ character }: { character: Character }) {
           ))}
         </tbody>
       </table>
+      {character.attacksNote && (
+        <p className="mt-4 text-xs leading-relaxed text-zinc-600">{character.attacksNote}</p>
+      )}
     </Section>
   );
 }

@@ -10,7 +10,7 @@ export interface AbilityScore {
 export interface CharacterClass {
   name: string;
   level: number;
-  detail?: string; // archetype, patron, school…
+  detail?: string; // "of Yaezhing", archetype, patron…
 }
 
 export interface Attack {
@@ -31,8 +31,14 @@ export interface Skill {
 
 export interface SpellLevel {
   level: number;
-  perDay: string;
+  perDay: string; // shown under the level badge — uses/day or save DC
   spells: string[];
+}
+
+export interface SpellBlock {
+  tradition: string;
+  note: string;
+  levels: SpellLevel[];
 }
 
 export interface NamedNote {
@@ -43,17 +49,17 @@ export interface NamedNote {
 export interface Character {
   identity: {
     name: string;
+    formerName?: string;
     pronouns: string;
     gender: string;
     race: string;
     classes: CharacterClass[];
+    favoredClass?: string;
     alignment: string;
     deity: string;
-    homeland: string;
+    occupation: string;
+    titles: string[];
     size: string;
-    age: string;
-    xp: number;
-    xpNext: number;
     tagline: string;
   };
   vitals: {
@@ -68,19 +74,25 @@ export interface Character {
   abilities: Record<AbilityKey, AbilityScore>;
   saves: { fort: number; ref: number; will: number };
   senses: string[];
-  languages: string[];
+  /** Immunities and standing defensive bonuses (android chassis, class). */
+  resilience: string[];
   attacks: Attack[];
+  attacksNote?: string;
   skills: Skill[];
-  hexes: NamedNote[];
+  /** Signature class abilities — death attack, fervor, nanite surge… */
+  specials: NamedNote[];
   feats: NamedNote[];
   traits: NamedNote[];
-  spellcasting: {
-    tradition: string;
-    note: string;
-    levels: SpellLevel[];
-  };
+  spellcasting: SpellBlock[];
   equipment: NamedNote[];
-  coin: string;
+  load: string;
+  signatureWeapon: {
+    name: string;
+    subtitle: string;
+    lore: string;
+    stats: { label: string; value: string }[];
+    abilities: string[];
+  };
   familiar: {
     name: string;
     species: string;
