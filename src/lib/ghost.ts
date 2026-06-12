@@ -59,18 +59,34 @@ export function useJournal(): { entries: JournalEntry[]; source: JournalSource }
   });
 
   useEffect(() => {
-    if (!GHOST_URL || !GHOST_KEY) return;
+    if (!GHOST_URL || !GHOST_KEY) {
+      console.info(
+        "[journal] Ghost not configured at build time — showing local entries. " +
+          "Set VITE_GHOST_URL and VITE_GHOST_KEY (see README).",
+      );
+      return;
+    }
     const controller = new AbortController();
     (async () => {
       try {
         const res = await fetch(postsUrl(), { signal: controller.signal });
-        if (!res.ok) return;
+        if (!res.ok) {
+          console.warn(`[journal] Ghost responded ${res.status} — showing local entries.`);
+          return;
+        }
         const data = (await res.json()) as { posts?: GhostPost[] };
         if (data.posts?.length) {
           setState({ entries: data.posts.map(toEntry), source: "ghost" });
+        } else {
+          console.warn(
+            `[journal] Ghost returned no posts${GHOST_TAG ? ` tagged "${GHOST_TAG}"` : ""} — ` +
+              "showing local entries. Are the posts published (not drafts)?",
+          );
         }
-      } catch {
-        // Ghost down or misconfigured — keep the local entries.
+      } catch (err) {
+        if (!controller.signal.aborted) {
+          console.warn("[journal] Ghost fetch failed — showing local entries.", err);
+        }
       }
     })();
     return () => controller.abort();
