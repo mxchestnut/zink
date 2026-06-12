@@ -33,12 +33,12 @@ jobs:
         env:
           # served from https://<user>.github.io/zink/
           VITE_BASE: /zink/
-          # Ghost journal — set under repo Settings → Secrets and variables →
-          # Actions → Variables. The Content API key is read-only and ships
-          # in the client bundle anyway, so plain variables are fine.
-          VITE_GHOST_URL: ${{ vars.VITE_GHOST_URL }}
-          VITE_GHOST_KEY: ${{ vars.VITE_GHOST_KEY }}
-          VITE_GHOST_TAG: ${{ vars.VITE_GHOST_TAG }}
+          # Ghost journal — read from Actions Variables or Secrets, whichever
+          # tab the values were added under. The Content API key is read-only
+          # and ships in the client bundle anyway.
+          VITE_GHOST_URL: ${{ vars.VITE_GHOST_URL || secrets.VITE_GHOST_URL }}
+          VITE_GHOST_KEY: ${{ vars.VITE_GHOST_KEY || secrets.VITE_GHOST_KEY }}
+          VITE_GHOST_TAG: ${{ vars.VITE_GHOST_TAG || secrets.VITE_GHOST_TAG }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
