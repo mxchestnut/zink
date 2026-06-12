@@ -4,7 +4,10 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    # claude/sharp-brown-ufenk5 was the repo's first (default) branch, so the
+    # auto-created github-pages environment only allows deploys from it. Keep
+    # main here too for when the default branch moves over.
+    branches: [main, claude/sharp-brown-ufenk5]
   workflow_dispatch:
 
 permissions:
