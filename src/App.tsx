@@ -76,6 +76,7 @@ export default function App() {
   if (urlAlias) {
     return (
       <CharacterView
+        alias={urlAlias}
         canEdit={canEditAlias(urlAlias)}
         onCharacterChange={(key, alias) => {
           if (key) handleMigrateLocalStorage(key, alias);
@@ -89,6 +90,7 @@ export default function App() {
     return (
       <CharacterView
         characterKey={selectedCharacter.key}
+        alias={selectedCharacter.alias}
         canEdit={canEditAlias(selectedCharacter.alias)}
         onCharacterChange={(key, alias) => {
           if (key) {

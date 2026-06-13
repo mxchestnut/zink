@@ -1,13 +1,12 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { closingQuote, dossier, profile } from "../data/backstory";
+import { supabase } from "./supabase";
 
 export interface EditableBio {
   profile: string;
   dossierHtml: string;
   closingQuote: string;
 }
-
-const STORAGE_KEY = "zink.onee.cloud.editableBio";
 
 function escapeHtml(value: string): string {
   return value
@@ -40,30 +39,98 @@ const defaultBio: EditableBio = {
   closingQuote,
 };
 
-export function useEditableBio() {
-  const [bio, setBio] = useState<EditableBio>(defaultBio);
+interface BioRow {
+  profile: string;
+  dossier_html: string;
+  closing_quote: string;
+}
+
+function rowToBio(row: BioRow): EditableBio {
+  return {
+    profile: row.profile,
+    dossierHtml: row.dossier_html,
+    closingQuote: row.closing_quote,
+  };
+}
+
+/**
+ * Loads a character's bio from Supabase (public, read-only) so every visitor
+ * sees the owner's saved content. When `canEdit` is true, `setBio`/`resetBio`
+ * persist back to the `character_bios` table; otherwise they only update the
+ * local view. With no alias or no saved row, the built-in Zink bio is shown.
+ */
+export function useEditableBio(alias?: string, canEdit = false) {
+  const [bio, setBioState] = useState<EditableBio>(defaultBio);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
-    try {
-      const raw = window.localStorage.getItem(STORAGE_KEY);
-      if (raw) {
-        const parsed = JSON.parse(raw) as EditableBio;
-        if (parsed.profile && parsed.dossierHtml && parsed.closingQuote) {
-          setBio(parsed);
-        }
-      }
-    } catch {
-      // ignore malformed stored content
+    let cancelled = false;
+    setError(null);
+
+    if (!alias) {
+      setBioState(defaultBio);
+      return;
     }
-  }, []);
 
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(bio));
-  }, [bio]);
+    void (async () => {
+      const { data, error: loadError } = await supabase
+        .from("character_bios")
+        .select("profile, dossier_html, closing_quote")
+        .eq("alias", alias)
+        .maybeSingle();
 
-  const resetBio = () => setBio(defaultBio);
+      if (cancelled) return;
 
-  return { bio, setBio, resetBio };
+      if (loadError) {
+        // Table missing or unreadable — fall back to the built-in bio.
+        setBioState(defaultBio);
+        setError(loadError.message);
+      } else {
+        setBioState(data ? rowToBio(data as BioRow) : defaultBio);
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [alias]);
+
+  const setBio = useCallback(
+    (next: EditableBio) => {
+      setBioState(next);
+      if (!canEdit || !alias) return;
+
+      void (async () => {
+        const { data: userData } = await supabase.auth.getUser();
+        const { error: saveError } = await supabase.from("character_bios").upsert(
+          {
+            alias,
+            profile: next.profile,
+            dossier_html: next.dossierHtml,
+            closing_quote: next.closingQuote,
+            user_id: userData.user?.id ?? null,
+            updated_at: new Date().toISOString(),
+          },
+          { onConflict: "alias" },
+        );
+        setError(saveError ? saveError.message : null);
+      })();
+    },
+    [alias, canEdit],
+  );
+
+  const resetBio = useCallback(() => {
+    setBioState(defaultBio);
+    if (!canEdit || !alias) return;
+
+    void (async () => {
+      const { error: deleteError } = await supabase
+        .from("character_bios")
+        .delete()
+        .eq("alias", alias);
+      setError(deleteError ? deleteError.message : null);
+    })();
+  }, [alias, canEdit]);
+
+  return { bio, setBio, resetBio, error };
 }

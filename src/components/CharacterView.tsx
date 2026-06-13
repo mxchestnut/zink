@@ -22,10 +22,12 @@ import type { RollEntry } from "../types";
 
 export function CharacterView({
   characterKey: initialKey,
+  alias: initialAlias,
   canEdit = false,
   onCharacterChange,
 }: {
   characterKey?: string;
+  alias?: string;
   canEdit?: boolean;
   onCharacterChange?: (key?: string, alias?: string) => void;
 }) {
@@ -117,7 +119,10 @@ export function CharacterView({
     }
   }, [host]);
 
-  const { bio, setBio, resetBio } = useEditableBio();
+  // The bio is keyed by alias so every visitor to /<alias> reads the same
+  // saved content; persistence is enabled only when the viewer owns it.
+  const bioAlias = initialAlias ?? activeAlias;
+  const { bio, setBio, resetBio, error: bioError } = useEditableBio(bioAlias, canEdit);
   const { character, source } = useCharacter(characterKey);
   const [rolls, setRolls] = useState<RollEntry[]>([]);
 
@@ -267,7 +272,7 @@ export function CharacterView({
             <Equipment character={character} />
             <BlackBlade character={character} />
             <Familiar character={character} />
-            <Backstory bio={bio} onBioChange={setBio} onReset={resetBio} canEdit={canEdit} />
+            <Backstory bio={bio} onBioChange={setBio} onReset={resetBio} canEdit={canEdit} bioError={bioError} />
             <Journal />
           </main>
         </div>
