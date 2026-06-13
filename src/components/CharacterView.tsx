@@ -131,7 +131,13 @@ export function CharacterView({
   const alias = detectAlias() ?? "";
   const isRootLandingPage = alias === "";
   const hasAliasPath = Boolean(alias);
-  const showLanding = !characterKey && (isRootLandingPage || (hasAliasPath && !aliases[alias]));
+  // /zink is the canonical profile: render the built-in sheet from the first
+  // paint (useCharacter falls back to the snapshot), so it never flashes the
+  // "paste a key" landing while the saved key resolves on mount.
+  const showLanding =
+    alias !== "zink" &&
+    !characterKey &&
+    (isRootLandingPage || (hasAliasPath && !aliases[alias]));
 
   const addRoll = (label: string, die: string, modifier: number, note?: string) => {
     const roll = Math.floor(Math.random() * 20) + 1;
