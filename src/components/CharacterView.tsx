@@ -225,33 +225,6 @@ export function CharacterView({
             rolls={rolls}
             onRoll={addRoll}
             onClearRollHistory={clearRollHistory}
-            canEdit={canEdit}
-            characterKey={characterKey}
-            activeAlias={activeAlias}
-            onCharacterKeySave={(key: string, alias?: string) => {
-              setCharacterKey(key);
-              const normalizedAlias = normalizeAlias(alias);
-              if (normalizedAlias) {
-                const saved = { ...aliases, [normalizedAlias]: key };
-                saveAliases(saved);
-                setAliases(saved);
-                setActiveAlias(normalizedAlias);
-                window.localStorage.setItem("onee.cloud.activeAlias", normalizedAlias);
-                if (host === "onee.cloud" || host === "www.onee.cloud") {
-                  window.history.replaceState({}, "", `/${normalizedAlias}`);
-                }
-              }
-              onCharacterChange?.(key, alias);
-            }}
-            onCharacterKeyClear={() => {
-              setCharacterKey(undefined);
-              setActiveAlias(undefined);
-              window.localStorage.removeItem("onee.cloud.activeAlias");
-              if (host === "onee.cloud" || host === "www.onee.cloud") {
-                window.history.replaceState({}, "", "/");
-              }
-              onCharacterChange?.();
-            }}
           />
 
           <main>
