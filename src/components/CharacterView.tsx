@@ -18,7 +18,7 @@ import { Spellcraft } from "./Spellcraft";
 import { useEditableBio } from "../lib/editableBio";
 import { CHARACTER_KEY, useCharacter } from "../lib/pathcompanion";
 import { detectAlias, normalizeAlias } from "../lib/alias";
-import type { RollEntry } from "../types";
+import { useRollHistory } from "../lib/rollHistory";
 
 export function CharacterView({
   characterKey: initialKey,
@@ -124,7 +124,8 @@ export function CharacterView({
   const bioAlias = initialAlias ?? activeAlias;
   const { bio, setBio, resetBio, error: bioError } = useEditableBio(bioAlias, canEdit);
   const { character, source } = useCharacter(characterKey);
-  const [rolls, setRolls] = useState<RollEntry[]>([]);
+  // Roll history persists in localStorage (per alias) for 30 days, surviving refreshes.
+  const { rolls, addRoll, clearRollHistory } = useRollHistory(bioAlias);
 
   // Recomputed from the live URL each render (host is read on mount, which
   // re-renders), and shares detectAlias() with App so both agree on routing.
@@ -138,30 +139,6 @@ export function CharacterView({
     alias !== "zink" &&
     !characterKey &&
     (isRootLandingPage || (hasAliasPath && !aliases[alias]));
-
-  const addRoll = (label: string, die: string, modifier: number, note?: string) => {
-    const roll = Math.floor(Math.random() * 20) + 1;
-    const total = roll + modifier;
-    const entry: RollEntry = {
-      id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
-      label,
-      die,
-      modifier,
-      roll,
-      total,
-      note,
-      natural: roll,
-      time: new Date().toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-      }),
-    };
-
-    setRolls((current) => [entry, ...current].slice(0, 20));
-  };
-
-  const clearRollHistory = () => setRolls([]);
 
   if (showLanding) {
     return (

@@ -116,6 +116,8 @@ export type JournalSource = "ghost" | "local";
 
 export interface RollEntry {
   id: string;
+  /** Epoch ms when rolled — used for 30-day expiry of persisted history. */
+  at: number;
   label: string;
   die: string;
   modifier: number;
