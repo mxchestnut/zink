@@ -40,7 +40,6 @@ export async function postRollToDiscord(
   const embed: Record<string, unknown> = {
     author: {
       name: characterName,
-      ...(avatarUrl ? { icon_url: avatarUrl } : {}),
     },
     description: `rolled **${entry.label}** · ${entry.die} ${modSign}${entry.modifier} = **${entry.total}**${rollSuffix}\n-# natural ${entry.natural}`,
     color,
