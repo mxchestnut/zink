@@ -31,7 +31,14 @@ export function FeatsTraits({ character }: { character: Character }) {
             <li key={feat.name} className="flex gap-3 text-sm">
               <span className="mt-[7px] size-1.5 shrink-0 rounded-full bg-amber-300/80" />
               <span>
-                <span className="text-zinc-200">{feat.name}</span>
+                <a
+                    href={`https://www.aonprd.com/FeatDisplay.aspx?ItemName=${encodeURIComponent(feat.name)}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-zinc-200 transition-colors hover:text-amber-200"
+                  >
+                    {feat.name}
+                  </a>
                 {feat.note && <span className="text-zinc-500"> — {feat.note}</span>}
               </span>
             </li>
@@ -46,7 +53,14 @@ export function FeatsTraits({ character }: { character: Character }) {
               <li key={trait.name} className="flex gap-3 text-sm">
                 <span className="mt-[7px] size-1.5 shrink-0 rounded-full bg-zinc-600" />
                 <span>
-                  <span className="text-zinc-200">{trait.name}</span>
+                  <a
+                    href={`https://www.aonprd.com/TraitDisplay.aspx?ItemName=${encodeURIComponent(trait.name)}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-zinc-200 transition-colors hover:text-amber-200"
+                  >
+                    {trait.name}
+                  </a>
                   {trait.note && <span className="text-zinc-500"> — {trait.note}</span>}
                 </span>
               </li>
