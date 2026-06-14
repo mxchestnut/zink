@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { LuFeather } from "react-icons/lu";
 import { Backstory } from "./Backstory";
 import { BlackBlade } from "./BlackBlade";
@@ -19,6 +19,7 @@ import { useEditableBio } from "../lib/editableBio";
 import { CHARACTER_KEY, useCharacter } from "../lib/pathcompanion";
 import { detectAlias, normalizeAlias } from "../lib/alias";
 import { useRollHistory } from "../lib/rollHistory";
+import { getDiscordWebhook, postRollToDiscord, setDiscordWebhook } from "../lib/discord";
 
 export function CharacterView({
   characterKey: initialKey,
@@ -127,6 +128,29 @@ export function CharacterView({
   // Roll history persists in localStorage (per alias) for 30 days, surviving refreshes.
   const { rolls, addRoll, clearRollHistory } = useRollHistory(bioAlias);
 
+  const [discordWebhook, setDiscordWebhookState] = useState<string>("");
+  useEffect(() => {
+    if (bioAlias) setDiscordWebhookState(getDiscordWebhook(bioAlias));
+  }, [bioAlias]);
+
+  const handleDiscordWebhookChange = useCallback(
+    (url: string) => {
+      if (bioAlias) setDiscordWebhook(bioAlias, url);
+      setDiscordWebhookState(url.trim());
+    },
+    [bioAlias],
+  );
+
+  const handleRoll = useCallback(
+    (label: string, die: string, modifier: number, note?: string) => {
+      const entry = addRoll(label, die, modifier, note);
+      if (discordWebhook) {
+        postRollToDiscord(discordWebhook, entry, character.identity.name).catch(() => {});
+      }
+    },
+    [addRoll, discordWebhook, character.identity.name],
+  );
+
   // Recomputed from the live URL each render (host is read on mount, which
   // re-renders), and shares detectAlias() with App so both agree on routing.
   const alias = detectAlias() ?? "";
@@ -200,8 +224,10 @@ export function CharacterView({
           <Sidebar
             character={character}
             rolls={rolls}
-            onRoll={addRoll}
+            onRoll={handleRoll}
             onClearRollHistory={clearRollHistory}
+            discordWebhook={discordWebhook}
+            onDiscordWebhookChange={handleDiscordWebhookChange}
           />
 
           <main>
@@ -220,10 +246,10 @@ export function CharacterView({
               </div>
             </Section>
 
-            <Combat character={character} onRoll={addRoll} />
+            <Combat character={character} onRoll={handleRoll} />
             <SignatureAbilities character={character} />
             <Spellcraft character={character} />
-            <Skills character={character} onRoll={addRoll} />
+            <Skills character={character} onRoll={handleRoll} />
             <FeatsTraits character={character} />
             <Equipment character={character} />
             <BlackBlade character={character} />

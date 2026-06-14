@@ -48,7 +48,7 @@ export function useRollHistory(alias?: string) {
     }
   }, [rolls, alias]);
 
-  const addRoll = useCallback((label: string, die: string, modifier: number, note?: string) => {
+  const addRoll = useCallback((label: string, die: string, modifier: number, note?: string): RollEntry => {
     const natural = Math.floor(Math.random() * 20) + 1;
     const entry: RollEntry = {
       id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
@@ -67,6 +67,7 @@ export function useRollHistory(alias?: string) {
       }),
     };
     setRolls((current) => [entry, ...current].slice(0, MAX_ENTRIES));
+    return entry;
   }, []);
 
   const clearRollHistory = useCallback(() => setRolls([]), []);

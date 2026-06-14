@@ -1,4 +1,5 @@
 import { FaDiceD20 } from "react-icons/fa";
+import { SiDiscord } from "react-icons/si";
 import {
   LuBrain,
   LuEye,
@@ -9,6 +10,7 @@ import {
   LuShieldCheck,
   LuZap,
 } from "react-icons/lu";
+import { useState, useEffect } from "react";
 import type { Character, RollEntry } from "../types";
 import { signed } from "../lib/format";
 import { GeometricOwl } from "./GeometricOwl";
@@ -22,14 +24,20 @@ export function Sidebar({
   rolls,
   onRoll,
   onClearRollHistory,
+  discordWebhook,
+  onDiscordWebhookChange,
 }: {
   character: Character;
   rolls: RollEntry[];
   onRoll: (label: string, die: string, modifier: number, note?: string) => void;
   onClearRollHistory: () => void;
+  discordWebhook: string;
+  onDiscordWebhookChange: (url: string) => void;
 }) {
   const { abilities, vitals, saves } = character;
   const lastRoll = rolls[0];
+  const [webhookDraft, setWebhookDraft] = useState(discordWebhook);
+  useEffect(() => { setWebhookDraft(discordWebhook); }, [discordWebhook]);
 
   return (
     <aside className="space-y-9 lg:sticky lg:top-10 lg:self-start">
@@ -216,6 +224,47 @@ export function Sidebar({
       </div>
 
       <RollHistory rolls={rolls} onClear={onClearRollHistory} />
+
+      {/* Discord channel config */}
+      <div>
+        <Label>Discord</Label>
+        <div className="space-y-2">
+          {discordWebhook ? (
+            <div className="flex items-center gap-2 rounded-md border border-green-800/60 bg-green-950/30 px-2.5 py-1.5 text-xs text-green-400">
+              <SiDiscord className="size-3.5 shrink-0" aria-hidden="true" />
+              <span className="flex-1">Channel linked — rolls post as OneE</span>
+              <button
+                type="button"
+                onClick={() => onDiscordWebhookChange("")}
+                className="ml-auto text-green-600 transition hover:text-green-300"
+                aria-label="Unlink Discord channel"
+              >
+                ✕
+              </button>
+            </div>
+          ) : (
+            <p className="text-xs leading-relaxed text-zinc-500">
+              Paste a Discord webhook URL and every roll will post to that channel as{" "}
+              <span className="text-zinc-400">OneE</span>.
+            </p>
+          )}
+          <input
+            type="url"
+            placeholder="https://discord.com/api/webhooks/…"
+            value={webhookDraft}
+            onChange={(e) => setWebhookDraft(e.target.value)}
+            onKeyDown={(e) => { if (e.key === "Enter") onDiscordWebhookChange(webhookDraft); }}
+            className="w-full rounded-md border border-zinc-800 bg-zinc-900/50 px-2.5 py-1.5 text-xs text-zinc-300 placeholder:text-zinc-600 focus:border-amber-300/50 focus:outline-none"
+          />
+          <button
+            type="button"
+            onClick={() => onDiscordWebhookChange(webhookDraft)}
+            className="w-full rounded-md border border-zinc-800 bg-zinc-900/50 px-2 py-1.5 text-xs text-zinc-400 transition hover:border-amber-300/50 hover:text-zinc-200"
+          >
+            {discordWebhook ? "Update webhook" : "Link channel"}
+          </button>
+        </div>
+      </div>
 
       {/* the owl keeps watch from the bottom of the rail */}
       <div className="hidden pt-2 lg:block">
