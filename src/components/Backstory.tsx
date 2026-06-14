@@ -22,10 +22,14 @@ export function Backstory({
   bio,
   onBioChange,
   onReset,
+  canEdit = false,
+  bioError,
 }: {
   bio: EditableBio;
   onBioChange: (bio: EditableBio) => void;
   onReset: () => void;
+  canEdit?: boolean;
+  bioError?: string | null;
 }) {
   const [isEditing, setIsEditing] = useState(false);
   const [profileText, setProfileText] = useState(bio.profile);
@@ -34,7 +38,7 @@ export function Backstory({
   const editor = useEditor({
     extensions: [StarterKit],
     content: bio.dossierHtml || defaultDossierHtml,
-    editable: isEditing,
+    editable: isEditing && canEdit,
     editorProps: {
       attributes: {
         class:
@@ -73,8 +77,9 @@ export function Backstory({
 
   return (
     <Section icon={LuPencil} title="Dossier">
+      {canEdit && (
       <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
-        <p className="text-sm text-zinc-500">Edit Zink’s bio in the browser and keep the updated content locally.</p>
+        <p className="text-sm text-zinc-500">Edits save to your account and appear for everyone who visits this page.</p>
         <div className="flex flex-wrap gap-2">
           {isEditing ? (
             <>
@@ -110,9 +115,15 @@ export function Backstory({
             </button>
           )}
         </div>
+        {bioError && (
+          <p className="w-full text-xs text-red-300">
+            Couldn’t sync this bio with the database: {bioError}
+          </p>
+        )}
       </div>
+      )}
 
-      {isEditing ? (
+      {isEditing && canEdit ? (
         <div className="space-y-6">
           <div>
             <label className="mb-2 block text-sm font-semibold text-zinc-300">Profile summary</label>

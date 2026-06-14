@@ -32,6 +32,9 @@ import type {
 export const CHARACTER_KEY =
   "eyJhY2NvdW50IjoiMjdDN0IzRjY0RkQ4NTU5MiIsImNoYXJhY3RlciI6ImNoYXJhY3RlcjEzIn0=";
 
+/** Email of the account that owns the canonical Zink profile (onee.cloud/zink). */
+export const ZINK_OWNER_EMAIL = "mxchestnut@gmail.com";
+
 export interface DecodedKey {
   account: string;
   character: string;

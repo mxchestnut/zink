@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../lib/auth";
 import { supabase } from "../lib/supabase";
-import { CHARACTER_KEY } from "../lib/pathcompanion";
+import { CHARACTER_KEY, ZINK_OWNER_EMAIL } from "../lib/pathcompanion";
 import { LuPlus, LuTrash2, LuLoader } from "react-icons/lu";
 
 interface SavedCharacter {
@@ -27,6 +27,7 @@ export function CharacterDashboard({
   const [alias, setAlias] = useState("");
   const [formError, setFormError] = useState("");
   const [formLoading, setFormLoading] = useState(false);
+  const [claimError, setClaimError] = useState("");
 
   useEffect(() => {
     loadCharacters();
@@ -63,6 +64,7 @@ export function CharacterDashboard({
     if (!user) return;
     if (characters.some((char) => char.alias?.toLowerCase() === "zink")) return;
 
+    setClaimError("");
     setFormLoading(true);
     try {
       const payload: Record<string, unknown> = {
@@ -91,6 +93,9 @@ export function CharacterDashboard({
       await loadCharacters();
     } catch (err: any) {
       console.error("Failed to claim Zink:", err);
+      setClaimError(
+        err?.message || "Couldn't claim Zink — make sure you're signed in, then try again."
+      );
     } finally {
       setFormLoading(false);
     }
@@ -164,7 +169,7 @@ export function CharacterDashboard({
   };
 
   const canClaimZink =
-    user?.email?.toLowerCase() === "mxchestnut@gmail.com" &&
+    user?.email?.toLowerCase() === ZINK_OWNER_EMAIL &&
     !characters.some((char) => char.alias?.toLowerCase() === "zink");
 
   return (
@@ -188,6 +193,9 @@ export function CharacterDashboard({
                 <LuPlus className="size-4" />
                 Claim Zink
               </button>
+              {claimError && (
+                <p className="mt-2 text-sm text-red-300">{claimError}</p>
+              )}
             </div>
           )}
         </div>

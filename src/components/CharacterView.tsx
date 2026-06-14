@@ -17,13 +17,18 @@ import { Skills } from "./Skills";
 import { Spellcraft } from "./Spellcraft";
 import { useEditableBio } from "../lib/editableBio";
 import { CHARACTER_KEY, useCharacter } from "../lib/pathcompanion";
-import type { RollEntry } from "../types";
+import { detectAlias, normalizeAlias } from "../lib/alias";
+import { useRollHistory } from "../lib/rollHistory";
 
 export function CharacterView({
   characterKey: initialKey,
+  alias: initialAlias,
+  canEdit = false,
   onCharacterChange,
 }: {
   characterKey?: string;
+  alias?: string;
+  canEdit?: boolean;
   onCharacterChange?: (key?: string, alias?: string) => void;
 }) {
   const [characterKey, setCharacterKey] = useState<string | undefined>(initialKey);
@@ -31,13 +36,6 @@ export function CharacterView({
   const [aliases, setAliases] = useState<Record<string, string>>({});
   const [hasLoadedKey, setHasLoadedKey] = useState(false);
   const [host, setHost] = useState<string>("");
-
-  const normalizeAlias = (value?: string): string | undefined => {
-    const alias = value?.trim().toLowerCase();
-    if (!alias) return undefined;
-    const normalized = alias.replace(/[^a-z0-9_-]+/g, "");
-    return normalized || undefined;
-  };
 
   const loadAliases = () => {
     try {
@@ -121,46 +119,26 @@ export function CharacterView({
     }
   }, [host]);
 
-  const { bio, setBio, resetBio } = useEditableBio();
+  // The bio is keyed by alias so every visitor to /<alias> reads the same
+  // saved content; persistence is enabled only when the viewer owns it.
+  const bioAlias = initialAlias ?? activeAlias;
+  const { bio, setBio, resetBio, error: bioError } = useEditableBio(bioAlias, canEdit);
   const { character, source } = useCharacter(characterKey);
-  const [rolls, setRolls] = useState<RollEntry[]>([]);
+  // Roll history persists in localStorage (per alias) for 30 days, surviving refreshes.
+  const { rolls, addRoll, clearRollHistory } = useRollHistory(bioAlias);
 
-  const hostParts = host.toLowerCase().split(".");
-  const hostAlias =
-    hostParts.length === 3 && hostParts[1] === "onee" && hostParts[2] === "cloud" && hostParts[0] !== "www"
-      ? hostParts[0]
-      : undefined;
-  const pathAlias = host === "onee.cloud" || host === "www.onee.cloud"
-    ? window.location.pathname.replace(/^\/|\/$/g, "")
-    : "";
-  const alias = hostAlias || normalizeAlias(pathAlias) || "";
+  // Recomputed from the live URL each render (host is read on mount, which
+  // re-renders), and shares detectAlias() with App so both agree on routing.
+  const alias = detectAlias() ?? "";
   const isRootLandingPage = alias === "";
   const hasAliasPath = Boolean(alias);
-  const showLanding = !characterKey && (isRootLandingPage || (hasAliasPath && !aliases[alias]));
-
-  const addRoll = (label: string, die: string, modifier: number, note?: string) => {
-    const roll = Math.floor(Math.random() * 20) + 1;
-    const total = roll + modifier;
-    const entry: RollEntry = {
-      id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
-      label,
-      die,
-      modifier,
-      roll,
-      total,
-      note,
-      natural: roll,
-      time: new Date().toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-      }),
-    };
-
-    setRolls((current) => [entry, ...current].slice(0, 20));
-  };
-
-  const clearRollHistory = () => setRolls([]);
+  // /zink is the canonical profile: render the built-in sheet from the first
+  // paint (useCharacter falls back to the snapshot), so it never flashes the
+  // "paste a key" landing while the saved key resolves on mount.
+  const showLanding =
+    alias !== "zink" &&
+    !characterKey &&
+    (isRootLandingPage || (hasAliasPath && !aliases[alias]));
 
   if (showLanding) {
     return (
@@ -172,7 +150,7 @@ export function CharacterView({
         <div className="relative mx-auto max-w-6xl px-6 lg:px-10 py-16">
           <Landing
             characterKey={characterKey}
-            alias={pathAlias || undefined}
+            alias={alias || undefined}
             onCharacterKeySave={(key: string, alias?: string) => {
               setCharacterKey(key);
               const normalizedAlias = normalizeAlias(alias);
@@ -224,32 +202,6 @@ export function CharacterView({
             rolls={rolls}
             onRoll={addRoll}
             onClearRollHistory={clearRollHistory}
-            characterKey={characterKey}
-            activeAlias={activeAlias}
-            onCharacterKeySave={(key: string, alias?: string) => {
-              setCharacterKey(key);
-              const normalizedAlias = normalizeAlias(alias);
-              if (normalizedAlias) {
-                const saved = { ...aliases, [normalizedAlias]: key };
-                saveAliases(saved);
-                setAliases(saved);
-                setActiveAlias(normalizedAlias);
-                window.localStorage.setItem("onee.cloud.activeAlias", normalizedAlias);
-                if (host === "onee.cloud" || host === "www.onee.cloud") {
-                  window.history.replaceState({}, "", `/${normalizedAlias}`);
-                }
-              }
-              onCharacterChange?.(key, alias);
-            }}
-            onCharacterKeyClear={() => {
-              setCharacterKey(undefined);
-              setActiveAlias(undefined);
-              window.localStorage.removeItem("onee.cloud.activeAlias");
-              if (host === "onee.cloud" || host === "www.onee.cloud") {
-                window.history.replaceState({}, "", "/");
-              }
-              onCharacterChange?.();
-            }}
           />
 
           <main>
@@ -276,7 +228,7 @@ export function CharacterView({
             <Equipment character={character} />
             <BlackBlade character={character} />
             <Familiar character={character} />
-            <Backstory bio={bio} onBioChange={setBio} onReset={resetBio} />
+            <Backstory bio={bio} onBioChange={setBio} onReset={resetBio} canEdit={canEdit} bioError={bioError} />
             <Journal />
           </main>
         </div>

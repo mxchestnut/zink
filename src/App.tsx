@@ -5,6 +5,8 @@ import { CharacterView } from "./components/CharacterView";
 import { Login } from "./components/Login";
 import { Signup } from "./components/Signup";
 import { CharacterDashboard } from "./components/CharacterDashboard";
+import { detectAlias } from "./lib/alias";
+import { ZINK_OWNER_EMAIL } from "./lib/pathcompanion";
 import { LuLoader } from "react-icons/lu";
 
 type AuthPage = "login" | "signup";
@@ -16,6 +18,21 @@ export default function App() {
     key: string;
     alias?: string;
   } | null>(null);
+
+  // onee.cloud/<alias> (and <alias>.onee.cloud) is a public portfolio: anyone
+  // can view it without signing in. Auth only guards the root dashboard.
+  const urlAlias = detectAlias();
+
+  // A character is only editable by its owner. Zink belongs to a fixed account;
+  // any other alias is the logged-in viewer's own copy. Everyone else is
+  // read-only, so the sheet stays public-facing.
+  const canEditAlias = (alias?: string): boolean => {
+    if (!user) return false;
+    if ((alias ?? "").toLowerCase() === "zink") {
+      return user.email?.toLowerCase() === ZINK_OWNER_EMAIL;
+    }
+    return true;
+  };
 
   const handleMigrateLocalStorage = async (key: string, alias?: string) => {
     if (!user) return;
@@ -52,7 +69,42 @@ export default function App() {
     );
   }
 
-  // Not logged in - show auth pages
+  // Public character view — the URL points at a character (e.g. /zink), so
+  // render it for anyone, logged in or not. CharacterView reads the alias from
+  // the URL and resolves the key itself (zink → the built-in key, a saved
+  // alias, or ?key=…).
+  if (urlAlias) {
+    return (
+      <CharacterView
+        alias={urlAlias}
+        canEdit={canEditAlias(urlAlias)}
+        onCharacterChange={(key, alias) => {
+          if (key) handleMigrateLocalStorage(key, alias);
+        }}
+      />
+    );
+  }
+
+  // Logged in and viewing a character picked from the dashboard.
+  if (selectedCharacter) {
+    return (
+      <CharacterView
+        characterKey={selectedCharacter.key}
+        alias={selectedCharacter.alias}
+        canEdit={canEditAlias(selectedCharacter.alias)}
+        onCharacterChange={(key, alias) => {
+          if (key) {
+            handleMigrateLocalStorage(key, alias);
+            setSelectedCharacter({ key, alias });
+          } else {
+            setSelectedCharacter(null);
+          }
+        }}
+      />
+    );
+  }
+
+  // Root, not logged in — show auth pages.
   if (!user) {
     return (
       <div className="relative min-h-screen overflow-clip">
@@ -71,24 +123,7 @@ export default function App() {
     );
   }
 
-  // Logged in but viewing a character
-  if (selectedCharacter) {
-    return (
-      <CharacterView
-        characterKey={selectedCharacter.key}
-        onCharacterChange={(key, alias) => {
-          if (key) {
-            handleMigrateLocalStorage(key, alias);
-            setSelectedCharacter({ key, alias });
-          } else {
-            setSelectedCharacter(null);
-          }
-        }}
-      />
-    );
-  }
-
-  // Logged in and on dashboard
+  // Root, logged in — dashboard.
   return (
     <div className="relative min-h-screen overflow-clip">
       <div
@@ -104,4 +139,3 @@ export default function App() {
     </div>
   );
 }
-

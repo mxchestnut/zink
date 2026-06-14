@@ -13,7 +13,6 @@ import type { Character, RollEntry } from "../types";
 import { signed } from "../lib/format";
 import { GeometricOwl } from "./GeometricOwl";
 import { Label } from "./Section";
-import { CharacterKeyForm } from "./CharacterKeyForm";
 import { RollHistory } from "./RollHistory";
 
 const ABILITY_ORDER = ["str", "dex", "con", "int", "wis", "cha"] as const;
@@ -23,31 +22,17 @@ export function Sidebar({
   rolls,
   onRoll,
   onClearRollHistory,
-  characterKey,
-  activeAlias,
-  onCharacterKeySave,
-  onCharacterKeyClear,
 }: {
   character: Character;
   rolls: RollEntry[];
   onRoll: (label: string, die: string, modifier: number, note?: string) => void;
   onClearRollHistory: () => void;
-  characterKey?: string;
-  activeAlias?: string;
-  onCharacterKeySave: (key: string, alias?: string) => void;
-  onCharacterKeyClear: () => void;
 }) {
   const { abilities, vitals, saves } = character;
   const lastRoll = rolls[0];
 
   return (
     <aside className="space-y-9 lg:sticky lg:top-10 lg:self-start">
-      <CharacterKeyForm
-        keyValue={characterKey}
-        aliasValue={activeAlias}
-        onSave={onCharacterKeySave}
-        onClear={onCharacterKeyClear}
-      />
       {/* Vitals */}
       <div>
         <Label>Vitals</Label>
