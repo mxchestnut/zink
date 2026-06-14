@@ -5,19 +5,20 @@
  *   npm run sync                      probe likely endpoints with the key
  *   npm run sync -- --url <url>       fetch one exact endpoint (supports
  *                                     {key} {account} {character} tokens)
- *   npm run sync -- --from-file x.json  import JSON saved by hand
+ *   npm run sync -- --from-file x.json  import a saved response
  *
- * PathCompanion publishes no API docs, so probing is best-effort. The
- * guaranteed manual route takes about a minute:
- *   1. open your character on pathcompanion.com, DevTools → Network → XHR
- *   2. find the request returning the character JSON, copy the response
- *   3. save it as src/data/pathcompanion-raw.json (or --from-file it)
- * Once you know the real endpoint, pass it with --url (and put it in
- * VITE_PC_API in .env to enable live in-browser sync too).
+ * PathCompanion is a PlayFab-backed app (no public REST API), so probing is
+ * best-effort. The reliable manual route takes about a minute:
+ *   1. open your character on pathcompanion.com, DevTools → Network → Fetch/XHR
+ *   2. select the large "GetUserData" response → right-click → Copy response
+ *   3. save it to a file, then:  npm run sync -- --from-file <that file>
+ * The importer auto-detects the PlayFab GetUserData envelope and inflates the
+ * character from data.Data.<slot>.Value → { Data: <base64 zlib>, Version }.
  */
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { inflateSync } from "node:zlib";
 
 const KEY =
   process.env.PATHCOMPANION_KEY ??
@@ -63,7 +64,34 @@ async function tryFetch(url) {
   }
 }
 
-async function save(json, from) {
+/**
+ * PathCompanion stores characters in PlayFab "UserData". A Client/GetUserData
+ * response wraps the sheet as data.Data.<slot>.Value — itself a JSON string of
+ * { Data: <base64 zlib>, Version }. Detect that shape and inflate it; pass
+ * anything else through untouched so plain exports still import.
+ */
+function decodePlayFab(json) {
+  const data = json?.data?.Data ?? json?.Data;
+  if (!data || typeof data !== "object") return json;
+  const slots = [character, ...Object.keys(data).filter((k) => k !== character)];
+  for (const slot of slots) {
+    const value = data[slot]?.Value ?? data[slot];
+    if (typeof value !== "string") continue;
+    try {
+      const inner = JSON.parse(value);
+      if (typeof inner?.Data !== "string") continue;
+      const decoded = JSON.parse(inflateSync(Buffer.from(inner.Data, "base64")).toString("utf8"));
+      console.log(`  decoded PlayFab UserData["${slot}"] (zlib, v${inner.Version ?? "?"})`);
+      return decoded;
+    } catch {
+      // not the compressed-character shape under this slot — keep looking
+    }
+  }
+  return json;
+}
+
+async function save(rawJson, from) {
+  const json = decodePlayFab(rawJson);
   await mkdir(dirname(OUT), { recursive: true });
   await writeFile(OUT, JSON.stringify(json, null, 2));
   console.log(`\n✓ saved ${OUT}`);

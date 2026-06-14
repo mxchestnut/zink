@@ -1,0 +1,4061 @@
+{
+  "characterInfo": {
+    "alignment": "Neutral Evil",
+    "levelInfo": {
+      "1": {
+        "Feats": [
+          {
+            "name": "Simple Weapon Proficiency",
+            "type": "Combat",
+            "source": "class"
+          },
+          {
+            "name": "Martial Weapon Proficiency (all)",
+            "type": "Combat",
+            "source": "class"
+          },
+          {
+            "name": "Light Armor Proficiency",
+            "type": "Combat",
+            "source": "class"
+          },
+          {
+            "name": "Medium Armor Proficiency",
+            "type": "Combat",
+            "source": "class"
+          },
+          {
+            "name": "Heavy Armor Proficiency",
+            "type": "Combat",
+            "source": "class"
+          },
+          {
+            "name": "Shield Proficiency",
+            "type": "Combat",
+            "source": "class"
+          },
+          {
+            "source": "Level",
+            "types": "any",
+            "name": "Fey Foundling",
+            "type": "General",
+            "sectionType": "General"
+          },
+          {
+            "name": "Weapon Focus",
+            "type": "Combat",
+            "source": "Focus Weapon"
+          }
+        ],
+        "Class Features": [
+          {
+            "name": "Weapon and Armor Proficiencies",
+            "type": "",
+            "hidden": true
+          },
+          {
+            "name": "Aura",
+            "type": "Ex"
+          },
+          {
+            "name": "Spellcasting (Warpriest)",
+            "type": ""
+          },
+          {
+            "name": "Orisons",
+            "type": ""
+          },
+          {
+            "name": "Spontaneous Casting",
+            "type": ""
+          },
+          {
+            "name": "Focus Weapon",
+            "type": ""
+          },
+          {
+            "name": "Blessing 1",
+            "type": "Su"
+          },
+          {
+            "name": "Blessing 2",
+            "type": "Su"
+          },
+          {
+            "name": "Minor Blessings",
+            "type": "Su"
+          },
+          {
+            "name": "Sacred Weapon",
+            "type": "Su"
+          },
+          {
+            "name": "Bonus Languages",
+            "type": ""
+          }
+        ],
+        "SpellsPerDay": [
+          3,
+          1
+        ],
+        "BAB": 0,
+        "Fort": 2,
+        "Reflex": 0,
+        "Will": 2,
+        "classSkills": [
+          "Climb",
+          "Craft",
+          "Diplomacy",
+          "Handle Animal",
+          "Heal",
+          "Intimidate",
+          "Knowledge (engineering)",
+          "Knowledge (religion)",
+          "Profession",
+          "Ride",
+          "Sense Motive",
+          "Spellcraft",
+          "Survival",
+          "Swim"
+        ],
+        "Proficiencies": [
+          {
+            "name": "Shuriken",
+            "source": "Deity's Favored Weapon"
+          }
+        ],
+        "archetypes": [],
+        "skillsPerLevel": "2",
+        "class": "Warpriest",
+        "hd": "d8",
+        "favoredClassBonus": "skill",
+        "classFeatureChoices": [
+          {
+            "source": "Blessing1",
+            "options": {
+              "displayType": "modal",
+              "title": "Choose Blessing",
+              "extractionInfo": {
+                "displayName": "Blessing",
+                "propertyName": "Blessings",
+                "displayFunction": "blessingDisplay"
+              }
+            },
+            "name": "Blessing1",
+            "origSource": "Blessing 1",
+            "class": "Warpriest",
+            "selected": "Trickery"
+          },
+          {
+            "source": "Blessing2",
+            "options": {
+              "displayType": "modal",
+              "title": "Choose Blessing",
+              "extractionInfo": {
+                "displayName": "Blessing",
+                "propertyName": "Blessings",
+                "displayFunction": "blessingDisplay"
+              }
+            },
+            "name": "Blessing2",
+            "origSource": "Blessing 2",
+            "class": "Warpriest",
+            "selected": "Evil"
+          }
+        ],
+        "hp": 8,
+        "classLevel": {
+          "Warpriest": 1,
+          "Magus": 1
+        },
+        "featChoices": [
+          {
+            "source": "Weapon Focus",
+            "displayName": "Weapon Focus",
+            "origSource": "Weapon Focus",
+            "options": {
+              "displayType": "modal",
+              "title": "Choose Weapon for Weapon Focus",
+              "extractionInfo": {
+                "displayName": "Weapon",
+                "propertyName": "weapons",
+                "choiceType": "equipment",
+                "limitations": [
+                  {
+                    "proficient": true
+                  }
+                ],
+                "includeSpecialTypes": true
+              }
+            },
+            "selected": "Dagger",
+            "name": "Weapon Focus"
+          }
+        ],
+        "classFeatureEquivalents": [
+          {
+            "name": "Arcane Pool",
+            "source": "Arcane Pool Bladebound",
+            "className": "Magus"
+          }
+        ],
+        "gestalt": "Magus",
+        "gestaltArchetypes": [
+          "Myrmidarch",
+          "Bladebound"
+        ],
+        "gestaltClassInfo": {
+          "Feats": [
+            {
+              "name": "Simple Weapon Proficiency",
+              "type": "Combat",
+              "source": "class"
+            },
+            {
+              "name": "Martial Weapon Proficiency (all)",
+              "type": "Combat",
+              "source": "class"
+            },
+            {
+              "name": "Light Armor Proficiency",
+              "type": "Combat",
+              "source": "class"
+            }
+          ],
+          "Class Features": [
+            {
+              "name": "Cantrips",
+              "type": ""
+            },
+            {
+              "name": "Spellbooks",
+              "type": ""
+            },
+            {
+              "name": "Spell Combat",
+              "type": "Ex"
+            },
+            {
+              "name": "Diminished Spellcasting",
+              "type": "",
+              "action": "add",
+              "fnName": "Diminished Spellcasting Myrmidarch"
+            },
+            {
+              "name": "Arcane Pool",
+              "type": "Su",
+              "action": "add",
+              "fnName": "Arcane Pool Bladebound",
+              "hidden": true
+            }
+          ],
+          "SpellsPerDay": [
+            3,
+            1
+          ],
+          "BAB": 0,
+          "Fort": 2,
+          "Reflex": 0,
+          "Will": 2,
+          "classLevel": {
+            "Warpriest": 1,
+            "Magus": 1
+          }
+        },
+        "gestaltClassSkills": [
+          "Climb",
+          "Craft",
+          "Fly",
+          "Intimidate",
+          "Knowledge (arcana)",
+          "Knowledge (dungeoneering)",
+          "Knowledge (planes)",
+          "Profession",
+          "Ride",
+          "Spellcraft",
+          "Swim",
+          "Use Magic Device"
+        ],
+        "gestaltProficiencies": [],
+        "gestaltSkillsPerLevel": "2",
+        "gestaltHD": "d8",
+        "Blessings": [
+          {
+            "name": "Trickery",
+            "source": "Blessings"
+          }
+        ],
+        "additionalSkills": [
+          {
+            "skill": "Swim",
+            "source": "River Rat"
+          }
+        ]
+      },
+      "2": {
+        "Class Features": [
+          {
+            "name": "Fervor",
+            "type": "Su"
+          }
+        ],
+        "SpellsPerDay": [
+          4,
+          2
+        ],
+        "BAB": 1,
+        "Fort": 1,
+        "Reflex": 0,
+        "Will": 1,
+        "skillsPerLevel": "2",
+        "class": "Warpriest",
+        "hd": "d8",
+        "classLevel": {
+          "Warpriest": 2,
+          "Magus": 2
+        },
+        "gestalt": "Magus",
+        "gestaltArchetypes": [],
+        "gestaltClassInfo": {
+          "Class Features": [
+            {
+              "name": "Spellstrike",
+              "type": "Su"
+            }
+          ],
+          "SpellsPerDay": [
+            4,
+            2
+          ],
+          "BAB": 1,
+          "Fort": 1,
+          "Reflex": 0,
+          "Will": 1,
+          "classLevel": {
+            "Warpriest": 2,
+            "Magus": 2
+          }
+        },
+        "gestaltSkillsPerLevel": "2",
+        "gestaltHD": "d8",
+        "hp": 5,
+        "favoredClassBonus": "skill"
+      },
+      "3": {
+        "Class Features": [
+          {
+            "name": "Bonus Feat: Combat",
+            "type": ""
+          }
+        ],
+        "SpellsPerDay": [
+          4,
+          3
+        ],
+        "BAB": 1,
+        "Fort": 0,
+        "Reflex": 1,
+        "Will": 0,
+        "skillsPerLevel": "2",
+        "class": "Warpriest",
+        "hd": "d8",
+        "Feats": [
+          {
+            "source": "Level",
+            "types": "any",
+            "name": "Point-Blank Shot",
+            "type": "Combat",
+            "sectionType": "Combat"
+          },
+          {
+            "source": "Bonus Feat",
+            "types": [
+              "Combat"
+            ],
+            "prereqOverride": {
+              "classLevel": {
+                "className": "Fighter",
+                "level": 5
+              },
+              "bab": 5
+            },
+            "name": "Precise Shot",
+            "type": "Combat",
+            "sectionType": "Combat"
+          },
+          {
+            "name": "Alertness",
+            "type": "General",
+            "source": "Black Blade"
+          }
+        ],
+        "classLevel": {
+          "Warpriest": 3,
+          "Magus": 3
+        },
+        "gestalt": "Magus",
+        "gestaltArchetypes": [],
+        "gestaltClassInfo": {
+          "Class Features": [
+            {
+              "name": "Black Blade",
+              "type": "Ex",
+              "action": "add"
+            }
+          ],
+          "SpellsPerDay": [
+            4,
+            3
+          ],
+          "BAB": 1,
+          "Fort": 0,
+          "Reflex": 1,
+          "Will": 0,
+          "classLevel": {
+            "Warpriest": 3,
+            "Magus": 3
+          }
+        },
+        "gestaltSkillsPerLevel": "2",
+        "gestaltHD": "d8",
+        "classFeatureChoices": [
+          {
+            "source": "Black Blade",
+            "displayName": "Black Blade Weapon",
+            "options": {
+              "displayType": "modal",
+              "title": "Choose Black Blade Weapon",
+              "extractionInfo": {
+                "displayName": "Weapon",
+                "propertyName": "weapons",
+                "choiceType": "equipment",
+                "limitations": [
+                  {
+                    "type": "one-handed",
+                    "damageType": "S"
+                  },
+                  {
+                    "type": "light",
+                    "damageType": "S"
+                  },
+                  {
+                    "name": "Rapier"
+                  },
+                  {
+                    "name": "Sword cane"
+                  }
+                ]
+              }
+            },
+            "name": "Black Blade",
+            "class": "Magus",
+            "selected": "Dagger"
+          }
+        ],
+        "hp": 5,
+        "favoredClassBonus": "skill"
+      },
+      "4": {
+        "Class Features": [
+          {
+            "name": "Channel Energy",
+            "type": "Su"
+          }
+        ],
+        "SpellsPerDay": [
+          4,
+          3,
+          1
+        ],
+        "BAB": 1,
+        "Fort": 1,
+        "Reflex": 0,
+        "Will": 1,
+        "skillsPerLevel": "2",
+        "class": "Warpriest",
+        "hd": "d8",
+        "abilityScore": "int",
+        "classLevel": {
+          "Warpriest": 4,
+          "Magus": 4
+        },
+        "classFeatureEquivalents": [
+          {
+            "name": "Channel Energy 1d6",
+            "source": "Channel Energy (Warpriest)",
+            "className": "Warpriest"
+          },
+          {
+            "name": "Channel Negative Energy",
+            "source": "Channel Energy (Warpriest)",
+            "className": "Warpriest"
+          },
+          {
+            "name": "Channel Negative Energy 1d6",
+            "source": "Channel Energy (Warpriest)",
+            "className": "Warpriest"
+          },
+          {
+            "name": "Channel Energy 2d6",
+            "source": "Channel Energy (Warpriest)",
+            "className": "Warpriest"
+          },
+          {
+            "name": "Channel Negative Energy 2d6",
+            "source": "Channel Energy (Warpriest)",
+            "className": "Warpriest"
+          }
+        ],
+        "gestalt": "Magus",
+        "gestaltArchetypes": [],
+        "gestaltClassInfo": {
+          "Class Features": [
+            {
+              "name": "Ranged Spellstrike",
+              "type": "Su",
+              "action": "add",
+              "fnName": "Ranged Spellstrike Myrmidarch"
+            }
+          ],
+          "SpellsPerDay": [
+            4,
+            3,
+            1
+          ],
+          "BAB": 1,
+          "Fort": 1,
+          "Reflex": 0,
+          "Will": 1,
+          "classLevel": {
+            "Warpriest": 4,
+            "Magus": 4
+          }
+        },
+        "gestaltSkillsPerLevel": "2",
+        "gestaltHD": "d8",
+        "hp": 5,
+        "favoredClassBonus": "skill"
+      },
+      "5": {
+        "SpellsPerDay": [
+          4,
+          4,
+          2
+        ],
+        "BAB": 0,
+        "Fort": 0,
+        "Reflex": 0,
+        "Will": 0,
+        "skillsPerLevel": "2",
+        "class": "Warpriest",
+        "hd": "d8",
+        "Feats": [
+          {
+            "source": "Level",
+            "types": "any",
+            "name": "Startoss Style",
+            "type": "Combat",
+            "sectionType": "Combat"
+          },
+          {
+            "source": "Bonus Feat: Combat + Item Creation + Metamagic",
+            "types": [
+              "Combat",
+              "Item Creation",
+              "Metamagic"
+            ],
+            "name": "Startoss Comet",
+            "type": "Combat",
+            "sectionType": "Combat"
+          }
+        ],
+        "classLevel": {
+          "Warpriest": 5,
+          "Magus": 5
+        },
+        "gestalt": "Magus",
+        "gestaltArchetypes": [],
+        "gestaltClassInfo": {
+          "Class Features": [
+            {
+              "name": "Bonus Feat: Combat + Item Creation + Metamagic",
+              "type": ""
+            }
+          ],
+          "SpellsPerDay": [
+            4,
+            4,
+            2
+          ],
+          "BAB": 0,
+          "Fort": 0,
+          "Reflex": 0,
+          "Will": 0,
+          "classLevel": {
+            "Warpriest": 5,
+            "Magus": 5
+          }
+        },
+        "gestaltSkillsPerLevel": "2",
+        "gestaltHD": "d8",
+        "hp": 5,
+        "featChoices": [
+          {
+            "source": "Startoss Style",
+            "displayName": "Choose Weapon",
+            "origSource": "Startoss Style",
+            "options": {
+              "displayType": "modal",
+              "title": "Choose Weapon for Startoss Style",
+              "extractionInfo": {
+                "displayName": "Weapon",
+                "propertyName": "weapons",
+                "choiceType": "equipment",
+                "limitations": [
+                  {
+                    "groups": [
+                      "thrown"
+                    ]
+                  }
+                ]
+              }
+            },
+            "selected": "Dagger",
+            "name": "Startoss Style"
+          }
+        ],
+        "favoredClassBonus": "skill"
+      },
+      "6": {
+        "Class Features": [
+          {
+            "name": "Sneak Attack",
+            "type": ""
+          },
+          {
+            "name": "Death Attack",
+            "type": "Ex"
+          },
+          {
+            "name": "Poison Use",
+            "type": ""
+          }
+        ],
+        "BAB": 0,
+        "Fort": 0,
+        "Reflex": 1,
+        "Will": 0,
+        "classSkills": [
+          "Acrobatics",
+          "Bluff",
+          "Climb",
+          "Diplomacy",
+          "Disable Device",
+          "Disguise",
+          "Escape Artist",
+          "Intimidate",
+          "Linguistics",
+          "Perception",
+          "Sense Motive",
+          "Sleight of Hand",
+          "Stealth",
+          "Swim",
+          "Use Magic Device"
+        ],
+        "Proficiencies": [
+          "Hand crossbow",
+          "Light crossbow",
+          "Heavy crossbow",
+          "Dagger",
+          "Punching dagger",
+          "Dueling dagger",
+          "Switchblade knife",
+          "Gandasa",
+          "Swordbreaker dagger",
+          "Butterfly knife",
+          "Kerambit",
+          "Lungchuan tamo",
+          "Dart",
+          "Rapier",
+          "Sap",
+          "Shortbow",
+          "Composite shortbow",
+          "Short sword"
+        ],
+        "archetypes": [],
+        "skillsPerLevel": "4",
+        "class": "Assassin",
+        "hd": "d8",
+        "classLevel": {
+          "Warpriest": 5,
+          "Magus": 5,
+          "Assassin": 1,
+          "Mystic Theurge": 1
+        },
+        "gestalt": "Mystic Theurge",
+        "gestaltArchetypes": [],
+        "gestaltClassInfo": {
+          "spellcastingIncrease": "both",
+          "Class Features": [
+            {
+              "name": "Spells Per Day",
+              "type": ""
+            },
+            {
+              "name": "Combined Spells",
+              "type": "Su"
+            }
+          ],
+          "BAB": 0,
+          "Fort": 0,
+          "Reflex": 0,
+          "Will": 1,
+          "classLevel": {
+            "Warpriest": 5,
+            "Magus": 5,
+            "Assassin": 1,
+            "Mystic Theurge": 1
+          }
+        },
+        "gestaltClassSkills": [
+          "Knowledge (arcana)",
+          "Knowledge (religion)",
+          "Sense Motive",
+          "Spellcraft"
+        ],
+        "gestaltProficiencies": [
+          "Hand crossbow",
+          "Light crossbow",
+          "Heavy crossbow",
+          "Dagger",
+          "Punching dagger",
+          "Dueling dagger",
+          "Switchblade knife",
+          "Gandasa",
+          "Swordbreaker dagger",
+          "Butterfly knife",
+          "Kerambit",
+          "Lungchuan tamo",
+          "Dart",
+          "Rapier",
+          "Sap",
+          "Shortbow",
+          "Composite shortbow",
+          "Short sword"
+        ],
+        "gestaltSkillsPerLevel": "2",
+        "gestaltHD": "d6",
+        "classFeatureChoices": [
+          {
+            "source": "Divine Class",
+            "displayName": "Divine Class",
+            "displayType": "select",
+            "options": [
+              "Warpriest"
+            ],
+            "name": "Divine Class",
+            "origSource": "Spells Per Day",
+            "class": "MysticTheurge",
+            "selected": "Warpriest"
+          },
+          {
+            "source": "Arcane Class",
+            "displayName": "Arcane Class",
+            "displayType": "select",
+            "options": [
+              "Magus"
+            ],
+            "name": "Arcane Class",
+            "origSource": "Spells Per Day",
+            "class": "MysticTheurge",
+            "selected": "Magus"
+          }
+        ],
+        "hp": 5
+      },
+      "7": {
+        "Class Features": [
+          {
+            "name": "Save Bonus against Poison",
+            "type": ""
+          },
+          {
+            "name": "Uncanny Dodge",
+            "type": "Ex"
+          }
+        ],
+        "BAB": 1,
+        "Fort": 1,
+        "Reflex": 0,
+        "Will": 1,
+        "skillsPerLevel": "4",
+        "class": "Assassin",
+        "hd": "d8",
+        "Feats": [
+          {
+            "source": "Level",
+            "types": "any",
+            "name": "Startoss Shower",
+            "type": "Combat",
+            "sectionType": "Combat"
+          }
+        ],
+        "classLevel": {
+          "Warpriest": 5,
+          "Magus": 5,
+          "Assassin": 2,
+          "Mystic Theurge": 2
+        },
+        "gestalt": "Mystic Theurge",
+        "gestaltArchetypes": [],
+        "gestaltClassInfo": {
+          "spellcastingIncrease": "both",
+          "BAB": 1,
+          "Fort": 1,
+          "Reflex": 1,
+          "Will": 0,
+          "classLevel": {
+            "Warpriest": 5,
+            "Magus": 5,
+            "Assassin": 2,
+            "Mystic Theurge": 2
+          }
+        },
+        "gestaltSkillsPerLevel": "2",
+        "gestaltHD": "d6",
+        "hp": 5
+      },
+      "8": {
+        "BAB": 1,
+        "Fort": 0,
+        "Reflex": 1,
+        "Will": 0,
+        "skillsPerLevel": "4",
+        "class": "Assassin",
+        "hd": "d8",
+        "abilityScore": "dex",
+        "classLevel": {
+          "Warpriest": 5,
+          "Magus": 5,
+          "Assassin": 3,
+          "Mystic Theurge": 3
+        },
+        "gestalt": "Mystic Theurge",
+        "gestaltArchetypes": [],
+        "gestaltClassInfo": {
+          "spellcastingIncrease": "both",
+          "BAB": 0,
+          "Fort": 0,
+          "Reflex": 0,
+          "Will": 1,
+          "classLevel": {
+            "Warpriest": 5,
+            "Magus": 5,
+            "Assassin": 3,
+            "Mystic Theurge": 3
+          }
+        },
+        "gestaltSkillsPerLevel": "2",
+        "gestaltHD": "d6",
+        "hp": 5
+      },
+      "9": {
+        "Class Features": [
+          {
+            "name": "Hidden Weapons",
+            "type": "Ex"
+          },
+          {
+            "name": "True Death",
+            "type": "Su"
+          }
+        ],
+        "BAB": 1,
+        "Fort": 0,
+        "Reflex": 0,
+        "Will": 0,
+        "skillsPerLevel": "4",
+        "class": "Assassin",
+        "hd": "d8",
+        "Feats": [
+          {
+            "source": "Level",
+            "types": "any",
+            "name": "Weapon Finesse",
+            "type": "Combat",
+            "sectionType": "Combat"
+          }
+        ],
+        "classLevel": {
+          "Warpriest": 5,
+          "Magus": 5,
+          "Assassin": 4,
+          "Mystic Theurge": 4
+        },
+        "gestalt": "Mystic Theurge",
+        "gestaltArchetypes": [],
+        "gestaltClassInfo": {
+          "spellcastingIncrease": "both",
+          "BAB": 1,
+          "Fort": 0,
+          "Reflex": 0,
+          "Will": 0,
+          "classLevel": {
+            "Warpriest": 5,
+            "Magus": 5,
+            "Assassin": 4,
+            "Mystic Theurge": 4
+          }
+        },
+        "gestaltSkillsPerLevel": "2",
+        "gestaltHD": "d6",
+        "hp": 5
+      },
+      "10": {
+        "Class Features": [
+          {
+            "name": "Improved Uncanny Dodge",
+            "type": "Ex"
+          }
+        ],
+        "BAB": 0,
+        "Fort": 1,
+        "Reflex": 1,
+        "Will": 1,
+        "skillsPerLevel": "4",
+        "class": "Assassin",
+        "hd": "d8",
+        "classLevel": {
+          "Warpriest": 5,
+          "Magus": 5,
+          "Assassin": 5,
+          "Mystic Theurge": 5
+        },
+        "gestalt": "Mystic Theurge",
+        "gestaltArchetypes": [],
+        "gestaltClassInfo": {
+          "spellcastingIncrease": "both",
+          "BAB": 0,
+          "Fort": 1,
+          "Reflex": 1,
+          "Will": 1,
+          "classLevel": {
+            "Warpriest": 5,
+            "Magus": 5,
+            "Assassin": 5,
+            "Mystic Theurge": 5
+          }
+        },
+        "gestaltSkillsPerLevel": "2",
+        "gestaltHD": "d6",
+        "hp": 5
+      },
+      "level": 10
+    },
+    "traits": [
+      {
+        "name": "Resilient",
+        "type": "Combat"
+      },
+      {
+        "name": "River Rat",
+        "type": "Regional"
+      }
+    ],
+    "languages": [],
+    "characterName": "Zink",
+    "race": {
+      "race": "Android",
+      "name": "Android",
+      "abilities": [
+        {
+          "name": "Alert",
+          "type": "standard"
+        },
+        {
+          "name": "Emotionless",
+          "type": "standard"
+        },
+        {
+          "name": "Exceptional Senses",
+          "type": "standard"
+        },
+        {
+          "name": "Constructed",
+          "type": "standard"
+        },
+        {
+          "name": "Nanite Surge",
+          "type": "standard"
+        }
+      ],
+      "size": "Medium",
+      "speed": 30,
+      "types": [
+        "humanoid",
+        "construct"
+      ],
+      "subtypes": [],
+      "languages": [
+        "Common"
+      ],
+      "features": [
+        {
+          "name": "Darkvision 60 ft.",
+          "source": "android"
+        },
+        {
+          "name": "Low-Light Vision",
+          "source": "android"
+        },
+        {
+          "name": "Darkvision 60 ft.",
+          "source": "construct type"
+        }
+      ]
+    },
+    "size": {
+      "baseSize": "Medium",
+      "total": "medium",
+      "specialSizeModifier": "medium",
+      "sizeModifier": "medium"
+    },
+    "subType": [],
+    "levelBonuses": [
+      {
+        "source": "Spells Per Day6divine",
+        "value": 5,
+        "type": "Warpriest",
+        "appliesTo": "SpellcastingProgression"
+      },
+      {
+        "source": "Spells Per Day6arcane",
+        "value": 5,
+        "type": "Magus",
+        "appliesTo": "SpellcastingProgression"
+      }
+    ],
+    "favoredClass": {
+      "Warpriest": {
+        "source": "Default"
+      }
+    },
+    "deity": {
+      "name": "Yaezhing",
+      "domains": [
+        "Artifice",
+        "Death",
+        "Evil",
+        "Law",
+        "Trickery",
+        "Artifice (Construct)",
+        "Trickery (Deception)",
+        "Evil (Demodand)",
+        "Evil (Devil)",
+        "Law (Devil)",
+        "Death (Murder)",
+        "Artifice (Toil)",
+        "Death (Undead)"
+      ],
+      "alignment": "Lawful Evil",
+      "weapon": [
+        "Shuriken"
+      ],
+      "pantheon": "Deities of Tian Xia"
+    },
+    "type": "construct"
+  },
+  "abilities": {
+    "str": {
+      "inherent": 10,
+      "total": 12,
+      "bonuses": [
+        {
+          "source": "Belt of Physical Perfection +2",
+          "value": 2,
+          "type": "enhancement",
+          "temporary": true,
+          "choiceType": "equipment",
+          "propertyName": "belt"
+        }
+      ],
+      "check": 1,
+      "permanentTotal": 10
+    },
+    "dex": {
+      "inherent": 14,
+      "total": 19,
+      "bonuses": [
+        {
+          "value": 2,
+          "source": "Android",
+          "type": "racial"
+        },
+        {
+          "source": "Belt of Physical Perfection +2",
+          "value": 2,
+          "type": "enhancement",
+          "temporary": true,
+          "choiceType": "equipment",
+          "propertyName": "belt"
+        }
+      ],
+      "check": 4,
+      "permanentTotal": 17
+    },
+    "con": {
+      "inherent": 12,
+      "total": 14,
+      "bonuses": [
+        {
+          "source": "Belt of Physical Perfection +2",
+          "value": 2,
+          "type": "enhancement",
+          "temporary": true,
+          "choiceType": "equipment",
+          "propertyName": "belt"
+        }
+      ],
+      "check": 2,
+      "permanentTotal": 12
+    },
+    "int": {
+      "inherent": 13,
+      "total": 18,
+      "bonuses": [
+        {
+          "value": 2,
+          "source": "Android",
+          "type": "racial"
+        },
+        {
+          "source": "Headband of Mental Superiority +2",
+          "value": 2,
+          "type": "enhancement",
+          "temporary": true,
+          "choiceType": "equipment",
+          "propertyName": "headband"
+        }
+      ],
+      "check": 4,
+      "permanentTotal": 16
+    },
+    "wis": {
+      "inherent": 16,
+      "total": 18,
+      "bonuses": [
+        {
+          "source": "Headband of Mental Superiority +2",
+          "value": 2,
+          "type": "enhancement",
+          "temporary": true,
+          "choiceType": "equipment",
+          "propertyName": "headband"
+        }
+      ],
+      "check": 4,
+      "permanentTotal": 16
+    },
+    "cha": {
+      "inherent": 10,
+      "total": 10,
+      "bonuses": [
+        {
+          "value": -2,
+          "source": "Android",
+          "type": "racial"
+        },
+        {
+          "source": "Headband of Mental Superiority +2",
+          "value": 2,
+          "type": "enhancement",
+          "temporary": true,
+          "choiceType": "equipment",
+          "propertyName": "headband"
+        }
+      ],
+      "check": 0,
+      "permanentTotal": 8
+    }
+  },
+  "skills": {
+    "Acrobatics": {
+      "ability": "dex",
+      "bonuses": [
+        {
+          "source": "Ki Pool",
+          "situational": true,
+          "note": "always treated as having a running start2",
+          "class": "Ninja"
+        }
+      ],
+      "acPenalty": 0,
+      "total": 8,
+      "movementBonus": 0,
+      "ranks": 1,
+      "classSkill": true
+    },
+    "Appraise": {
+      "ability": "int",
+      "acPenalty": 0,
+      "total": 4,
+      "movementBonus": 0
+    },
+    "Bluff": {
+      "ability": "cha",
+      "acPenalty": 0,
+      "total": 4,
+      "movementBonus": 0,
+      "bonuses": [],
+      "ranks": 1,
+      "classSkill": true
+    },
+    "Climb": {
+      "ability": "str",
+      "defaultAbility": "str",
+      "acPenalty": 0,
+      "total": 1,
+      "movementBonus": 0,
+      "bonuses": [],
+      "classSkill": true
+    },
+    "Craft0": {
+      "baseName": "Craft",
+      "index": 0,
+      "ability": "int",
+      "defaultAbility": "int",
+      "acPenalty": 0,
+      "total": 4,
+      "movementBonus": 0,
+      "classSkill": true
+    },
+    "Diplomacy": {
+      "ability": "cha",
+      "acPenalty": 0,
+      "total": 4,
+      "movementBonus": 0,
+      "ranks": 1,
+      "classSkill": true
+    },
+    "Disable Device": {
+      "ability": "dex",
+      "acPenalty": 0,
+      "total": 17,
+      "movementBonus": 0,
+      "bonuses": [],
+      "ranks": 10,
+      "classSkill": true
+    },
+    "Disguise": {
+      "ability": "cha",
+      "acPenalty": 0,
+      "total": 8,
+      "movementBonus": 0,
+      "bonuses": [],
+      "ranks": 5,
+      "classSkill": true
+    },
+    "Escape Artist": {
+      "ability": "dex",
+      "acPenalty": 0,
+      "total": 8,
+      "movementBonus": 0,
+      "ranks": 1,
+      "classSkill": true
+    },
+    "Fly": {
+      "ability": "dex",
+      "sizeMult": 2,
+      "acPenalty": 0,
+      "total": 4,
+      "movementBonus": 0,
+      "classSkill": true
+    },
+    "Handle Animal": {
+      "ability": "cha",
+      "acPenalty": 0,
+      "total": 0,
+      "movementBonus": 0,
+      "classSkill": true
+    },
+    "Heal": {
+      "ability": "wis",
+      "acPenalty": 0,
+      "total": 8,
+      "movementBonus": 0,
+      "ranks": 1,
+      "classSkill": true
+    },
+    "Intimidate": {
+      "ability": "cha",
+      "acPenalty": 0,
+      "total": 13,
+      "movementBonus": 0,
+      "bonuses": [
+        {
+          "source": "Inherent",
+          "situational": true,
+          "note": "You gain a +4 bonus on Intimidate checks if you are larger than your target, and a –4 penalty on Intimidate checks if you are smaller than your target."
+        }
+      ],
+      "ranks": 10,
+      "classSkill": true
+    },
+    "Knowledge (arcana)": {
+      "ability": "int",
+      "acPenalty": 0,
+      "total": 10,
+      "movementBonus": 0,
+      "bonuses": [],
+      "ranks": 3,
+      "classSkill": true
+    },
+    "Knowledge (dungeoneering)": {
+      "ability": "int",
+      "acPenalty": 0,
+      "total": 8,
+      "movementBonus": 0,
+      "bonuses": [],
+      "ranks": 1,
+      "classSkill": true
+    },
+    "Knowledge (engineering)": {
+      "ability": "int",
+      "acPenalty": 0,
+      "total": 8,
+      "movementBonus": 0,
+      "bonuses": [],
+      "ranks": 1,
+      "classSkill": true
+    },
+    "Knowledge (geography)": {
+      "ability": "int",
+      "acPenalty": 0,
+      "total": 4,
+      "movementBonus": 0,
+      "bonuses": []
+    },
+    "Knowledge (history)": {
+      "ability": "int",
+      "acPenalty": 0,
+      "total": 4,
+      "movementBonus": 0,
+      "bonuses": []
+    },
+    "Knowledge (local)": {
+      "ability": "int",
+      "acPenalty": 0,
+      "total": 4,
+      "movementBonus": 0,
+      "bonuses": []
+    },
+    "Knowledge (nature)": {
+      "ability": "int",
+      "acPenalty": 0,
+      "total": 4,
+      "movementBonus": 0,
+      "bonuses": []
+    },
+    "Knowledge (nobility)": {
+      "ability": "int",
+      "bonuses": [],
+      "acPenalty": 0,
+      "total": 4,
+      "movementBonus": 0
+    },
+    "Knowledge (planes)": {
+      "ability": "int",
+      "acPenalty": 0,
+      "total": 4,
+      "movementBonus": 0,
+      "bonuses": [],
+      "classSkill": true
+    },
+    "Knowledge (religion)": {
+      "ability": "int",
+      "acPenalty": 0,
+      "total": 10,
+      "movementBonus": 0,
+      "bonuses": [],
+      "ranks": 3,
+      "classSkill": true
+    },
+    "Linguistics": {
+      "ability": "int",
+      "acPenalty": 0,
+      "total": 4,
+      "movementBonus": 0,
+      "classSkill": true
+    },
+    "Perception": {
+      "ability": "wis",
+      "bonuses": [
+        {
+          "source": "Alert Racial",
+          "value": 2,
+          "type": "racial",
+          "race": "Android"
+        },
+        {
+          "source": "Alertness",
+          "value": 4,
+          "featType": "General"
+        }
+      ],
+      "acPenalty": 0,
+      "total": 23,
+      "movementBonus": 0,
+      "ranks": 10,
+      "classSkill": true
+    },
+    "Perform0": {
+      "baseName": "Perform",
+      "index": 0,
+      "ability": "cha",
+      "defaultAbility": "cha",
+      "acPenalty": 0,
+      "total": 0,
+      "movementBonus": 0
+    },
+    "Profession0": {
+      "baseName": "Profession",
+      "index": 0,
+      "ability": "wis",
+      "defaultAbility": "wis",
+      "acPenalty": 0,
+      "total": 4,
+      "movementBonus": 0,
+      "classSkill": true
+    },
+    "Ride": {
+      "ability": "dex",
+      "acPenalty": 0,
+      "total": 4,
+      "movementBonus": 0,
+      "classSkill": true
+    },
+    "Sense Motive": {
+      "ability": "wis",
+      "bonuses": [
+        {
+          "source": "Emotionless Racial",
+          "value": -4,
+          "type": "racial",
+          "race": "Android"
+        },
+        {
+          "source": "Alertness",
+          "value": 2,
+          "featType": "General"
+        }
+      ],
+      "acPenalty": 0,
+      "total": 2,
+      "movementBonus": 0,
+      "classSkill": true
+    },
+    "Sleight of Hand": {
+      "ability": "dex",
+      "acPenalty": 0,
+      "total": 17,
+      "movementBonus": 0,
+      "bonuses": [
+        {
+          "source": "Dagger",
+          "value": 2,
+          "situational": true,
+          "note": "to conceal your dagger"
+        },
+        {
+          "source": "Hidden Weapons",
+          "value": 5,
+          "situational": true,
+          "note": "to conceal your weapons",
+          "class": "Assassin"
+        }
+      ],
+      "ranks": 10,
+      "classSkill": true
+    },
+    "Spellcraft": {
+      "ability": "int",
+      "acPenalty": 0,
+      "total": 4,
+      "movementBonus": 0,
+      "bonuses": [],
+      "classSkill": true
+    },
+    "Stealth": {
+      "ability": "dex",
+      "sizeMult": 4,
+      "acPenalty": 0,
+      "total": 12,
+      "movementBonus": 0,
+      "bonuses": [],
+      "ranks": 5,
+      "classSkill": true
+    },
+    "Survival": {
+      "ability": "wis",
+      "acPenalty": 0,
+      "total": 9,
+      "movementBonus": 0,
+      "bonuses": [],
+      "ranks": 2,
+      "classSkill": true
+    },
+    "Swim": {
+      "ability": "str",
+      "bonuses": [
+        {
+          "source": "River Rat",
+          "value": 1,
+          "type": "trait",
+          "_sourceModule": {
+            "name": "trait",
+            "type": "Regional"
+          }
+        }
+      ],
+      "defaultAbility": "str",
+      "acPenalty": 0,
+      "total": 2,
+      "movementBonus": 0,
+      "classSkill": true
+    },
+    "Use Magic Device": {
+      "ability": "cha",
+      "acPenalty": 0,
+      "total": 0,
+      "movementBonus": 0,
+      "classSkill": true
+    }
+  },
+  "disabledBooks": [],
+  "characterIndex": "character13",
+  "offense": {
+    "attacks": {
+      "attacks": [
+        {
+          "type": "melee",
+          "name": "Touch",
+          "weapon": "touch",
+          "critical": "",
+          "damageDice": 0,
+          "dmgType": [],
+          "special": [],
+          "weaponType": "light",
+          "source": "Touch",
+          "spellOnly": true,
+          "twoHanded": false,
+          "attackAbility": "dex",
+          "damageAbility": "str",
+          "damageMult": 1,
+          "attackBonus": 10,
+          "secondaryAttackBonus": 10,
+          "fullAttackBonus": 10,
+          "secondFullAttackBonus": 10,
+          "damageBonus": 1,
+          "abilityDamageBonus": 1,
+          "secondaryAbilityDamageBonus": 0.5,
+          "secondaryDamageBonus": 0.5,
+          "secondaryDamageMult": 0.5,
+          "bonuses": [
+            {
+              "source": "Weapon Finesse",
+              "value": "dex",
+              "appliesTo": "baseAttackAbility",
+              "featType": "Combat"
+            }
+          ]
+        },
+        {
+          "type": "ranged",
+          "name": "Ranged-Touch",
+          "weapon": "ray",
+          "critical": "",
+          "damageDice": 0,
+          "dmgType": [],
+          "special": [],
+          "weaponType": "ranged",
+          "source": "Ranged-Touch",
+          "spellOnly": true,
+          "twoHanded": false,
+          "attackAbility": "dex",
+          "damageMult": 0,
+          "attackBonus": 10,
+          "secondaryAttackBonus": 10,
+          "fullAttackBonus": 10,
+          "secondFullAttackBonus": 10,
+          "damageBonus": 0,
+          "abilityDamageBonus": 0,
+          "secondaryAbilityDamageBonus": 0,
+          "secondaryDamageBonus": 0,
+          "secondaryDamageMult": 0.5,
+          "bonuses": []
+        },
+        {
+          "type": "melee",
+          "name": "Black Blade",
+          "weapon": "Dagger",
+          "damageDice": "1d4",
+          "critical": "19-20/x2",
+          "dmgType": [
+            "P",
+            "S"
+          ],
+          "special": [],
+          "weaponType": "light",
+          "descriptiveText": [
+            {
+              "decor": "bold",
+              "content": "Black Blade Statistics: ",
+              "newLine": true
+            },
+            {
+              "label": "Ego: ",
+              "content": 5
+            },
+            {
+              "label": "Int: ",
+              "content": 12
+            },
+            {
+              "label": "Wis/Cha: ",
+              "content": 8
+            },
+            {
+              "label": "Knowledge (arcana): ",
+              "content": 2
+            },
+            {
+              "label": "Languages Known: ",
+              "content": "Common plus 1 others"
+            }
+          ],
+          "source": "equipment0",
+          "index": "equipment0",
+          "handedness": "one-handed",
+          "abilityMult": 1,
+          "size": "medium",
+          "range": "10",
+          "rangedType": "thrown",
+          "attackType": "equipmentAttack",
+          "attackAbility": "dex",
+          "damageAbility": "dex",
+          "damageMult": 1,
+          "attackBonus": 13,
+          "secondaryAttackBonus": 11,
+          "fullAttackBonus": 13,
+          "secondFullAttackBonus": 11,
+          "damageBonus": 7,
+          "abilityDamageBonus": 4,
+          "secondaryAbilityDamageBonus": 0.5,
+          "secondaryDamageBonus": 1.5,
+          "secondaryDamageMult": 0.5,
+          "enchantments": [
+            {
+              "name": "Enhancement Bonus +2",
+              "source": "Black Blade"
+            },
+            {
+              "name": "Agile"
+            },
+            {
+              "name": "Returning"
+            }
+          ],
+          "bonuses": []
+        },
+        {
+          "type": "ranged",
+          "name": "Black Blade (Thrown)",
+          "weapon": "Dagger",
+          "damageDice": "1d4",
+          "critical": "19-20/x2",
+          "dmgType": [
+            "P",
+            "S"
+          ],
+          "special": [],
+          "weaponType": "light",
+          "source": "equipmentT0",
+          "index": "equipmentT0",
+          "handedness": "one-handed",
+          "defaultHandedness": "light",
+          "size": "medium",
+          "range": 10,
+          "rangedType": "thrown",
+          "attackType": "equipmentAttack",
+          "attackAbility": "dex",
+          "damageAbility": "dex",
+          "damageMult": 1,
+          "attackBonus": 13,
+          "secondaryAttackBonus": 11,
+          "fullAttackBonus": 13,
+          "secondFullAttackBonus": 11,
+          "damageBonus": 7,
+          "abilityDamageBonus": 4,
+          "secondaryAbilityDamageBonus": 0.5,
+          "secondaryDamageBonus": 1.5,
+          "secondaryDamageMult": 0.5,
+          "enchantments": [
+            {
+              "name": "Enhancement Bonus +2",
+              "source": "Black Blade"
+            },
+            {
+              "name": "Agile"
+            },
+            {
+              "name": "Returning"
+            }
+          ],
+          "bonuses": [
+            {
+              "source": "Point-Blank Shot",
+              "value": 1,
+              "appliesTo": "attack, damage",
+              "situational": true,
+              "note": "Within 30 feet",
+              "featType": "Combat"
+            },
+            {
+              "source": "Point-Blank Shot",
+              "value": 1,
+              "appliesTo": "attack",
+              "situational": true,
+              "note": "Within 30 feet",
+              "featType": "Combat"
+            }
+          ]
+        }
+      ]
+    },
+    "cmb": {
+      "bull rush": {
+        "bonuses": [],
+        "total": 7,
+        "ability": "str",
+        "visible": false,
+        "maxSize": "large"
+      },
+      "trip": {
+        "bonuses": [],
+        "total": 7,
+        "ability": "str",
+        "visible": false,
+        "maxSize": "large"
+      },
+      "overrun": {
+        "bonuses": [],
+        "total": 7,
+        "ability": "str",
+        "visible": false,
+        "maxSize": "large"
+      },
+      "bonuses": [],
+      "ability": "str",
+      "total": 7,
+      "dirty trick": {
+        "total": 7,
+        "ability": "str",
+        "visible": false,
+        "maxSize": "large"
+      },
+      "disarm": {
+        "total": 7,
+        "ability": "str",
+        "visible": false,
+        "maxSize": "large"
+      },
+      "drag": {
+        "total": 7,
+        "ability": "str",
+        "visible": false,
+        "maxSize": "large"
+      },
+      "grapple": {
+        "total": 7,
+        "ability": "str",
+        "visible": false,
+        "maxSize": "large"
+      },
+      "reposition": {
+        "total": 7,
+        "ability": "str",
+        "visible": false,
+        "maxSize": "large"
+      },
+      "steal": {
+        "total": 7,
+        "ability": "str",
+        "visible": false,
+        "maxSize": "large"
+      },
+      "sunder": {
+        "total": 7,
+        "ability": "str",
+        "visible": false,
+        "maxSize": "large"
+      }
+    },
+    "initiative": {
+      "bonuses": [],
+      "ability": "dex",
+      "total": 4
+    },
+    "bab": 6,
+    "speed": {
+      "base": 30,
+      "baseTotal": 30,
+      "baseArmorTotal": 30,
+      "flyVisible": false,
+      "flyTotal": 0,
+      "flyArmorTotal": 0,
+      "swimVisible": false,
+      "swimTotal": 0,
+      "swimArmorTotal": 0,
+      "climbVisible": false,
+      "climbTotal": 0,
+      "climbArmorTotal": 0,
+      "burrowVisible": false,
+      "burrowTotal": 0,
+      "burrowArmorTotal": 0,
+      "chargeTotal": 60,
+      "chargeArmorTotal": 60,
+      "runTotal": 120,
+      "runArmorTotal": 120
+    },
+    "feint": {
+      "total": 4,
+      "speed": "1 standard action",
+      "visible": false
+    }
+  },
+  "schemaVersion": 62,
+  "social": {},
+  "combat": {
+    "Nanite SurgeracialFeatureAasimar": {
+      "name": "Nanite Surge",
+      "title": "Nanite Surge",
+      "duration": "1 immediate action",
+      "color": "enchantment",
+      "attackType": "racialFeature",
+      "source": "Inner Sea Bestiary",
+      "levelReceived": 1,
+      "race": "Aasimar",
+      "onClick": "use",
+      "mainText": "Cause your nanites to surge, granting a +13 bonus on any one d20 roll; this ability must be activated before the roll is made. When you use this power, your circuitry-tattoos glow with light equivalent to that of a torch in illumination for 1 round",
+      "timesPerDay": 1
+    },
+    "Spell CombatclassFeatureMagus": {
+      "name": "Spell Combat",
+      "duration": "1 full-round action",
+      "color": "attack",
+      "levelReceived": 1,
+      "onClick": "effect",
+      "shortText": "Fight with a one-handed or light weapon and cast a spell as if two-weapon fighting. You may choose to take up to a {{bold}}-4{{/bold}} penalty on your attack roll to gain an equivalent circumstance bonus on a concentration check.",
+      "effect": "Spell Combat",
+      "attackType": "classFeature",
+      "class": "Magus"
+    },
+    "Arcane PoolclassFeatureMagus": {
+      "name": "Arcane Pool",
+      "duration": "1 swift action",
+      "color": "enchantment",
+      "poolName": "Arcane Pool",
+      "levelReceived": 1,
+      "onClick": "modal",
+      "stacks": true,
+      "modalType": "Weapon Enhancement",
+      "limitations": [],
+      "maxCost": 2,
+      "enhancementList": [
+        "Dancing",
+        "Flaming",
+        "Flaming Burst",
+        "Frost",
+        "Icy Burst",
+        "Keen",
+        "Shock",
+        "Shocking Burst",
+        "Speed",
+        "Vorpal"
+      ],
+      "shortText": "Expend 1 use of your Arcane Pool to add enhancement bonuses to your weapon.",
+      "effect": "Arcane Pool",
+      "attackType": "classFeature",
+      "class": "Magus"
+    },
+    "Doubleblessing": {
+      "name": "Double",
+      "duration": "1 move action",
+      "color": "illusion",
+      "mainText": "As a move action, create an illusory double of yourself. This functions as a single mirror image and lasts for 5 rounds, or until the duplicate is dispelled or destroyed.",
+      "levelReceived": 1,
+      "onClick": "effect",
+      "attackType": "blessing",
+      "propertyName": "Trickery",
+      "displayFunction": "blessingDisplay",
+      "class": "Warpriest",
+      "poolName": "Blessings"
+    },
+    "Unholy Strikeblessing": {
+      "name": "Unholy Strike",
+      "mainText": "Touch one weapon and grant it an additional 1d6 points of damage against good creatures. The weapon is treated as evil for the purposes of overcoming damage reduction. This doesn't stack with the unholy weapon special ability",
+      "color": "enchantment",
+      "duration": "1 standard action",
+      "onClick": "effect",
+      "target": "touch",
+      "attackType": "blessing",
+      "propertyName": "Evil",
+      "displayFunction": "blessingDisplay",
+      "class": "Warpriest",
+      "poolName": "Blessings"
+    },
+    "FervorclassFeatureWarpriest": {
+      "name": "Fervor",
+      "duration": "standard or swift",
+      "color": "enchantment",
+      "attackType": "classFeature",
+      "source": "Advanced Class Guide",
+      "levelReceived": 2,
+      "class": "Warpriest",
+      "onClick": "use",
+      "rightSideBand": "+10",
+      "poolName": "Fervor Rounds",
+      "shortText": "As a standard action, damage living creatures or heal undead creatures for 2d6 points of damage, unless used against yourself, in which case it is a Swift action. "
+    },
+    "Fervor (Cast spell)classFeatureWarpriest": {
+      "name": "Fervor (Cast spell)",
+      "duration": "1 swift action",
+      "origSource": "Fervor",
+      "color": "universalist",
+      "onClick": "use",
+      "poolName": "Fervor Rounds",
+      "cost": 1,
+      "mainText": "As a swift action, expend one use of fervor to cast any one warpriest spell you have prepared with a casting time of 1 round or shorter. When cast in this way, the spell can target only you. Spells cast in this way ignore somatic components and do not provoke attacks of opportunity. ",
+      "attackType": "classFeature",
+      "class": "Warpriest"
+    },
+    "SpellstrikeclassFeatureMagus": {
+      "name": "Spellstrike",
+      "color": "attack",
+      "levelReceived": 2,
+      "shortText": "You may cast a spell of range \"touch\" from the magus spell list and deliver it through your weapon as part of a melee attack. You get one free melee attack with your weapon at your highest base attack bonus to deliver this attack as part of casting the spell. You may use this with Spell Combat. The spell uses the weapon's critical threat range, dealing 2x damage on a critical hit. Note: spells that apply are denoted with ♦.",
+      "attackType": "classFeature",
+      "class": "Magus",
+      "bonuses": [
+        {
+          "source": "Ranged Spellstrike",
+          "situational": true,
+          "note": "can deliver a single-target touch attack ranged spell through a ranged weapon attack",
+          "class": "Magus",
+          "origSource": "Ranged Spellstrike Myrmidarch"
+        }
+      ]
+    },
+    "Black Blade StrikeclassFeatureMagus": {
+      "name": "Black Blade Strike",
+      "duration": "1 free action",
+      "section": "combat",
+      "origSource": "Black Blade",
+      "color": "enchantment",
+      "onClick": "effect",
+      "shortText": "Expend 1 use of your Black Blade's arcane pool to grant it a +2 bonus on damage rolls for 1 minute.",
+      "effect": "Black Blade Strike",
+      "poolName": "Black Blade Arcane Pool",
+      "attackType": "classFeature",
+      "class": "Magus"
+    },
+    "Enhance Sacred WeaponclassFeatureWarpriest": {
+      "name": "Enhance Sacred Weapon",
+      "duration": "1 swift action",
+      "origSource": "Sacred Weapon",
+      "color": "enchantment",
+      "poolName": "Sacred Weapon Rounds",
+      "levelReceived": 1,
+      "stacks": true,
+      "onClick": "modal",
+      "modalType": "Weapon Enhancement",
+      "enhancementList": [
+        "Defending",
+        "Flaming",
+        "Frost",
+        "Keen",
+        "Shock",
+        "Mighty Cleaving"
+      ],
+      "maxCost": 1,
+      "shortText": "Add enhancement bonuses to your weapon, using 1 use of this ability per round, per weapon enchanted.",
+      "effect": "Enhance Sacred Weapon",
+      "attackType": "classFeature",
+      "class": "Warpriest"
+    },
+    "Channel Negative EnergyclassFeatureWarpriest": {
+      "name": "Channel Negative Energy",
+      "duration": "1 standard action",
+      "color": "divination",
+      "origSource": "Channel Energy",
+      "subTitle": "+2d6",
+      "attackType": "classFeature",
+      "source": "Advanced Class Guide",
+      "levelReceived": 4,
+      "class": "Warpriest",
+      "onClick": "use",
+      "rightSideBand": "DC 16 Will half",
+      "shortText": "Channel 2d6 energy in a 30 foot burst, dealing either positive or negative energy dependending on alignment. Consumes 2 uses of Fervor.",
+      "equivalent": "Channel Energy",
+      "poolName": "Fervor Rounds",
+      "cost": 2
+    },
+    "Energy Attunement 1classFeatureMagus": {
+      "name": "Energy Attunement 1",
+      "duration": "1 free action",
+      "section": "combat",
+      "origSource": "Black Blade",
+      "color": "enchantment",
+      "onClick": "use",
+      "shortText": "Expend 1 use of your Black Blade's arcane pool to cause it to deal Cold, Electricity, or Fire damage instead of weapon damage.",
+      "poolName": "Black Blade Arcane Pool",
+      "attackType": "classFeature",
+      "class": "Magus"
+    },
+    "Energy Attunement 2classFeatureMagus": {
+      "name": "Energy Attunement 2",
+      "duration": "1 free action",
+      "section": "combat",
+      "origSource": "Black Blade",
+      "color": "enchantment",
+      "onClick": "use",
+      "shortText": "Expend 1 use of your Black Blade's arcane pool to cause it to deal Sonic or Force damage instead of weapon damage.",
+      "cost": 2,
+      "poolName": "Black Blade Arcane Pool",
+      "attackType": "classFeature",
+      "class": "Magus"
+    },
+    "Startoss Stylefeat": {
+      "name": "Startoss Style",
+      "color": "evocation",
+      "onClick": "effect",
+      "duration": "1 swift action",
+      "mainText": "Enter Startoss Style, gaining bonuses with your chosen weapon from the thrown fighter weapon group.",
+      "type": "Combat",
+      "attackType": "feat"
+    },
+    "Sneak Attackspecial": {
+      "name": "Sneak Attack",
+      "title": "Sneak Attack",
+      "section": "combat",
+      "subTitle": "+3d6",
+      "color": "melee",
+      "rolls": [
+        {
+          "rollInfo": [
+            {
+              "rollText": "3dd6+0"
+            }
+          ],
+          "type": "damage",
+          "text": "Damage"
+        }
+      ],
+      "attackType": "special",
+      "preText": "Add 3d6 precision damage when you damage a foe within 30 feet that is caught flat-footed, denied its Dexterity bonus to AC, or when flanking. Does not affect Aeons, Elementals, Incorporeal beings, Oozes, Proteans, or Swarms.",
+      "bonuses": [
+        {
+          "source": "Assassin",
+          "value": 3
+        }
+      ]
+    },
+    "Death AttackclassFeatureAssassin": {
+      "name": "Death Attack",
+      "color": "necromancy",
+      "duration": "3 rounds",
+      "rightSideBand": "DC  19 Fortitude negates",
+      "mainText": "You can study your victim for 3 rounds and then make a sneak attack with a melee weapon. If you deal damage, the sneak attack has the additional effect of either paralyzing or killing the target (your choice). Studying the victim is a standard action. The death attack fails if the target detects you or recognizes you as an enemy. If the victim fails a Fortitude save against the kill effect, they die. If the saving throw fails against the paralysis effect, the victim is rendered helpless for 1d6 + 5 rounds. You must make this attack within 3 rounds of finishing your study or you must start over.",
+      "attackType": "classFeature",
+      "class": "Assassin"
+    },
+    "Poison Weaponspecial": {
+      "name": "Poison Weapon",
+      "title": "Poison Weapon",
+      "duration": "1 standard action",
+      "color": "necromancy",
+      "attackType": "special",
+      "mainText": "Applying a poison is a standard action. You cannot poison yourself while applying the poison, but if you roll a Natural 1 on your attack roll, you expose yourself to the poison."
+    }
+  },
+  "defense": {
+    "ac": {
+      "bonuses": [
+        {
+          "source": "Amulet of Natural Armor +2",
+          "value": 2,
+          "type": "natural armor enhancement",
+          "appliesTo": "ac",
+          "choiceType": "equipment",
+          "propertyName": "neck"
+        }
+      ],
+      "ACPenalty": 0,
+      "shieldACPenalty": 0,
+      "armorACPenalty": 0,
+      "ability": "dex",
+      "armorACBonus": 4,
+      "shieldACBonus": 0,
+      "encumbranceMaxDex": false,
+      "encumbranceACModifier": 0,
+      "agileACPenalty": 0,
+      "maxDexBonus": 6,
+      "arcaneSpellFailure": 10,
+      "total": 20,
+      "flatFooted": 16,
+      "touch": 14
+    },
+    "cmd": {
+      "total": 21,
+      "dexAbility": "dex",
+      "strAbility": "str",
+      "bull rush": {
+        "total": 21,
+        "strAbility": "str",
+        "dexAbility": "dex",
+        "bonuses": []
+      },
+      "dirty trick": {
+        "total": 21,
+        "strAbility": "str",
+        "dexAbility": "dex"
+      },
+      "disarm": {
+        "total": 21,
+        "strAbility": "str",
+        "dexAbility": "dex"
+      },
+      "drag": {
+        "total": 21,
+        "strAbility": "str",
+        "dexAbility": "dex"
+      },
+      "grapple": {
+        "total": 21,
+        "strAbility": "str",
+        "dexAbility": "dex"
+      },
+      "overrun": {
+        "total": 21,
+        "strAbility": "str",
+        "dexAbility": "dex",
+        "bonuses": []
+      },
+      "reposition": {
+        "total": 21,
+        "strAbility": "str",
+        "dexAbility": "dex"
+      },
+      "steal": {
+        "total": 21,
+        "strAbility": "str",
+        "dexAbility": "dex"
+      },
+      "sunder": {
+        "total": 21,
+        "strAbility": "str",
+        "dexAbility": "dex"
+      },
+      "trip": {
+        "total": 21,
+        "strAbility": "str",
+        "dexAbility": "dex"
+      }
+    },
+    "saves": {
+      "reflex": {
+        "bonuses": [
+          {
+            "source": "Constructed Racial",
+            "value": 4,
+            "type": "racial",
+            "temporary": false,
+            "situational": true,
+            "note": "vs. mind-affecting effects, paralysis, poison, and stun effects",
+            "race": "Android"
+          },
+          {
+            "source": "Fey Foundling",
+            "value": 2,
+            "situational": true,
+            "note": "vs. death effects",
+            "featType": "General"
+          },
+          {
+            "source": "Save Bonus against Poison",
+            "value": 2,
+            "situational": true,
+            "note": "vs. Poison",
+            "class": "Assassin"
+          },
+          {
+            "source": "Cloak of Resistance +4",
+            "value": 4,
+            "type": "resistance",
+            "choiceType": "equipment",
+            "propertyName": "shoulders"
+          }
+        ],
+        "total": 13,
+        "ability": "dex",
+        "base": 5
+      },
+      "will": {
+        "bonuses": [
+          {
+            "source": "Constructed Racial",
+            "value": 4,
+            "type": "racial",
+            "temporary": false,
+            "situational": true,
+            "note": "vs. mind-affecting effects, paralysis, poison, and stun effects",
+            "race": "Android"
+          },
+          {
+            "source": "Fey Foundling",
+            "value": 2,
+            "situational": true,
+            "note": "vs. death effects",
+            "featType": "General"
+          },
+          {
+            "source": "Save Bonus against Poison",
+            "value": 2,
+            "situational": true,
+            "note": "vs. Poison",
+            "class": "Assassin"
+          },
+          {
+            "source": "Cloak of Resistance +4",
+            "value": 4,
+            "type": "resistance",
+            "choiceType": "equipment",
+            "propertyName": "shoulders"
+          }
+        ],
+        "total": 16,
+        "ability": "wis",
+        "base": 8
+      },
+      "fort": {
+        "bonuses": [
+          {
+            "source": "Constructed Racial",
+            "value": 4,
+            "type": "racial",
+            "temporary": false,
+            "situational": true,
+            "note": "vs. mind-affecting effects, paralysis, poison, and stun effects",
+            "race": "Android"
+          },
+          {
+            "source": "Fey Foundling",
+            "value": 2,
+            "situational": true,
+            "note": "vs. death effects",
+            "featType": "General"
+          },
+          {
+            "source": "Save Bonus against Poison",
+            "value": 2,
+            "situational": true,
+            "note": "vs. Poison",
+            "class": "Assassin"
+          },
+          {
+            "source": "Resilient",
+            "value": 1,
+            "type": "trait",
+            "_sourceModule": {
+              "name": "trait",
+              "type": "Combat"
+            }
+          },
+          {
+            "source": "Cloak of Resistance +4",
+            "value": 4,
+            "type": "resistance",
+            "choiceType": "equipment",
+            "propertyName": "shoulders"
+          }
+        ],
+        "total": 13,
+        "ability": "con",
+        "base": 6
+      }
+    },
+    "hp": {
+      "bonuses": [
+        {
+          "source": "Fey Foundling",
+          "situational": true,
+          "note": "2 extra points per die rolled when receiving magical healing",
+          "featType": "General"
+        }
+      ],
+      "total": 73,
+      "current": 73
+    },
+    "resistances": {
+      "bonuses": [
+        {
+          "source": "Constructed Racial",
+          "value": "Fatigue, Exhaustion, Disease, Sleep, Fear, Emotion-based effects. Cannot gain morale bonuses",
+          "race": "Android"
+        },
+        {
+          "source": "Fey Foundling",
+          "situational": true,
+          "note": "when receiving magical healing you heal 2 extra points per die rolled, but take 1 extra damage vs. cold iron",
+          "featType": "General"
+        },
+        {
+          "source": "Improved Uncanny Dodge",
+          "value": "Cannot be caught flanked or receive sneak attack from flanking unless sneak attack class is 4+ class levels higher."
+        }
+      ]
+    },
+    "immunities": {
+      "bonuses": [
+        {
+          "source": "Constructed Racial",
+          "value": "Immune to disease, sleep effects, fear effects, and all emotion-based effects",
+          "race": "Android"
+        },
+        {
+          "source": "Uncanny Dodge",
+          "value": "Cannot be caught flat-footed. Invisible attackers do not deny Dex bonus to AC (still lost when immobilized or successfully feinted against)."
+        }
+      ]
+    },
+    "dr": {
+      "bonuses": [],
+      "total": {}
+    }
+  },
+  "pools": {
+    "Smite Good": {
+      "maxCharges": 1,
+      "currentCharges": 1,
+      "bonuses": []
+    },
+    "Fervor Rounds": {
+      "maxCharges": 5,
+      "currentCharges": 5,
+      "bonuses": []
+    },
+    "Blessings": {
+      "maxCharges": 5,
+      "currentCharges": 5,
+      "bonuses": []
+    },
+    "Arcane Pool": {
+      "maxCharges": 4,
+      "currentCharges": 4,
+      "bonuses": []
+    },
+    "Black Blade Arcane Pool": {
+      "maxCharges": 2,
+      "currentCharges": 2,
+      "bonuses": []
+    },
+    "Sacred Weapon Rounds": {
+      "maxCharges": 5,
+      "currentCharges": 5,
+      "bonuses": []
+    }
+  },
+  "spells": {
+    "Warpriest": {
+      "className": "Warpriest",
+      "spellKnowledge": "All",
+      "spellsPrepared": [
+        5,
+        6,
+        5,
+        4,
+        1
+      ],
+      "casterLevel": 10,
+      "castingType": "prepared",
+      "spellList": "Cleric",
+      "spellType": "divine",
+      "baseSaveDC": 10,
+      "ability": "wis",
+      "level0SpellName": "Orison",
+      "restrictions": [
+        {
+          "descriptor": "good"
+        }
+      ],
+      "concentration": {
+        "total": 14
+      },
+      "preparedSpells": {
+        "0": [
+          {
+            "name": "Bleed",
+            "school": "necromancy",
+            "casting_time": "1 standard action",
+            "components": "V, S",
+            "range": "close (25 ft. + 5 ft./2 levels)",
+            "targets": "one living creature",
+            "duration": "instantaneous",
+            "damage": true,
+            "saving_throw": "Will negates",
+            "spell_resistence": "yes",
+            "source": "PFRPG",
+            "short_description": "Cause a stabilized creature to resume dying.",
+            "material_costs": "NULL",
+            "level": 0,
+            "origLevel": "0",
+            "slots": 1,
+            "location": "both",
+            "spellLevel": 0,
+            "index": 0,
+            "attackType": "spell",
+            "casterClass": "Warpriest"
+          },
+          {
+            "name": "Create Water",
+            "school": "conjuration",
+            "subschool": "creation",
+            "descriptor": "water",
+            "casting_time": "1 standard action",
+            "components": "V, S",
+            "range": "close (25 ft. + 5 ft./2 levels)",
+            "effect": "up to 2 gallons of water/level",
+            "duration": "instantaneous",
+            "spell_resistence": "no",
+            "source": "PFRPG",
+            "short_description": "Creates 2 gallons/level of pure water.",
+            "material_costs": "NULL",
+            "level": 0,
+            "origLevel": "0",
+            "slots": 1,
+            "location": "both",
+            "spellLevel": 0,
+            "index": 1,
+            "attackType": "spell",
+            "casterClass": "Warpriest"
+          },
+          {
+            "name": "Detect Magic",
+            "school": "divination",
+            "casting_time": "1 standard action",
+            "components": "V, S",
+            "range": "60 ft.",
+            "area": "cone-shaped emanation",
+            "duration": "concentration, up to 1 min./level",
+            "spell_resistence": "no",
+            "source": "PFRPG",
+            "short_description": "Detects spells and magic items within 60 ft.",
+            "material_costs": "NULL",
+            "level": 0,
+            "origLevel": "0",
+            "slots": 1,
+            "location": "both",
+            "spellLevel": 0,
+            "index": 2,
+            "attackType": "spell",
+            "casterClass": "Warpriest"
+          },
+          {
+            "name": "Detect Poison",
+            "school": "divination",
+            "casting_time": "1 standard action",
+            "components": "V, S",
+            "range": "close (25 ft. + 5 ft./2 levels)",
+            "area": "one creature, one object, or a 5-ft. cube",
+            "targets": "one creature, one object, or a 5-ft. cube",
+            "duration": "instantaneous",
+            "spell_resistence": "no",
+            "source": "PFRPG",
+            "short_description": "Detects poison in a creature or object.",
+            "material_costs": "NULL",
+            "level": 0,
+            "origLevel": "0",
+            "slots": 1,
+            "location": "both",
+            "spellLevel": 0,
+            "index": 3,
+            "attackType": "spell",
+            "casterClass": "Warpriest"
+          },
+          {
+            "name": "Light",
+            "school": "evocation",
+            "descriptor": "light",
+            "casting_time": "1 standard action",
+            "components": "V, M/DF (a firefly)",
+            "range": "touch",
+            "targets": "object touched",
+            "duration": "10 min./level",
+            "spell_resistence": "no",
+            "source": "PFRPG",
+            "short_description": "Object shines like a torch.",
+            "material_costs": "NULL",
+            "level": 0,
+            "origLevel": "0",
+            "slots": 1,
+            "location": "both",
+            "spellLevel": 0,
+            "index": 4,
+            "attackType": "spell",
+            "casterClass": "Warpriest"
+          }
+        ],
+        "1": [
+          {
+            "name": "Command",
+            "school": "enchantment",
+            "subschool": "compulsion",
+            "descriptor": "language-dependent, mind-affecting",
+            "casting_time": "1 standard action",
+            "components": "V",
+            "range": "close (25 ft. + 5 ft./2 levels)",
+            "targets": "one living creature",
+            "duration": "1 round",
+            "saving_throw": "Will negates",
+            "spell_resistence": "yes",
+            "source": "PFRPG",
+            "short_description": "One subject obeys a command for 1 round.",
+            "material_costs": "NULL",
+            "level": 1,
+            "origLevel": "1",
+            "slots": 1,
+            "location": "both",
+            "spellLevel": 1,
+            "index": 2,
+            "attackType": "spell",
+            "casterClass": "Warpriest"
+          },
+          {
+            "name": "Cure Light Wounds",
+            "school": "conjuration",
+            "subschool": "healing",
+            "casting_time": "1 standard action",
+            "components": "V, S",
+            "range": "touch",
+            "targets": "creature touched",
+            "duration": "instantaneous",
+            "saving_throw": "Will half (harmless); see text",
+            "spell_resistence": "yes (harmless); see text",
+            "source": "PFRPG",
+            "short_description": "Cures 1d8 damage + 1/level (max +5).",
+            "material_costs": "NULL",
+            "level": 1,
+            "origLevel": "1",
+            "slots": 1,
+            "location": "both",
+            "spellLevel": 1,
+            "index": 1,
+            "attackType": "spell",
+            "casterClass": "Warpriest"
+          },
+          {
+            "name": "Endure Elements",
+            "school": "abjuration",
+            "casting_time": "1 standard action",
+            "components": "V, S",
+            "range": "touch",
+            "targets": "creature touched",
+            "duration": "24 hours",
+            "saving_throw": "Will negates (harmless)",
+            "spell_resistence": "yes (harmless)",
+            "source": "PFRPG",
+            "short_description": "Exist comfortably in hot or cold regions.",
+            "material_costs": "NULL",
+            "level": 1,
+            "origLevel": "1",
+            "slots": 1,
+            "location": "both",
+            "spellLevel": 1,
+            "index": 0,
+            "attackType": "spell",
+            "casterClass": "Warpriest"
+          },
+          {
+            "name": "Inflict Light Wounds",
+            "school": "necromancy",
+            "casting_time": "1 standard action",
+            "components": "V, S",
+            "range": "touch",
+            "targets": "creature touched",
+            "duration": "instantaneous",
+            "saving_throw": "Will half",
+            "spell_resistence": "yes",
+            "damage": true,
+            "source": "PFRPG",
+            "short_description": "Touch deals 1d8 damage +1/level (max +5).",
+            "material_costs": "NULL",
+            "level": 1,
+            "bonus": true,
+            "spontaneous": true,
+            "location": "both",
+            "spellLevel": "1",
+            "index": "scw",
+            "attackType": "spell",
+            "casterClass": "Warpriest"
+          },
+          {
+            "name": "Murderous Command",
+            "school": "enchantment",
+            "subschool": "compulsion",
+            "descriptor": "mind-affecting",
+            "casting_time": "1 standard action",
+            "components": "V",
+            "range": "close (25 ft. + 5 ft./2 levels)",
+            "targets": "one living creature",
+            "duration": "1 round",
+            "saving_throw": "Will negates",
+            "spell_resistence": "yes",
+            "augmentedLevel": 1,
+            "source": "Ultimate Magic",
+            "short_description": "Target is compelled to kill its ally.",
+            "material_costs": "NULL",
+            "level": 1,
+            "origLevel": "1",
+            "slots": 1,
+            "location": "both",
+            "spellLevel": 1,
+            "index": 3,
+            "attackType": "spell",
+            "casterClass": "Warpriest"
+          },
+          {
+            "name": "Scarify",
+            "school": "necromancy",
+            "casting_time": "1 standard action",
+            "components": "V, S",
+            "range": "touch",
+            "targets": "creature touched",
+            "duration": "instantaneous",
+            "saving_throw": "Fortitude negates (harmless)",
+            "spell_resistence": "yes (harmless)",
+            "source": "Inner Sea Temples",
+            "material_costs": "NULL",
+            "level": 1,
+            "origLevel": "1",
+            "slots": 1,
+            "location": "both",
+            "spellLevel": 1,
+            "index": 5,
+            "attackType": "spell",
+            "casterClass": "Warpriest"
+          },
+          {
+            "name": "Summon Monster I",
+            "school": "conjuration",
+            "subschool": "summoning",
+            "descriptor": "see text",
+            "casting_time": "1 round",
+            "components": "V, S, F/DF (a tiny bag and a small candle)",
+            "range": "close (25 ft. + 5 ft./2 levels)",
+            "effect": "one summoned creature",
+            "duration": "1 round/level",
+            "spell_resistence": "no",
+            "source": "PFRPG",
+            "short_description": "Summons extraplanar creature to fight for you.",
+            "material_costs": "NULL",
+            "level": 1,
+            "origLevel": "1",
+            "slots": 1,
+            "location": "both",
+            "spellLevel": 1,
+            "index": 4,
+            "attackType": "spell",
+            "casterClass": "Warpriest"
+          }
+        ],
+        "2": [
+          {
+            "name": "Bear's Endurance",
+            "school": "transmutation",
+            "casting_time": "1 standard action",
+            "components": "V, S, M/DF (a few hairs, or a pinch of dung, from a bear)",
+            "range": "touch",
+            "targets": "creature touched",
+            "duration": "1 min./level",
+            "saving_throw": "Will negates (harmless)",
+            "spell_resistence": "yes",
+            "source": "PFRPG",
+            "short_description": "Subject gains +4 to Con for 1 min./level.",
+            "material_costs": "NULL",
+            "level": 2,
+            "origLevel": "2",
+            "slots": 1,
+            "location": "both",
+            "spellLevel": 2,
+            "index": 5,
+            "attackType": "spell",
+            "casterClass": "Warpriest"
+          },
+          {
+            "name": "Bone Fists",
+            "school": "necromancy",
+            "casting_time": "1 standard action",
+            "components": "V, S, M (the knucklebone of a dire animal)",
+            "range": "close (25 ft. + 5 ft./2 levels)",
+            "targets": "1 creature/level, no two of which can be more than 30 feet apart",
+            "duration": "1 minute/level",
+            "saving_throw": "none (harmless)",
+            "spell_resistence": "no",
+            "source": "Magic Tactics Toolbox",
+            "material_costs": "NULL",
+            "level": 2,
+            "origLevel": "2",
+            "slots": 1,
+            "location": "both",
+            "spellLevel": 2,
+            "index": 3,
+            "attackType": "spell",
+            "casterClass": "Warpriest"
+          },
+          {
+            "name": "Detect Magic, Greater",
+            "school": "divination",
+            "casting_time": "1 standard action",
+            "components": "V, S",
+            "range": "60 ft.",
+            "area": "cone-shaped emanation",
+            "duration": "concentration, up to 1 minute/level (D)",
+            "spell_resistence": "no",
+            "source": "Ultimate Intrigue",
+            "short_description": "As detect magic, but learn more information.",
+            "material_costs": "NULL",
+            "level": 2,
+            "origLevel": "2",
+            "slots": 1,
+            "location": "both",
+            "spellLevel": 2,
+            "index": 4,
+            "attackType": "spell",
+            "casterClass": "Warpriest"
+          },
+          {
+            "name": "Inflict Moderate Wounds",
+            "school": "necromancy",
+            "casting_time": "1 standard action",
+            "components": "V, S",
+            "range": "touch",
+            "targets": "creature touched",
+            "duration": "instantaneous",
+            "saving_throw": "Will half",
+            "spell_resistence": "yes",
+            "damage": true,
+            "source": "PFRPG",
+            "short_description": "Touch attack, 2d8 damage +1/level (max +10).",
+            "material_costs": "NULL",
+            "level": 2,
+            "bonus": true,
+            "spontaneous": true,
+            "location": "both",
+            "spellLevel": "2",
+            "index": "scw",
+            "attackType": "spell",
+            "casterClass": "Warpriest"
+          },
+          {
+            "name": "Restoration, Lesser",
+            "school": "conjuration",
+            "subschool": "healing",
+            "casting_time": "3 rounds",
+            "components": "V, S",
+            "range": "touch",
+            "targets": "creature touched",
+            "duration": "instantaneous",
+            "saving_throw": "Will negates (harmless)",
+            "spell_resistence": "yes (harmless)",
+            "source": "PFRPG",
+            "short_description": "Dispels magical ability penalty or repairs 1d4 ability damage.",
+            "material_costs": "NULL",
+            "level": 2,
+            "origLevel": "2",
+            "slots": 1,
+            "location": "both",
+            "spellLevel": 2,
+            "index": 0,
+            "attackType": "spell",
+            "casterClass": "Warpriest"
+          },
+          {
+            "name": "Summon Monster II",
+            "school": "conjuration",
+            "subschool": "summoning",
+            "casting_time": "1 round",
+            "components": "V, S, F/DF (a tiny bag and a small candle)",
+            "range": "close (25 ft. + 5 ft./2 levels)",
+            "effect": "one summoned creature",
+            "duration": "1 round/level",
+            "spell_resistence": "no",
+            "source": "PFRPG",
+            "short_description": "Summons extraplanar creature to fight for you.",
+            "material_costs": "NULL",
+            "level": 2,
+            "origLevel": "2",
+            "slots": 1,
+            "location": "both",
+            "spellLevel": 2,
+            "index": 2,
+            "attackType": "spell",
+            "casterClass": "Warpriest"
+          }
+        ],
+        "3": [
+          {
+            "name": "Animate Dead",
+            "school": "necromancy",
+            "descriptor": "evil",
+            "casting_time": "1 standard action",
+            "components": "V, S, M (an onyx gem worth at least 25 gp per Hit Die of the undead)",
+            "costly_components": 1,
+            "range": "touch",
+            "targets": "one or more corpses touched",
+            "duration": "instantaneous",
+            "spell_resistence": "no",
+            "augmentedLevel": 6,
+            "augmented2Level": 8,
+            "augmented2Cost": 10,
+            "source": "PFRPG",
+            "short_description": "Creates undead skeletons and zombies.",
+            "material_costs": 25,
+            "level": 3,
+            "origLevel": "3",
+            "slots": 1,
+            "location": "both",
+            "spellLevel": 3,
+            "index": 0,
+            "attackType": "spell",
+            "casterClass": "Warpriest"
+          },
+          {
+            "name": "Cure Serious Wounds",
+            "school": "conjuration",
+            "subschool": "healing",
+            "casting_time": "1 standard action",
+            "components": "V, S",
+            "range": "touch",
+            "targets": "creature touched",
+            "duration": "instantaneous",
+            "saving_throw": "Will half (harmless); see text",
+            "spell_resistence": "yes (harmless); see text",
+            "source": "PFRPG",
+            "short_description": "Cures 3d8 damage + 1/level (max +15).",
+            "material_costs": "NULL",
+            "level": 3,
+            "origLevel": "3",
+            "slots": 1,
+            "location": "both",
+            "spellLevel": 3,
+            "index": 1,
+            "attackType": "spell",
+            "casterClass": "Warpriest"
+          },
+          {
+            "name": "Dispel Magic",
+            "school": "abjuration",
+            "casting_time": "1 standard action",
+            "components": "V, S",
+            "range": "medium (100 ft. + 10 ft./level)",
+            "area": "one spellcaster, creature, or object",
+            "targets": "one spellcaster, creature, or object",
+            "duration": "instantaneous",
+            "spell_resistence": "no",
+            "source": "PFRPG",
+            "short_description": "Cancels one magical spell or effect.",
+            "material_costs": "NULL",
+            "level": 3,
+            "origLevel": "3",
+            "slots": 1,
+            "location": "both",
+            "spellLevel": 3,
+            "index": 3,
+            "attackType": "spell",
+            "casterClass": "Warpriest"
+          },
+          {
+            "name": "Inflict Serious Wounds",
+            "school": "necromancy",
+            "casting_time": "1 standard action",
+            "components": "V, S",
+            "range": "touch",
+            "targets": "creature touched",
+            "duration": "instantaneous",
+            "saving_throw": "Will half",
+            "spell_resistence": "yes",
+            "damage": true,
+            "source": "PFRPG",
+            "short_description": "Touch attack, 3d8 damage +1/level (max +15).",
+            "material_costs": "NULL",
+            "level": 3,
+            "bonus": true,
+            "spontaneous": true,
+            "location": "both",
+            "spellLevel": "3",
+            "index": "scw",
+            "attackType": "spell",
+            "casterClass": "Warpriest"
+          },
+          {
+            "name": "Summon Monster III",
+            "school": "conjuration",
+            "subschool": "summoning",
+            "casting_time": "1 round",
+            "components": "V, S, F/DF (a tiny bag and a small candle)",
+            "range": "close (25 ft. + 5 ft./2 levels)",
+            "effect": "one summoned creature",
+            "duration": "1 round/level",
+            "spell_resistence": "no",
+            "source": "PFRPG",
+            "short_description": "Summons extraplanar creature to fight for you.",
+            "material_costs": "NULL",
+            "level": 3,
+            "origLevel": "3",
+            "slots": 1,
+            "location": "both",
+            "spellLevel": 3,
+            "index": 2,
+            "attackType": "spell",
+            "casterClass": "Warpriest"
+          }
+        ],
+        "4": [
+          {
+            "name": "Inflict Critical Wounds",
+            "school": "necromancy",
+            "casting_time": "1 standard action",
+            "components": "V, S",
+            "range": "touch",
+            "targets": "creature touched",
+            "duration": "instantaneous",
+            "saving_throw": "Will half",
+            "spell_resistence": "yes",
+            "damage": true,
+            "source": "PFRPG",
+            "short_description": " Touch attack, 4d8 damage + 1/level (max +20).",
+            "material_costs": "NULL",
+            "level": 4,
+            "bonus": true,
+            "spontaneous": true,
+            "location": "both",
+            "spellLevel": "4",
+            "index": "scw",
+            "attackType": "spell",
+            "casterClass": "Warpriest"
+          },
+          {
+            "name": "Restoration",
+            "school": "conjuration",
+            "subschool": "healing",
+            "casting_time": "3 rounds",
+            "components": "V, S, M (diamond dust worth 100 gp or 1,000 gp, see text)",
+            "costly_components": 1,
+            "range": "touch",
+            "targets": "creature touched",
+            "duration": "instantaneous",
+            "saving_throw": "Will negates (harmless)",
+            "spell_resistence": "yes (harmless)",
+            "source": "PFRPG",
+            "short_description": "Restores level and ability score drains.",
+            "level": 4,
+            "origLevel": "4",
+            "slots": 1,
+            "location": "both",
+            "spellLevel": 4,
+            "index": 0,
+            "attackType": "spell",
+            "casterClass": "Warpriest"
+          }
+        ]
+      }
+    },
+    "Magus": {
+      "className": "Magus",
+      "spellKnowledge": "Known Spells",
+      "spellsPrepared": [
+        4,
+        5,
+        4,
+        3,
+        0
+      ],
+      "casterLevel": 10,
+      "castingType": "prepared",
+      "spellList": "Magus",
+      "spellType": "arcane",
+      "baseSaveDC": 10,
+      "ability": "int",
+      "level0SpellName": "Cantrip",
+      "concentration": {
+        "total": 14
+      },
+      "knownSpells": {
+        "0": [
+          "Acid Splash",
+          "Arcane Mark",
+          "Dancing Lights",
+          "Daze",
+          "Detect Magic",
+          "Disrupt Undead",
+          "Flare",
+          "Ghost Sound",
+          "Light",
+          "Mage Hand",
+          "Open/Close",
+          "Prestidigitation",
+          "Ray of Frost",
+          "Read Magic",
+          "Spark",
+          "Detect Fiendish Presence",
+          "Grasp"
+        ],
+        "1": [
+          {
+            "name": "shield"
+          },
+          {
+            "name": "mount"
+          },
+          {
+            "name": "snowball (potn)"
+          },
+          {
+            "name": "ray of enfeeblement"
+          },
+          {
+            "name": "chill touch"
+          }
+        ],
+        "2": [
+          {
+            "name": "brow gasher"
+          },
+          {
+            "name": "defending bone"
+          },
+          {
+            "name": "web"
+          },
+          {
+            "name": "glitterdust"
+          },
+          {
+            "name": "darkness"
+          }
+        ],
+        "3": [
+          {
+            "name": "vampiric touch"
+          },
+          {
+            "name": "ray of exhaustion"
+          },
+          {
+            "name": "discharge"
+          },
+          {
+            "name": "arcane sight"
+          }
+        ],
+        "4": [
+          {
+            "name": "mischievous shadow"
+          },
+          {
+            "name": "stoneskin"
+          },
+          {
+            "name": "infernal healing, greater"
+          },
+          {
+            "name": "invisibility, greater"
+          }
+        ]
+      },
+      "preparedSpells": {
+        "0": [
+          {
+            "name": "Arcane Mark",
+            "school": "universal",
+            "casting_time": "1 standard action",
+            "components": "V, S",
+            "range": "touch",
+            "effect": "one personal rune or mark, all of which must fit within 1 sq. ft.",
+            "duration": "permanent",
+            "spell_resistence": "no",
+            "source": "PFRPG",
+            "short_description": " Inscribes a personal rune on an object or creature (visible or invisible).",
+            "material_costs": "NULL",
+            "level": 0,
+            "origLevel": "0",
+            "slots": 1,
+            "location": "both",
+            "spellLevel": 0,
+            "index": 0,
+            "attackType": "spell",
+            "casterClass": "Magus"
+          },
+          {
+            "name": "Daze",
+            "school": "enchantment",
+            "subschool": "compulsion",
+            "descriptor": "mind-affecting",
+            "casting_time": "1 standard action",
+            "components": "V, S, M (a pinch of wool or similar substance)",
+            "range": "close (25 ft. + 5 ft./2 levels)",
+            "targets": "one humanoid creature of 4 HD or less",
+            "duration": "1 round",
+            "saving_throw": "Will negates",
+            "spell_resistence": "yes",
+            "source": "PFRPG",
+            "short_description": "Humanoid creature of 4 HD or less loses next action.",
+            "material_costs": "NULL",
+            "level": 0,
+            "origLevel": "0",
+            "slots": 1,
+            "location": "both",
+            "spellLevel": 0,
+            "index": 1,
+            "attackType": "spell",
+            "casterClass": "Magus"
+          },
+          {
+            "name": "Mage Hand",
+            "school": "transmutation",
+            "casting_time": "1 standard action",
+            "components": "V, S",
+            "range": "close (25 ft. + 5 ft./2 levels)",
+            "targets": "one nonmagical, unattended object weighing up to 5 lbs.",
+            "duration": "concentration",
+            "spell_resistence": "no",
+            "source": "PFRPG",
+            "short_description": "5-pound telekinesis.",
+            "material_costs": "NULL",
+            "level": 0,
+            "origLevel": "0",
+            "slots": 1,
+            "location": "both",
+            "spellLevel": 0,
+            "index": 3,
+            "attackType": "spell",
+            "casterClass": "Magus"
+          },
+          {
+            "name": "Read Magic",
+            "school": "divination",
+            "casting_time": "1 standard action",
+            "components": "V, S, F (a clear crystal or mineral prism)",
+            "range": "personal",
+            "targets": "you",
+            "duration": "10 min./level",
+            "source": "PFRPG",
+            "short_description": "Read scrolls and spellbooks.",
+            "material_costs": "NULL",
+            "level": 0,
+            "origLevel": "0",
+            "slots": 1,
+            "location": "both",
+            "spellLevel": 0,
+            "index": 2,
+            "attackType": "spell",
+            "casterClass": "Magus"
+          }
+        ],
+        "1": [
+          {
+            "name": "Chill Touch",
+            "school": "necromancy",
+            "casting_time": "1 standard action",
+            "components": "V, S",
+            "range": "touch",
+            "targets": "creature or creatures touched (up to one/level)",
+            "duration": "instantaneous",
+            "saving_throw": "Fortitude partial or Will negates; see text",
+            "damage": true,
+            "spell_resistence": "yes",
+            "source": "PFRPG",
+            "short_description": " One touch/level deals 1d6 damage and possibly 1 Str damage.",
+            "material_costs": "NULL",
+            "level": 1,
+            "origLevel": "1",
+            "slots": 1,
+            "location": "both",
+            "spellLevel": 1,
+            "index": 3,
+            "attackType": "spell",
+            "casterClass": "Magus"
+          },
+          {
+            "name": "Mount",
+            "school": "conjuration",
+            "subschool": "summoning",
+            "casting_time": "1 round",
+            "components": "V, S, M (a bit of horse hair)",
+            "range": "close (25 ft. + 5 ft./2 levels)",
+            "effect": "one mount",
+            "duration": "2 hours/level",
+            "spell_resistence": "no",
+            "source": "PFRPG",
+            "short_description": " Summons riding horse for 2 hours/level.",
+            "material_costs": "NULL",
+            "level": 1,
+            "origLevel": "1",
+            "slots": 1,
+            "location": "both",
+            "spellLevel": 1,
+            "index": 1,
+            "attackType": "spell",
+            "casterClass": "Magus"
+          },
+          {
+            "name": "Ray Of Enfeeblement",
+            "school": "necromancy",
+            "casting_time": "1 standard action",
+            "components": "V, S",
+            "range": "close (25 ft. + 5 ft./2 levels)",
+            "effect": "ray",
+            "duration": "1 round/level",
+            "saving_throw": "Fortitude half",
+            "spell_resistence": "yes",
+            "ranged_touch": true,
+            "source": "PFRPG",
+            "short_description": " Ray causes 1d6 Str penalty + 1 per 2 levels.",
+            "material_costs": "NULL",
+            "level": 1,
+            "origLevel": "1",
+            "slots": 1,
+            "location": "both",
+            "spellLevel": 1,
+            "index": 4,
+            "attackType": "spell",
+            "casterClass": "Magus"
+          },
+          {
+            "name": "Shield",
+            "school": "abjuration",
+            "descriptor": "force",
+            "casting_time": "1 standard action",
+            "components": "V, S",
+            "range": "personal",
+            "targets": "you",
+            "duration": "1 min./level",
+            "source": "PFRPG",
+            "short_description": " Invisible disc gives +4 to AC, blocks magic missiles.",
+            "material_costs": "NULL",
+            "level": 1,
+            "origLevel": "1",
+            "slots": 1,
+            "location": "both",
+            "spellLevel": 1,
+            "index": 0,
+            "attackType": "spell",
+            "casterClass": "Magus"
+          },
+          {
+            "name": "Snowball (PotN)",
+            "school": "conjuration",
+            "descriptor": "cold, water",
+            "casting_time": "1 standard action",
+            "components": "V, S",
+            "range": "close (25 ft. + 5 ft./2 levels)",
+            "effect": "one ball of ice and snow",
+            "duration": "instantaneous",
+            "saving_throw": "Fortitude partial (see text)",
+            "spell_resistence": "no",
+            "ranged_touch": true,
+            "damage": true,
+            "source": "Ultimate Wilderness",
+            "short_description": "Throw a conjured ball of snow at a target.",
+            "material_costs": "NULL",
+            "level": 1,
+            "origLevel": "1",
+            "slots": 1,
+            "location": "both",
+            "spellLevel": 1,
+            "index": 2,
+            "attackType": "spell",
+            "casterClass": "Magus"
+          }
+        ],
+        "2": [
+          {
+            "name": "Brow Gasher",
+            "school": "necromancy",
+            "casting_time": "1 standard action",
+            "components": "V, S",
+            "range": "touch",
+            "area": "one slashing melee weapon touched",
+            "duration": "1 round/level or until discharged",
+            "saving_throw": "Will negates (harmless, object)",
+            "spell_resistence": "yes (harmless, object)",
+            "damage": true,
+            "source": "Ultimate Combat",
+            "short_description": "Slashing weapon deals bleed damage to an opponent's head.",
+            "material_costs": "NULL",
+            "level": 2,
+            "origLevel": "2",
+            "slots": 1,
+            "location": "both",
+            "spellLevel": 2,
+            "index": 0,
+            "attackType": "spell",
+            "casterClass": "Magus"
+          },
+          {
+            "name": "Darkness",
+            "school": "evocation",
+            "descriptor": "darkness",
+            "casting_time": "1 standard action",
+            "components": "V, M/DF (bat fur and a piece of coal)",
+            "range": "touch",
+            "targets": "object touched",
+            "duration": "1 min./level (D)",
+            "spell_resistence": "no",
+            "source": "PFRPG",
+            "short_description": "20-ft. radius of supernatural shadow.",
+            "material_costs": "NULL",
+            "level": 2,
+            "origLevel": "2",
+            "slots": 1,
+            "location": "both",
+            "spellLevel": 2,
+            "index": 3,
+            "attackType": "spell",
+            "casterClass": "Magus"
+          },
+          {
+            "name": "Defending Bone",
+            "school": "necromancy",
+            "casting_time": "1 standard action",
+            "components": "V, S, F (a Medium creature's skull or femur), DF",
+            "range": "personal",
+            "targets": "you",
+            "duration": "1 hour/level or until discharged",
+            "source": "Inner Sea Gods",
+            "material_costs": "NULL",
+            "level": 2,
+            "origLevel": "2",
+            "slots": 1,
+            "location": "both",
+            "spellLevel": 2,
+            "index": 2,
+            "attackType": "spell",
+            "casterClass": "Magus"
+          },
+          {
+            "name": "Glitterdust",
+            "school": "conjuration",
+            "subschool": "creation",
+            "casting_time": "1 standard action",
+            "components": "V, S, M (ground mica)",
+            "range": "medium (100 ft. + 10 ft./level)",
+            "area": "creatures and objects within 10-ft.-radius spread",
+            "duration": "1 round/level",
+            "saving_throw": "Will negates (blinding only)",
+            "spell_resistence": "no",
+            "source": "PFRPG",
+            "short_description": "Blinds creatures, outlines invisible creatures.",
+            "material_costs": "NULL",
+            "level": 2,
+            "origLevel": "2",
+            "slots": 1,
+            "location": "both",
+            "spellLevel": 2,
+            "index": 1,
+            "attackType": "spell",
+            "casterClass": "Magus"
+          }
+        ],
+        "3": [
+          {
+            "name": "Arcane Sight",
+            "school": "divination",
+            "casting_time": "1 standard action",
+            "components": "V, S",
+            "range": "personal",
+            "targets": "you",
+            "duration": "1 min./level",
+            "source": "PFRPG",
+            "short_description": " Magical auras become visible to you.",
+            "material_costs": "NULL",
+            "level": 3,
+            "origLevel": "3",
+            "slots": 1,
+            "location": "both",
+            "spellLevel": 3,
+            "index": 2,
+            "attackType": "spell",
+            "casterClass": "Magus"
+          },
+          {
+            "name": "Discharge",
+            "school": "abjuration",
+            "casting_time": "1 standard action",
+            "components": "V, S",
+            "range": "medium (100 ft. + 10 ft./level)",
+            "targets": "one creature or technological object",
+            "duration": "instantaneous",
+            "saving_throw": "Fortitude negates",
+            "spell_resistence": "no",
+            "source": "Technology Guide",
+            "material_costs": "NULL",
+            "level": 3,
+            "origLevel": "3",
+            "slots": 1,
+            "location": "both",
+            "spellLevel": 3,
+            "index": 0,
+            "attackType": "spell",
+            "casterClass": "Magus"
+          },
+          {
+            "name": "Vampiric Touch",
+            "school": "necromancy",
+            "casting_time": "1 standard action",
+            "components": "V, S",
+            "range": "touch",
+            "targets": "living creature touched",
+            "duration": "instantaneous/1 hour; see text",
+            "spell_resistence": "yes",
+            "damage": true,
+            "source": "PFRPG",
+            "short_description": "Touch deals 1d6 damage/2 levels; caster gains damage as temporary hp.",
+            "material_costs": "NULL",
+            "level": 3,
+            "origLevel": "3",
+            "slots": 1,
+            "location": "both",
+            "spellLevel": 3,
+            "index": 1,
+            "attackType": "spell",
+            "casterClass": "Magus"
+          }
+        ]
+      }
+    }
+  },
+  "releaseNoteVersion": 0,
+  "equipment": {
+    "containers": [
+      {
+        "name": "Storage",
+        "containerCapacity": 0,
+        "itemsHaveNoWeight": true,
+        "index": "Storage"
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Black Blade",
+        "benefit": "You get a +2 bonus on Sleight of Hand skill checks made to conceal a dagger on your body.",
+        "group": [
+          "light blades",
+          "thrown",
+          "tribal",
+          "pirate"
+        ],
+        "source": "PFRPG",
+        "damage": "1d4",
+        "critical": "19-20/x2",
+        "damageType": [
+          "P",
+          "S"
+        ],
+        "type": "light",
+        "proficiency": "simple",
+        "range": "10",
+        "cost": 2,
+        "weight": 1,
+        "rangedType": "thrown",
+        "special": [],
+        "weaponSource": "Black Blade Magus",
+        "size": "medium",
+        "weapon": "Dagger",
+        "descriptiveText": [
+          {
+            "decor": "bold",
+            "content": "Black Blade Statistics: ",
+            "newLine": true
+          },
+          {
+            "label": "Ego: ",
+            "content": 5
+          },
+          {
+            "label": "Int: ",
+            "content": 12
+          },
+          {
+            "label": "Wis/Cha: ",
+            "content": 8
+          },
+          {
+            "label": "Knowledge (arcana): ",
+            "content": 2
+          },
+          {
+            "label": "Languages Known: ",
+            "content": "Common plus 1 others"
+          }
+        ],
+        "handedness": "one-handed",
+        "index": 0,
+        "enchantments": [
+          {
+            "name": "Enhancement Bonus +2",
+            "source": "Black Blade"
+          },
+          {
+            "name": "Agile"
+          },
+          {
+            "name": "Returning"
+          }
+        ],
+        "bonuses": [
+          {
+            "source": "Sacred Weapon",
+            "value": "1d8",
+            "appliesTo": "damageDice",
+            "class": "Warpriest"
+          },
+          {
+            "source": "Weapon Focus",
+            "value": 1,
+            "appliesTo": "attack",
+            "featType": "Combat"
+          },
+          {
+            "source": "Weapon Finesse",
+            "value": "dex",
+            "appliesTo": "baseAttackAbility",
+            "featType": "Combat"
+          },
+          {
+            "source": "River Rat",
+            "value": 1,
+            "type": "trait",
+            "appliesTo": "damage",
+            "_sourceModule": {
+              "name": "trait",
+              "type": "Regional"
+            }
+          },
+          {
+            "source": "Enhancement BonusBlack Blade",
+            "value": 2,
+            "type": "enhancement",
+            "appliesTo": "attack",
+            "secondaryOnly": false,
+            "primaryOnly": true
+          },
+          {
+            "source": "Enhancement BonusBlack Blade",
+            "value": 2,
+            "type": "enhancement",
+            "appliesTo": "damage",
+            "secondaryOnly": false,
+            "primaryOnly": true
+          },
+          {
+            "source": "Agile",
+            "value": "dex",
+            "appliesTo": "baseDamageAbility",
+            "secondaryOnly": false,
+            "primaryOnly": true
+          }
+        ],
+        "secondaryBonuses": [
+          {
+            "source": "Sacred Weapon",
+            "value": "1d8",
+            "appliesTo": "damageDice",
+            "class": "Warpriest"
+          },
+          {
+            "source": "Weapon Focus",
+            "value": 1,
+            "appliesTo": "attack",
+            "featType": "Combat"
+          },
+          {
+            "source": "Weapon Finesse",
+            "value": "dex",
+            "appliesTo": "baseAttackAbility",
+            "featType": "Combat"
+          },
+          {
+            "source": "River Rat",
+            "value": 1,
+            "type": "trait",
+            "appliesTo": "damage",
+            "_sourceModule": {
+              "name": "trait",
+              "type": "Regional"
+            }
+          }
+        ],
+        "count": 1
+      },
+      {
+        "name": "Dagger",
+        "benefit": "You get a +2 bonus on Sleight of Hand skill checks made to conceal a dagger on your body.",
+        "group": [
+          "light blades",
+          "thrown",
+          "tribal",
+          "pirate"
+        ],
+        "source": "PFRPG",
+        "damage": "1d4",
+        "critical": "19-20/x2",
+        "damageType": [
+          "P",
+          "S"
+        ],
+        "type": "light",
+        "proficiency": "simple",
+        "range": "10",
+        "cost": 2,
+        "weight": 1,
+        "rangedType": "thrown",
+        "special": [],
+        "size": "Medium",
+        "handedness": "unequipped",
+        "index": 1,
+        "bonuses": [
+          {
+            "source": "River Rat",
+            "value": 1,
+            "type": "trait",
+            "appliesTo": "damage",
+            "_sourceModule": {
+              "name": "trait",
+              "type": "Regional"
+            }
+          },
+          {
+            "source": "Sacred Weapon",
+            "value": "1d8",
+            "appliesTo": "damageDice",
+            "class": "Warpriest"
+          },
+          {
+            "source": "Weapon Focus",
+            "value": 1,
+            "appliesTo": "attack",
+            "featType": "Combat"
+          },
+          {
+            "source": "Weapon Finesse",
+            "value": "dex",
+            "appliesTo": "baseAttackAbility",
+            "featType": "Combat"
+          },
+          {
+            "source": "Enhancement Bonus",
+            "value": 2,
+            "type": "enhancement",
+            "appliesTo": "attack",
+            "secondaryOnly": false,
+            "primaryOnly": true
+          },
+          {
+            "source": "Enhancement Bonus",
+            "value": 2,
+            "type": "enhancement",
+            "appliesTo": "damage",
+            "secondaryOnly": false,
+            "primaryOnly": true
+          },
+          {
+            "source": "Agile",
+            "value": "dex",
+            "appliesTo": "baseDamageAbility",
+            "secondaryOnly": false,
+            "primaryOnly": true
+          }
+        ],
+        "secondaryBonuses": [
+          {
+            "source": "River Rat",
+            "value": 1,
+            "type": "trait",
+            "appliesTo": "damage",
+            "_sourceModule": {
+              "name": "trait",
+              "type": "Regional"
+            }
+          },
+          {
+            "source": "Sacred Weapon",
+            "value": "1d8",
+            "appliesTo": "damageDice",
+            "class": "Warpriest"
+          },
+          {
+            "source": "Weapon Focus",
+            "value": 1,
+            "appliesTo": "attack",
+            "featType": "Combat"
+          },
+          {
+            "source": "Weapon Finesse",
+            "value": "dex",
+            "appliesTo": "baseAttackAbility",
+            "featType": "Combat"
+          }
+        ],
+        "enchantments": [
+          {
+            "name": "Enhancement Bonus +2"
+          },
+          {
+            "name": "Agile"
+          },
+          {
+            "name": "Returning"
+          }
+        ]
+      }
+    ],
+    "shoulders": [
+      {
+        "index": 1,
+        "value": "Cloak of Resistance +4",
+        "count": 1,
+        "casterLevel": 5,
+        "type": "shoulders",
+        "equipped": true
+      }
+    ],
+    "neck": [
+      {
+        "index": 0,
+        "value": "Amulet of Natural Armor +2",
+        "count": 1,
+        "casterLevel": 5,
+        "type": "neck",
+        "equipped": true
+      }
+    ],
+    "armor": [
+      {
+        "name": "Chain shirt",
+        "type": "light",
+        "source": "PFRPG",
+        "ACBonus": "4",
+        "maxDexBonus": "4",
+        "ACPenalty": "-2",
+        "arcaneSpellFailure": "20%",
+        "speed": "30 ",
+        "cost": 100,
+        "weight": 12,
+        "size": "medium",
+        "equipped": "equipped",
+        "index": 0,
+        "bonuses": [
+          {
+            "source": "armor",
+            "value": 4,
+            "type": "armor",
+            "appliesTo": "ac"
+          },
+          {
+            "source": "armor",
+            "value": -2,
+            "appliesTo": "acPenalty"
+          },
+          {
+            "source": "armor",
+            "value": 20,
+            "appliesTo": "arcaneSpellFailure"
+          },
+          {
+            "source": "armor",
+            "value": 4,
+            "appliesTo": "maxDex"
+          },
+          {
+            "source": "Masterwork",
+            "value": 1,
+            "type": "enhancement",
+            "appliesTo": "acPenalty"
+          },
+          {
+            "source": "Mithral Armor",
+            "value": -1,
+            "appliesTo": "category"
+          },
+          {
+            "source": "Mithral Armor",
+            "value": 2,
+            "appliesTo": "acPenalty"
+          },
+          {
+            "source": "Mithral Armor",
+            "value": -10,
+            "appliesTo": "arcaneSpellFailure"
+          },
+          {
+            "source": "Mithral Armor",
+            "value": 2,
+            "appliesTo": "maxDex"
+          }
+        ],
+        "enchantments": [
+          {
+            "name": "Masterwork"
+          }
+        ],
+        "material": "Mithral",
+        "materialApplied": true
+      }
+    ],
+    "headband": [
+      {
+        "index": 0,
+        "value": "Headband of Mental Superiority +2",
+        "count": 1,
+        "casterLevel": 1,
+        "type": "headband",
+        "choice": {
+          "Choose Skill": {
+            "source": "Headband of Mental Superiority +2",
+            "displayType": "select",
+            "options": [
+              {
+                "label": "Acrobatics",
+                "value": "Acrobatics"
+              },
+              {
+                "label": "Appraise",
+                "value": "Appraise"
+              },
+              {
+                "label": "Bluff",
+                "value": "Bluff"
+              },
+              {
+                "label": "Climb",
+                "value": "Climb"
+              },
+              {
+                "label": "Craft (undefined)",
+                "value": "Craft0"
+              },
+              {
+                "label": "Diplomacy",
+                "value": "Diplomacy"
+              },
+              {
+                "label": "Disable Device",
+                "value": "Disable Device"
+              },
+              {
+                "label": "Disguise",
+                "value": "Disguise"
+              },
+              {
+                "label": "Escape Artist",
+                "value": "Escape Artist"
+              },
+              {
+                "label": "Fly",
+                "value": "Fly"
+              },
+              {
+                "label": "Handle Animal",
+                "value": "Handle Animal"
+              },
+              {
+                "label": "Heal",
+                "value": "Heal"
+              },
+              {
+                "label": "Intimidate",
+                "value": "Intimidate"
+              },
+              {
+                "label": "Knowledge (arcana)",
+                "value": "Knowledge (arcana)"
+              },
+              {
+                "label": "Knowledge (dungeoneering)",
+                "value": "Knowledge (dungeoneering)"
+              },
+              {
+                "label": "Knowledge (engineering)",
+                "value": "Knowledge (engineering)"
+              },
+              {
+                "label": "Knowledge (geography)",
+                "value": "Knowledge (geography)"
+              },
+              {
+                "label": "Knowledge (history)",
+                "value": "Knowledge (history)"
+              },
+              {
+                "label": "Knowledge (local)",
+                "value": "Knowledge (local)"
+              },
+              {
+                "label": "Knowledge (nature)",
+                "value": "Knowledge (nature)"
+              },
+              {
+                "label": "Knowledge (nobility)",
+                "value": "Knowledge (nobility)"
+              },
+              {
+                "label": "Knowledge (planes)",
+                "value": "Knowledge (planes)"
+              },
+              {
+                "label": "Knowledge (religion)",
+                "value": "Knowledge (religion)"
+              },
+              {
+                "label": "Linguistics",
+                "value": "Linguistics"
+              },
+              {
+                "label": "Perception",
+                "value": "Perception"
+              },
+              {
+                "label": "Perform (undefined)",
+                "value": "Perform0"
+              },
+              {
+                "label": "Profession (undefined)",
+                "value": "Profession0"
+              },
+              {
+                "label": "Ride",
+                "value": "Ride"
+              },
+              {
+                "label": "Sense Motive",
+                "value": "Sense Motive"
+              },
+              {
+                "label": "Sleight of Hand",
+                "value": "Sleight of Hand"
+              },
+              {
+                "label": "Spellcraft",
+                "value": "Spellcraft"
+              },
+              {
+                "label": "Stealth",
+                "value": "Stealth"
+              },
+              {
+                "label": "Survival",
+                "value": "Survival"
+              },
+              {
+                "label": "Swim",
+                "value": "Swim"
+              },
+              {
+                "label": "Use Magic Device",
+                "value": "Use Magic Device"
+              }
+            ],
+            "name": "Choose Skill"
+          }
+        },
+        "equipped": true
+      }
+    ],
+    "belt": [
+      {
+        "index": 0,
+        "value": "Belt of Physical Perfection +2",
+        "count": 1,
+        "casterLevel": 1,
+        "type": "belt",
+        "equipped": true
+      }
+    ]
+  },
+  "numHeads": 1,
+  "numTails": 0,
+  "numWings": 0,
+  "numLegs": 2,
+  "numArms": 2,
+  "other": {
+    "bonuses": [
+      {
+        "source": "Constructed Racial",
+        "value": "disallowed",
+        "type": "morale",
+        "appliesTo": "bonusType",
+        "race": "Android"
+      },
+      {
+        "source": "Spellcasting (Warpriest)",
+        "value": [
+          {
+            "level": 6,
+            "casterClass": "Warpriest",
+            "name": "realm retribution"
+          }
+        ],
+        "appliesTo": "spellList",
+        "class": "Warpriest"
+      },
+      {
+        "source": "Spellbooks (Magus)",
+        "type": "Magus",
+        "appliesTo": "Uses Spellbook",
+        "class": "Magus"
+      },
+      {
+        "source": "Precise Shot",
+        "appliesTo": "ExtraInfoText",
+        "situational": true,
+        "note": "You can shoot or throw ranged weapons at an opponent engaged in melee without taking the standard -4 penalty on your attack roll.",
+        "featType": "Combat"
+      },
+      {
+        "source": "Combined Spells",
+        "value": 3,
+        "appliesTo": "Combine Spells Max Level",
+        "class": "MysticTheurge"
+      },
+      {
+        "source": "True Death",
+        "appliesTo": "ExtraInfoText",
+        "situational": true,
+        "note": "Anyone raising someone slain by your death attack must succeed at a DC 20 caster level check to do so (unless remove curse succeeds 1 round before)",
+        "class": "Assassin"
+      }
+    ]
+  },
+  "releaseNotes": 32,
+  "settings": {
+    "gestalt": true,
+    "opacity": 60,
+    "saturation": 100
+  },
+  "selectedTab": "characterSheet",
+  "collapsedSections": {
+    "Defense": false
+  },
+  "_Permissions": "Public"
+}
