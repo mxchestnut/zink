@@ -342,9 +342,11 @@ function importedRaw(): unknown {
 }
 
 // --- Live PlayFab sync (PathCompanion's real backend) ----------------------
-// The Title ID is public (it rides every PlayFab request). Set it via
-// VITE_PC_PLAYFAB_TITLE to enable live in-browser sync; empty disables it.
-const PLAYFAB_TITLE_ID: string = (import.meta.env.VITE_PC_PLAYFAB_TITLE as string | undefined) ?? "";
+// PathCompanion's PlayFab Title ID is public (it rides every PlayFab request,
+// e.g. https://bca4c.playfabapi.com/Client/GetUserData). Baked in so live sync
+// works without env config; override with VITE_PC_PLAYFAB_TITLE, or set it ""
+// to disable and fall back to the build-time synced file.
+const PLAYFAB_TITLE_ID: string = (import.meta.env.VITE_PC_PLAYFAB_TITLE as string | undefined) ?? "BCA4C";
 
 /** Stable per-browser anonymous id so we reuse one throwaway PlayFab account. */
 function anonPlayFabId(): string {
