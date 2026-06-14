@@ -45,6 +45,7 @@ export async function postRollToDiscord(
     description: `rolled **${entry.label}** · ${entry.die} ${modSign}${entry.modifier} = **${entry.total}**${rollSuffix}\n-# natural ${entry.natural}`,
     color,
     timestamp: new Date(entry.at).toISOString(),
+    ...(avatarUrl ? { thumbnail: { url: avatarUrl } } : {}),
   };
 
   const body: Record<string, unknown> = {
