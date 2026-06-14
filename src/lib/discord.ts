@@ -37,15 +37,19 @@ export async function postRollToDiscord(
 
   const color = isNat20 ? 0xf5c518 : isNat1 ? 0xe53e3e : 0x5865f2;
 
+  const embed: Record<string, unknown> = {
+    author: {
+      name: characterName,
+      ...(avatarUrl ? { icon_url: avatarUrl } : {}),
+    },
+    description: `rolled **${entry.label}** · ${entry.die} ${modSign}${entry.modifier} = **${entry.total}**${rollSuffix}\n-# natural ${entry.natural}`,
+    color,
+    timestamp: new Date(entry.at).toISOString(),
+  };
+
   const body: Record<string, unknown> = {
     username: characterName,
-    embeds: [
-      {
-        description: `rolled **${entry.label}** · ${entry.die} ${modSign}${entry.modifier} = **${entry.total}**${rollSuffix}\n-# natural ${entry.natural}`,
-        color,
-        timestamp: new Date(entry.at).toISOString(),
-      },
-    ],
+    embeds: [embed],
   };
 
   if (avatarUrl) body.avatar_url = avatarUrl;
