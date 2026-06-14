@@ -25,12 +25,15 @@ export function Spellcraft({ character }: { character: Character }) {
                   </div>
                   <div className="flex flex-wrap content-start items-start gap-2 pt-1">
                     {lvl.spells.map((spell) => (
-                      <span
+                      <a
                         key={spell}
-                        className="rounded-md border border-zinc-800 bg-zinc-900/50 px-2.5 py-1 text-sm text-zinc-300"
+                        href={`https://www.aonprd.com/SpellDisplay.aspx?ItemName=${encodeURIComponent(spell)}`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="rounded-md border border-zinc-800 bg-zinc-900/50 px-2.5 py-1 text-sm text-zinc-300 transition-colors hover:border-amber-300/50 hover:text-amber-200"
                       >
                         {spell}
-                      </span>
+                      </a>
                     ))}
                   </div>
                 </div>
