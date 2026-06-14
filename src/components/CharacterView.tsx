@@ -20,6 +20,7 @@ import { CHARACTER_KEY, useCharacter } from "../lib/pathcompanion";
 import { detectAlias, normalizeAlias } from "../lib/alias";
 import { useRollHistory } from "../lib/rollHistory";
 import { getDiscordWebhook, postRollToDiscord, setDiscordWebhook } from "../lib/discord";
+import { getAvatarPublicUrl } from "../lib/avatar";
 
 export function CharacterView({
   characterKey: initialKey,
@@ -133,6 +134,11 @@ export function CharacterView({
     if (bioAlias) setDiscordWebhookState(getDiscordWebhook(bioAlias));
   }, [bioAlias]);
 
+  const [avatarUrl, setAvatarUrl] = useState<string>("");
+  useEffect(() => {
+    if (bioAlias) setAvatarUrl(getAvatarPublicUrl(bioAlias));
+  }, [bioAlias]);
+
   const handleDiscordWebhookChange = useCallback(
     (url: string) => {
       if (bioAlias) setDiscordWebhook(bioAlias, url);
@@ -145,7 +151,7 @@ export function CharacterView({
     (label: string, die: string, modifier: number, note?: string) => {
       const entry = addRoll(label, die, modifier, note);
       if (discordWebhook) {
-        postRollToDiscord(discordWebhook, entry, character.identity.name).catch(() => {});
+        postRollToDiscord(discordWebhook, entry, character.identity.name, avatarUrl || undefined).catch(() => {});
       }
     },
     [addRoll, discordWebhook, character.identity.name],
@@ -218,7 +224,13 @@ export function CharacterView({
       />
 
       <div className="relative mx-auto max-w-6xl px-6 lg:px-10">
-        <Hero character={character} />
+        <Hero
+            character={character}
+            canEdit={canEdit}
+            alias={bioAlias}
+            avatarUrl={avatarUrl}
+            onAvatarChange={setAvatarUrl}
+          />
 
         <div className="grid grid-cols-1 gap-12 pb-4 lg:grid-cols-[19rem_minmax(0,1fr)] lg:gap-16">
           <Sidebar

@@ -26,41 +26,29 @@ export async function postRollToDiscord(
   webhookUrl: string,
   entry: RollEntry,
   characterName: string,
+  avatarUrl?: string,
 ): Promise<void> {
   if (!webhookUrl) return;
 
   const isNat20 = entry.natural === 20;
   const isNat1 = entry.natural === 1;
   const modSign = entry.modifier >= 0 ? "+" : "";
+  const rollSuffix = isNat20 ? " ⭐" : isNat1 ? " 💀" : "";
 
   const color = isNat20 ? 0xf5c518 : isNat1 ? 0xe53e3e : 0x5865f2;
-  const title = isNat20
-    ? `⭐ ${entry.label} — Natural 20!`
-    : isNat1
-      ? `💀 ${entry.label} — Natural 1`
-      : `🎲 ${entry.label}`;
 
-  const body = {
-    username: "OneE",
+  const body: Record<string, unknown> = {
+    username: characterName,
     embeds: [
       {
-        title,
+        description: `rolled **${entry.label}** · ${entry.die} ${modSign}${entry.modifier} = **${entry.total}**${rollSuffix}\n-# natural ${entry.natural}`,
         color,
-        fields: [
-          { name: "Die", value: entry.die, inline: true },
-          {
-            name: "Natural",
-            value: isNat20 ? `**${entry.natural}** ⭐` : isNat1 ? `**${entry.natural}** 💀` : `${entry.natural}`,
-            inline: true,
-          },
-          { name: "Modifier", value: `${modSign}${entry.modifier}`, inline: true },
-          { name: "Total", value: `**${entry.total}**`, inline: true },
-        ],
-        footer: { text: characterName },
         timestamp: new Date(entry.at).toISOString(),
       },
     ],
   };
+
+  if (avatarUrl) body.avatar_url = avatarUrl;
 
   try {
     await fetch(webhookUrl, {
